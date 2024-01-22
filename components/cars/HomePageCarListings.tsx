@@ -36,8 +36,8 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
               </h2>
             </div>
 
-            <div className="w-[95%] lg:w-full m-auto overflow-x-auto ">
-              <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-3 w-full ">
+            <div className="w-[90%] lg:w-full m-auto overflow-x-auto ">
+              <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-40 3xl:gap-3 w-full ">
                 {stockcars
                   // .filter(car => (car.price  <= 15000 && car.price >=5000) && car.bodyTypeId==1)
                   .filter((car) => car.locationId == 84)
@@ -71,7 +71,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
             </div>
 
             <div className="w-[95%] lg:w-full m-auto overflow-x-auto ">
-              <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-3 w-full ">
+              <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60 2xl:gap-40 3xl:gap-3 w-full ">
                 {trucks.slice(0, 10).map((car) => (
                   <CarCard
                     fav={fav}
@@ -101,7 +101,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                 </div>
 
                 <div className="w-[95%] lg:w-full m-auto overflow-x-auto ">
-                  <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-3 w-full ">
+                  <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-40 3xl:gap-3 w-full ">
                     {stockcars
                       .filter((car) => car.locationId == 185)
                       .sort((a, b) => b.stockId - a.stockId)
@@ -140,7 +140,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
 
               <div className="showcase-Recheading">
                 <div className="w-[95%] lg:w-full m-auto overflow-x-auto ">
-                  <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-3 w-full ">
+                  <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-40 3xl:gap-3 w-full ">
                     {stockcars
                       // .filter(car => car.price  <= 5000)
                       .filter(
