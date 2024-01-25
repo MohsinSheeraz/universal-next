@@ -71,7 +71,6 @@ export default async function RootLayout({
             ) : (
               <Sidebar locations={inventoryLocation} makes={makes.data} />
             )}
-
             {children}
           </div>
         </div>

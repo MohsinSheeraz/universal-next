@@ -215,9 +215,11 @@ export default function CarSearchResult({ locations, params }: Props) {
                         <h6 className="text-right">
                           <span className="font-bold inline-flex">
                             <Image
-                              src={`/assets/images/flags/${locations.find(
-                                (x) => x.countryId == car.locationId
-                              )?.slug}.svg`}
+                              src={`/assets/images/flags/${
+                                locations.find(
+                                  (x) => x.countryId == car.locationId
+                                )?.slug
+                              }.svg`}
                               className="img-fluid mr-2"
                               height={20}
                               width={20}
