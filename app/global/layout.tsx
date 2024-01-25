@@ -1,9 +1,11 @@
+import agent from "@/api/agent";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
-
-import agent from "@/api/agent";
 import Sidebar from "@/components/layout/Sidebar";
 import SidebarItems from "@/components/sidebarItems";
+import whatsappimg from "@/public/assets/whatsapp.png";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata = {
   title: {
@@ -63,6 +65,17 @@ export default async function RootLayout({
         stockCount={stockCount.data}
         locations={locations}
       />
+      <Link href="https://wa.link/5g81p6">
+        <div className="fixed right-4 sm:right-6 cursor-pointer bottom-20 sm:bottom-24 z-[9999]">
+          <Image
+            src={whatsappimg}
+            className="w-[54px] sm:w-[60px] h-[54px] sm:h-[60px] "
+            width={60}
+            height={60}
+            alt="whatsapp image"
+          />
+        </div>
+      </Link>
       <section className={isLogin ? "" : "sidebar-menu"}>
         <div className={isLogin ? "w-[99%]" : "container-fluid"}>
           <div className="row">
