@@ -1,16 +1,12 @@
 "use client";
-import agent from "@/api/agent";
+import { BodyType } from "@/models/Master/BodyType";
 import { Country } from "@/models/Master/Country";
 import { Make } from "@/models/Master/Make";
-import Link from "next/link";
-import React, { useState } from "react";
-import ByMake from "./byMake";
-import ByType from "./byType";
-import BySearch from "./bySearch";
-import { GetBodyTypes } from "@/app/global/results/[pid]/cars/list/[id]/components/loadData";
-import { BodyType } from "@/models/Master/BodyType";
-import Accordion from "./accordion";
+import { useState } from "react";
 import CustomComponent from "./accordion";
+import ByMake from "./byMake";
+import BySearch from "./bySearch";
+import ByType from "./byType";
 
 interface Props {
   locations: Country[];
@@ -27,13 +23,13 @@ export default function TabButtons({ makes, locations, bodyTypes }: Props) {
     (fromYear + index).toString()
   );
 
-  const button = ["By Make", "By Type", "Quick Search"];
+  const button = ["By Make", "By Inventory Location", "Quick Search"];
   const getCurrent = () => {
     switch (current) {
       case "By Make":
         return <ByMake makes={makes} />;
 
-      case "By Type":
+      case "By Inventory Location":
         return <ByType locations={locations} />;
 
       case "Quick Search":
