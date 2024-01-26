@@ -8,7 +8,7 @@ export default function Loading() {
         {/*<h6 className="animate-charcter"> Loading ...</h6>*/}
       </div>
 
-      <div className="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 p-0 formss">
+      <div className="hidden md:inline-block col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8 p-0 formss">
         <div>
           <h2 className="animate-pulse p-2 w-full h-16 bg-slate-200 rounded overflow-hidden border cursor-pointer"></h2>
           <div className="carsrow row py-5">

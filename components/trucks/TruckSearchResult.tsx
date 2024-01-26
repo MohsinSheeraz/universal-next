@@ -216,9 +216,11 @@ export default function TruckSearchResult({ locations, params }: Props) {
                         <h6 className="text-right">
                           <span className="font-bold inline-flex">
                             <Image
-                              src={`/assets/images/flags/${locations.find(
-                                (x) => x.countryId == truck.locationId
-                              )?.slug}.svg`}
+                              src={`/assets/images/flags/${
+                                locations.find(
+                                  (x) => x.countryId == truck.locationId
+                                )?.slug
+                              }.svg`}
                               className="img-fluid mr-2"
                               height={20}
                               width={20}
