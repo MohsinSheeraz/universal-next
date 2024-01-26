@@ -14,7 +14,7 @@
     "eslint": "eslint ."
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.27.4",
+    "@clerk/nextjs": "^4.29.5",
     "@emailjs/browser": "^3.11.0",
     "@react-oauth/google": "^0.11.1",
     "@tremor/react": "^3.4.1",
