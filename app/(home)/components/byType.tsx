@@ -31,7 +31,9 @@ export default function ByType({ locations }: prop) {
                     alt={location.slug ?? ""}
                   />
                 </div>
-                <div className="text-[11px]">{location.countryName}</div>
+                <div className="text-[8px] text-center mt-1 font-semibold">
+                  {location.countryName}
+                </div>
               </div>
             </Link>
           </li>
