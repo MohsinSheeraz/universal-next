@@ -63,7 +63,10 @@ export default async function CarDetailed({ params }: Props) {
                     </h1>
                     <div className="col-lg-6  detail-leftsection">
                       <div className="row">
-                        <div id="wrap" className="container-fluid">
+                        <div
+                          id="wrap"
+                          className="!px-0 md:!px-[6%] container-fluid"
+                        >
                           <div className="row">
                             <CarDetailedSlideshow
                               isReserved={Stock.data?.isReserved}

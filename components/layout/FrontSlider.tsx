@@ -7,7 +7,11 @@ function FrontSlider() {
     <>
       {/* .........Carousel......... */}
       {/*<LikeComponent onClick={()=>console.log("click")}/>*/}
-      <Carousel indicators={false} interval={3000} className="carousel slide !hidden md:!block">
+      <Carousel
+        indicators={false}
+        interval={3000}
+        className="carousel slide !hidden md:!block"
+      >
         <Carousel.Item>
           <img className="d-block w-100" src="/assets/images/slider/3.jpeg" />
         </Carousel.Item>

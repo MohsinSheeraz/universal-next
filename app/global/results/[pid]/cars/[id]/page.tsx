@@ -51,7 +51,7 @@ export default async function CarDetailed({ params }: Props) {
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
           <div className="row">
             <section className="product-slider-section">
-              <div className="container-fluid">
+              <div className="container-fluid ">
                 <div id="productslider" className="carousel slide">
                   <div className="row">
                     <h1 className="mobicar carname">
@@ -59,7 +59,10 @@ export default async function CarDetailed({ params }: Props) {
                     </h1>
                     <div className="col-lg-6  detail-leftsection">
                       <div className="row">
-                        <div id="wrap" className="container-fluid">
+                        <div
+                          id="wrap"
+                          className="!px-0 md:!px-[6%]  container-fluid"
+                        >
                           <div className="row overflow-hidden">
                             <CarDetailedSlideshow
                               isReserved={Stock.data.isReserved}
