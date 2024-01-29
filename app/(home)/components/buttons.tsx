@@ -2,16 +2,16 @@
 import { BodyType } from "@/models/Master/BodyType";
 import { Country } from "@/models/Master/Country";
 import { Make } from "@/models/Master/Make";
+import { useUserStore } from "@/store/store";
+import { useUser } from "@clerk/nextjs";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import CustomComponent from "./accordion";
 import ByMake from "./byMake";
 import BySearch from "./bySearch";
 import ByType from "./byType";
-import { useRouter } from "next/navigation";
-import { useUser } from "@clerk/nextjs";
-import Link from "next/link";
-import { useUserStore } from "@/store/store";
-import { toast } from "react-toastify";
 interface Props {
   locations: Country[];
   makes: Make[];
@@ -55,16 +55,14 @@ export default function TabButtons({ makes, locations, bodyTypes }: Props) {
   return (
     <>
       {!isSignedIn && (
-        <div>
-          <button
-            className="bg-[#221C63] w-full h-[45px] text-white text-[15px] rounded-lg"
-            onClick={() => {
-              router.push("/sign-in");
-            }}
-          >
-            Free <span className="text-[24px]">Signup </span> for Membership
-          </button>
-        </div>
+        <button
+          className="bg-[#221C63] w-full h-[45px] text-white text-[15px] rounded-lg"
+          onClick={() => {
+            router.push("/sign-up");
+          }}
+        >
+          Free <span className="text-[24px]">Signup </span> for Membership
+        </button>
       )}
       <div className="mt-2">
         <Link
