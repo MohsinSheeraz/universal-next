@@ -9,6 +9,7 @@ import { PortMapping } from "@/models/Master/PortMapping";
 import { Ports } from "@/models/Master/Ports";
 import { checkEmail } from "@/services/profile";
 import { useUserStore } from "@/store/store";
+import NumberFormat from "@/utils/NumberFormat";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
@@ -118,7 +119,14 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
         pauseOnHover
         theme="light"
       />
-      <header className="headerbg">
+      <div className="flex justify-center md:hidden headerbg text-center container-fluid font-semibold text-[#221C63] bg-[#FFB703] py-2" >
+        Total Stock:
+        <span className="pl-3">
+          <NumberFormat numbers={stockCount} />
+        </span>
+
+      </div>
+      <header className="hidden md:flex headerbg">
         <div className="container-fluid">
           {/* Stack the columns on mobile by making one full-width and the other half-width */}
           <div className="row">
@@ -263,8 +271,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   countryList={[]}
                   portList={[]}
                   portMapping={undefined} // countryList={locations}
-                  // portList={ports}
-                  // portMapping={portMapping}
+                // portList={ports}
+                // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}
@@ -420,14 +428,14 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                               user?.email && !isUpdate
                                 ? ""
                                 : {
-                                    pathname: `/global/results/${location.countryName.replaceAll(
-                                      " ",
-                                      "-"
-                                    )}/cars`,
-                                    query: {
-                                      countryID: location.countryId,
-                                    },
-                                  }
+                                  pathname: `/global/results/${location.countryName.replaceAll(
+                                    " ",
+                                    "-"
+                                  )}/cars`,
+                                  query: {
+                                    countryID: location.countryId,
+                                  },
+                                }
                             }
                           >
                             <span className=" inline-flex items-center rounded-md">
