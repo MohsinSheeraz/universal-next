@@ -37,7 +37,6 @@ export default function PriceCalculator({
   const [countryID, setCountryID] = useState(0);
   const [portID, setPortID] = useState(0);
   const { user } = useUserStore();
-  console.log(isReserved, reservedBy, user.customerId);
   const [mappedPorts, setMappedPorts] = useState<PortMapping[]>([]);
   const [onInsuranceCost, setEnableInsurance] = useState(false);
   const [onInspectionCost, setEnablInspection] = useState(false);
