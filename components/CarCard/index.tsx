@@ -44,7 +44,7 @@ export default function CarCard({ car, href, fav }: Prop) {
     <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#f1f5f9] shadow-md p-0 rounded-md">
       <div className="relative w-full h-48">
         <Image
-          alt="img"
+          alt={car?.listingTitle}
           style={{
             objectFit: "cover",
             width: "100%",
