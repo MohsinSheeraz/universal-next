@@ -53,7 +53,6 @@ export const authOptions: NextAuthOptions = {
           return user;
         }
         // Return null if user data could not be retrieved
-        console.log(user + "null");
         return null;
       },
     }),

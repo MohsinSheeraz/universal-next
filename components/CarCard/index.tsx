@@ -88,7 +88,6 @@ export default function CarCard({ car, href, fav }: Prop) {
             }
             // login();
             router.push("/sign-in");
-            console.log("Not Logged In");
           }}
           size={"24px"}
           style={{

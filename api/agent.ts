@@ -323,7 +323,6 @@ export async function addFavourite(fav: TFavorite) {
     //   password: user.password,
     // });
 
-    console.log("Fav added Successfully");
     toast.success("Favorite Added Successfully");
   } catch (e) {
     console.log(e);
@@ -352,8 +351,6 @@ export async function removeFavourite(fav: TFavorite) {
     //   username: user.username,
     //   password: user.password,
     // });
-
-    console.log("Fav removed Successfully");
   } catch (e) {
     console.log(e);
   }
