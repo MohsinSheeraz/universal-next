@@ -119,12 +119,11 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
         pauseOnHover
         theme="light"
       />
-      <div className="flex justify-center md:hidden headerbg text-center container-fluid font-semibold text-[#221C63] bg-[#FFB703] py-2" >
+      <div className="flex justify-center md:hidden headerbg text-center container-fluid font-semibold text-[#221C63] bg-[#FFB703] py-2">
         Total Stock:
         <span className="pl-3">
           <NumberFormat numbers={stockCount} />
         </span>
-
       </div>
       <header className="hidden md:flex headerbg">
         <div className="container-fluid">
@@ -271,8 +270,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   countryList={[]}
                   portList={[]}
                   portMapping={undefined} // countryList={locations}
-                // portList={ports}
-                // portMapping={portMapping}
+                  // portList={ports}
+                  // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}
@@ -428,14 +427,14 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                               user?.email && !isUpdate
                                 ? ""
                                 : {
-                                  pathname: `/global/results/${location.countryName.replaceAll(
-                                    " ",
-                                    "-"
-                                  )}/cars`,
-                                  query: {
-                                    countryID: location.countryId,
-                                  },
-                                }
+                                    pathname: `/global/results/${location.countryName.replaceAll(
+                                      " ",
+                                      "-"
+                                    )}/cars`,
+                                    query: {
+                                      countryID: location.countryId,
+                                    },
+                                  }
                             }
                           >
                             <span className=" inline-flex items-center rounded-md">

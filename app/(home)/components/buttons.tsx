@@ -2,12 +2,16 @@
 import { BodyType } from "@/models/Master/BodyType";
 import { Country } from "@/models/Master/Country";
 import { Make } from "@/models/Master/Make";
+import { useUserStore } from "@/store/store";
+import { useUser } from "@clerk/nextjs";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import CustomComponent from "./accordion";
 import ByMake from "./byMake";
 import BySearch from "./bySearch";
 import ByType from "./byType";
-
 interface Props {
   locations: Country[];
   makes: Make[];
@@ -40,22 +44,62 @@ export default function TabButtons({ makes, locations, bodyTypes }: Props) {
         break;
     }
   };
+  const { isSignedIn } = useUser();
+  const router = useRouter();
+  const { user, isUpdate } = useUserStore();
+  const checkUser = () => {
+    if (user?.email && !isUpdate) {
+      return toast.info("Create Profile First");
+    }
+  };
   return (
-    <div>
-      <div className="grid grid-cols-3 gap-2 mb-2 ">
-        {button.map((e, i) => {
-          return (
-            <button
-              className={`w-full h-auto py-1 border text-[12px] ${current === e ? "bg-[#221C63] text-white" : "text-[#333333] bg-[#efefef] "} `}
-              onClick={() => setCurrent(e)}
-            >
-              {e}
-            </button>
-          );
-        })}
+    <>
+      {!isSignedIn && (
+        <button
+          className="bg-[#221C63] w-full h-[45px] text-white text-[15px] rounded-lg"
+          onClick={() => {
+            router.push("/sign-up");
+          }}
+        >
+          Free <span className="text-[24px]">Signup </span> for Membership
+        </button>
+      )}
+      <div className="mt-2">
+        <Link
+          onClick={checkUser}
+          href={
+            user?.email && !isUpdate
+              ? ""
+              : "/global/information?page=bank-information"
+          }
+        >
+          <button
+            className="bg-[#221C63] w-full h-[45px] text-white text-[20px] rounded-lg"
+            onClick={() => {
+              router.push("");
+            }}
+          >
+            Bank Information
+          </button>
+        </Link>
       </div>
-      {getCurrent()}
-      <CustomComponent />
-    </div>
+
+      <div>
+        <div className="grid grid-cols-3 gap-2 mb-2 mt-4">
+          {button.map((e, i) => {
+            return (
+              <button
+                className={`w-full h-auto py-1 border text-[12px] ${current === e ? "bg-[#221C63] text-white" : "text-[#333333] bg-[#efefef] "} `}
+                onClick={() => setCurrent(e)}
+              >
+                {e}
+              </button>
+            );
+          })}
+        </div>
+        {getCurrent()}
+        <CustomComponent />
+      </div>
+    </>
   );
 }
