@@ -183,7 +183,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                     </div>
                   </Link>
 
-                  <h4 className="ml-5 !text-[10px] sm:!text-[12px] md:!text-[12px] lg:text-[14px] xl:!text-[16px]">
+                  <h4 className="ml-5 !text-[10px] sm:!text-[12px] md:!text-[12px] lg:text-[14px] xl:!text-[16px] mt-2">
                     STOCK ID :{" "}
                     <span className="inline-flex items-center gap-x-1.5 rounded-full bg-yellow-400 px-2 py-1 text-l font-medium text-blue-950">
                       {car.stockCode}
@@ -231,7 +231,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                       </div>
                     </div>
                   </div>
-                  <div className="tabrow row pt-2 ">
+                  <div className="tabrow  row pt-2  ">
                     <div className="row specsrow ">
                       <div className="col-sm specs">
                         <h4 className="!text-[10px]  xl:!text-[15px] 2xl:!text-base">
@@ -398,14 +398,14 @@ export default function CarSearchResult({ locations, params }: Props) {
                   </div>
                 </div>
               </div>
-              <div className="col-xl-3 col-lg-3 col-md-8 col-sm-8 col-7 grid content-start 2xl:content-center">
+              <div className="col-xl-3 col-lg-3 col-md-8 col-sm-8 col-7 grid content-start 2xl:content-center ">
                 <div className="car-inquiry items-center ">
                   {/*<Link href={`/global/results/${car.stockId}`}><h6 className="listname">{car.ListingTitle}</h6></Link>*/}
                   <div className="fprice">
-                    <h6 className="listname font-bold text-[12px] sm:text-[20px] lg:text-[12px] xl:text-[20px]  uppercase">
+                    <h6 className="listname font-bold text-[12px] sm:text-[20px] lg:text-[12px] xl:text-[20px]  uppercase pl-2">
                       {car.listingTitle}
                     </h6>
-                    <h6 className="font-bold text-[12px] sm:text-[20px]  lg:text-[12px] xl:text-[16px] mt-0 mb-0 2xl:!mt-2 2xl:!mb-2">
+                    <h6 className="font-bold text-[12px] sm:text-[20px]  lg:text-[12px] xl:text-[16px]  mt-0 mb-1 2xl:!mt-2 2xl:!mb-2 pl-2 mt-2">
                       FOB Price:
                       <span className="mb-5 text-[12px] sm:text-[20px] lg:text-[12px] xl:text-[20px] ">
                         <PriceFormat carPrice={car.price} />
@@ -435,8 +435,8 @@ export default function CarSearchResult({ locations, params }: Props) {
 
                   {/*        </h6>*/}
                   {/*</div>*/}
-                  <div className="askprice">
-                    <h6 className="text-[12px] sm:text-[20px] lg:text-[12px] xl:text-[16px] mt-0 2xl:!mt-2">
+                  <div className="askprice ">
+                    <h6 className="text-[12px] sm:text-[20px] lg:text-[12px] xl:text-[16px] mt-0 2xl:!mt-2 pl-1 mt-2">
                       TOTAL Price:
                       <span>ASK</span>
                     </h6>
@@ -452,14 +452,15 @@ export default function CarSearchResult({ locations, params }: Props) {
                       car.year
                     }/cars/${car.stockId}`}
                   >
-                    <button className="offerbtn ">
+                    <button className="offerbtn ml-2">
                       <span className="font-bold"> Send Offer</span>
                     </button>
                   </Link>
                 </div>
               </div>
+              <hr className="mt-2" />
             </div>
-            <hr />
+            {/* <hr /> */}
           </div>
         ))}
       <PaginationComponent
