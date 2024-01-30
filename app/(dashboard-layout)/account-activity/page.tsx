@@ -19,7 +19,6 @@ export default function Page() {
     };
     getData();
   }, []);
-  console.log(historyData);
 
   return (
     <div className="w-full">

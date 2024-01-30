@@ -10,7 +10,7 @@ export default async function StockKeyInformation({ car }: Props) {
 
   return (
     <>
-      <div className="border-b border-gray-200 bg-white px-2 py-5 sm:px-6">
+      <div className="border-b border-gray-200 bg-white px-2 py-1 sm:py-5 sm:px-6">
         <h2 className="!text-[14px] sm:!text-[20px] font-semibold leading-6 text-gray-900">
           Key Information
         </h2>
@@ -135,7 +135,7 @@ export default async function StockKeyInformation({ car }: Props) {
         </div>
       </div>
 
-      <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
+      <div className="border-b border-gray-200 bg-white px-4  py-1 sm:py-5 sm:px-6">
         <h2 className="!text-[14px] sm:!text-[20px] font-semibold leading-6 text-gray-900">
           Features
         </h2>

@@ -41,7 +41,7 @@ export default function TopCountryTimeBar({ stockCount }: Props) {
 
   return (
     <>
-      <div className="firstsection col-lg-4 col-md-6 col-12 text-center">
+      <div className=" firstsection col-lg-4 col-md-6 col-12 text-center">
         <div className="flex items-center my-2">
           <span className=" inline-flex items-center gap-x-1.5 ml-3 rounded-md border-2 border-[#221C63] px-2 py-1 text-lg align-middle tracking-tight  font-medium text-[#221C63]">
             <svg

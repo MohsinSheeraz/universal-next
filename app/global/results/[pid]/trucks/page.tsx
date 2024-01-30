@@ -1,10 +1,6 @@
-import SearchingCriteria from "@/components/ui/SearchingCriteria";
-import CarSearchResult from "@/components/cars/CarSearchResult";
-import { StockCars } from "@/models/StockCars";
 import agent from "@/api/agent";
-import HomeUI from "@/components/ui/HomeUI";
-import { Trucks } from "@/models/Trucks";
 import TruckSearchResult from "@/components/trucks/TruckSearchResult";
+import HomeUI from "@/components/ui/HomeUI";
 
 interface Props {
   searchParams: {
@@ -35,7 +31,6 @@ const GetCarMakes = async () => {
 };
 
 export default async function ResultPage({ searchParams }: Props) {
-  console.log(searchParams);
   const params = new URLSearchParams();
 
   if (searchParams.makeID) params.set("MakeID", searchParams.makeID.toString());

@@ -63,7 +63,6 @@ export default function LikeComponent({ fav, car }: Prop) {
     }
     // login();
     router.push("/sign-in");
-    console.log("Not Logged In");
   };
 
   const toggle = () => {
