@@ -44,20 +44,22 @@ export default function CarTableItem({ item }: Prop) {
         <div className="w-full mt-5">
           <table>
             <tr>
-              <td className="w-36 font-semibold bg-slate-100 p-1 mr-1">
+              <td className="w-36 font-semibold text-center bg-slate-100 p-1 mr-1">
                 Ok to Book
               </td>
-              <td className="w-36 bg-slate-50 py-1 px-3">
+              <td className="w-36 bg-slate-50 py-1 px-3 text-center">
                 {!stock?.shipOkDate.includes("1900-01-01") ? (
                   getFormatedDate(stock?.shipOkDate)
                 ) : (
-                  <span className="text-red-800 text-[14px]">
-                    not Available
+                  <span className="text-red-800 text-center text-[14px]">
+                    NOT AVAILABLE
                   </span>
                 )}
               </td>
-              <td className="w-36 font-semibold bg-slate-100 p-1">ETA</td>
-              <td className="w-36 bg-slate-50 p-1">
+              <td className="w-36 font-semibold bg-slate-100 p-1 text-center">
+                ETA
+              </td>
+              <td className="w-36 text-sm bg-slate-50 p-1 text-center">
                 {!stock?.eta.includes("1900-01-01") ? (
                   getFormatedDate(stock?.eta)
                 ) : (
@@ -68,14 +70,16 @@ export default function CarTableItem({ item }: Prop) {
               </td>
             </tr>
             <tr>
-              <td className="w-36 font-semibold bg-slate-100 p-1">
+              <td className="w-36 font-semibold bg-slate-100 p-1 text-center">
                 Order Date
               </td>
-              <td className="w-36 bg-slate-50 p-1">
+              <td className="w-36 bg-slate-50 p-1 text-sm text-center">
                 {getFormatedDate(stock?.createdOn)}
               </td>
-              <td className="w-36 font-semibold bg-slate-100 p-1">ETD</td>
-              <td className="w-36 bg-slate-50 p-1">
+              <td className="w-36 font-semibold bg-slate-100 p-1 text-center">
+                ETD
+              </td>
+              <td className="w-36 text-sm bg-slate-50 p-1 text-center">
                 {!stock?.etd.includes("1900-01-01") ? (
                   getFormatedDate(stock?.etd)
                 ) : (
