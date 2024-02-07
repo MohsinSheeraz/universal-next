@@ -1,8 +1,7 @@
 "use client";
+import { Country } from "@/models/Master/Country";
 import Link from "next/link";
 import { FormSelect } from "react-bootstrap";
-import { Country } from "@/models/Master/Country";
-import { ChangeEvent } from "react";
 
 interface Props {
   resultCount: number;
@@ -34,7 +33,7 @@ export default async function SearchingCriteria({
             .map((country) => (
               <Link
                 key={country.countryId}
-                href={`/global/results/cars?countryID=${country.countryId}`}
+                href={`/global/results/${country.slug}/cars?countryID=${country.countryId}`}
                 role="tab"
               >
                 <li

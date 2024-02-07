@@ -94,7 +94,7 @@ export default function CarsSimpleSearch({
     if (toYear != "0") params.set("toYear", toYear);
 
     setLoading(true);
-    router.push(`/global/results/cars?${params.toString()}`);
+    router.push(`/global/results/search/cars?${params.toString()}`);
   }
 
   return (
@@ -160,12 +160,7 @@ export default function CarsSimpleSearch({
             value={steeringTypeId}
             onValueChange={setSteeringTypeId}
           >
-            <SearchSelectItem
-              value="1"
-              style={{ borderBottom: "1px solid black" }}
-            >
-              Right Hand
-            </SearchSelectItem>
+            <SearchSelectItem value="1">Right Hand</SearchSelectItem>
             <SearchSelectItem value="2">Left Hand</SearchSelectItem>
           </SearchSelect>
         </div>
@@ -187,66 +182,101 @@ export default function CarsSimpleSearch({
         {isMore && (
           <>
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-              <div className="showcase-Boxselect ">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Engine Size:
-                </label>
-                <div className="flex flex-col lg:flex-row flex-wrap justify-between">
-                  <div className="w-full lg:w-[49%] h-15 ">
-                    <input
-                      type="number"
-                      placeholder="Engine Size(cc)"
-                      // value={value}
-                      // onChange={onChange}
-                      className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    />
-                  </div>
-                  <div className="w-full lg:w-[49%]">
-                    <input
-                      type="number"
-                      placeholder="Engine Size(cc)"
-                      // value={value}
-                      // onChange={onChange}
-                      className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    />
-                  </div>
+              {/* <div className="showcase-Boxselect "> */}
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Engine Size:
+              </label>
+              <div className="flex flex-col lg:flex-row flex-wrap justify-between">
+                <div className="w-full lg:w-[49%] h-15 ">
+                  <input
+                    type="number"
+                    placeholder="Engine Size(cc)"
+                    // value={value}
+                    // onChange={onChange}
+                    className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  />
+                </div>
+                <div className="w-full lg:w-[49%]">
+                  <input
+                    type="number"
+                    placeholder="Engine Size(cc)"
+                    // value={value}
+                    // onChange={onChange}
+                    className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  />
                 </div>
               </div>
             </div>
-            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-              <div className="showcase-Boxselect">
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Manufacturing Year:
-                </label>
-                <div className="flex flex-col lg:flex-row flex-wrap justify-between">
-                  <div className="flex-none w-full lg:w-[49%] h-15 ">
-                    <SearchSelect
-                      placeholder="starting year"
-                      value={fromYear}
-                      onValueChange={setFromYear}
-                    >
-                      {yearList.map((year) => (
-                        <SearchSelectItem key={year} value={year.toString()}>
-                          {year}
-                        </SearchSelectItem>
-                      ))}
-                    </SearchSelect>
-                  </div>
-                  <div className="w-full lg:w-[49%] w-30">
-                    <SearchSelect
-                      placeholder="ending year"
-                      value={toYear}
-                      onValueChange={setToYear}
-                    >
-                      {yearList.map((year) => (
-                        <SearchSelectItem key={year} value={year.toString()}>
-                          {year}
-                        </SearchSelectItem>
-                      ))}
-                    </SearchSelect>
-                  </div>
+            {/* <div className="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Manufacturing Year:
+              </label>
+
+              <div className="w-full flex flex-col sm:flex-row  gap-2">
+                <div className="flex-auto w-full  ">
+                  <SearchSelect
+                    placeholder="starting year"
+                    value={fromYear}
+                    onValueChange={setFromYear}
+                  >
+                    {yearList.map((year) => (
+                      <SearchSelectItem key={year} value={year.toString()}>
+                        {year}
+                      </SearchSelectItem>
+                    ))}
+                  </SearchSelect>
+                </div>
+                <div className="flex-auto w-full">
+                  <SearchSelect
+                    placeholder="ending year"
+                    value={toYear}
+                    onValueChange={setToYear}
+                  >
+                    {yearList.map((year) => (
+                      <SearchSelectItem key={year} value={year.toString()}>
+                        {year}
+                      </SearchSelectItem>
+                    ))}
+                  </SearchSelect>
                 </div>
               </div>
+            </div> */}
+            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+              {/* <div className="showcase-Boxselect"> */}
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                Manufacturing Year:
+              </label>
+              <div className="flex flex-col lg:flex-row flex-wrap justify-between">
+                <div className="flex-none w-full lg:w-[49%] h-15 ">
+                  <SearchSelect
+                    style={{ minWidth: '50px' }}
+                    placeholder="starting year"
+                    value={fromYear}
+                    onValueChange={setFromYear}
+                  >
+                    {yearList.map((year) => (
+                      <SearchSelectItem key={year} value={year.toString()}>
+                        {year}
+                      </SearchSelectItem>
+                    ))}
+                  </SearchSelect>
+                </div>
+                <div className="w-full lg:w-[49%] w-30">
+                  <SearchSelect
+                    style={{ minWidth: '50px' }}
+                    placeholder="ending year"
+                    value={toYear}
+                    onValueChange={setToYear}
+                  >
+                    {yearList.map((year) => (
+                      <SearchSelectItem key={year} value={year.toString()}>
+                        {year}
+                      </SearchSelectItem>
+                    ))}
+                  </SearchSelect>
+                </div>
+              </div>
+              {/* </div> */}
             </div>
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
               <div className="showcase-Boxselect">
@@ -335,6 +365,9 @@ export default function CarsSimpleSearch({
                 className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
+            {/* </div> */}
+            {/* </div> */}
+            {/* </div> */}
           </>
         )}
         <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6 flex items-center">
@@ -366,6 +399,6 @@ export default function CarsSimpleSearch({
           {/* </div> */}
         </div>
       </div>
-    </form>
+    </form >
   );
 }

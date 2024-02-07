@@ -15,8 +15,6 @@ export default function SidebarSlider() {
       }}
       // navigation={true}
       modules={[Autoplay, Pagination, Navigation]}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
     >
       <SwiperSlide>
         <div className="w-full h-80 ">
@@ -24,6 +22,20 @@ export default function SidebarSlider() {
             width="100%"
             height="85%"
             src="https://www.youtube.com/embed/_AiD96wV92w?si=GU8DiY05IeOcbRWR"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; mute;clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </SwiperSlide>
+
+      <SwiperSlide>
+        <div className="w-full h-80 ">
+          <iframe
+            width="100%"
+            height="85%"
+            src="https://www.youtube.com/embed/0PzLhiMo2wE"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; mute;clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

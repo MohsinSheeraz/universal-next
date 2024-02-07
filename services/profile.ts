@@ -16,6 +16,9 @@ export const checkEmail = async (
       url: `https://api20230805195433.azurewebsites.net/api/customers/Exists/${email}`,
       // data: reqBody
     });
+    if (res && res?.data === false) {
+      router.push("/dashboard");
+    }
     if (res && res.data) {
       // setUpdate(true);
       setIsUpdate(true);
@@ -33,11 +36,10 @@ export const checkEmail = async (
         // return error.response;
       }
     }
-    router.push("/dashboard");
   } catch (error: any) {
     if (error && error.message === "Request failed with status code 404") {
-      console.log(error.message);
       updateData({ ...initialUserData, email: email, name: name });
+
       setIsUpdate(false);
     } // this is the main part. Use the response property from the error object
 

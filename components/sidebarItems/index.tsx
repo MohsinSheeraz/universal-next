@@ -1,22 +1,28 @@
 "use client";
 import { useUserStore } from "@/store/store";
-import { googleLogout } from "@react-oauth/google";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function SidebarItems() {
-  const { deleteData } = useUserStore();
+  const { deleteData, isUpdate, user } = useUserStore();
   const pathname = usePathname();
   const router = useRouter();
 
   return (
-    <div className=" col-lg-2 bg-[#221C63] hidden md:flex flex-none flex-col justify-between p-6 text-white border-y-[1px] border-[#ffff14]">
+    <div className=" col-lg-2 bg-[#221C63] hidden lg:flex flex-none flex-col justify-between p-6 text-white border-y-[1px] border-[#ffff14]">
       <nav className="space-y-2">
         <Link
           className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
-            pathname === "/dashboard" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
+            pathname === "/dashboard" ||
+            pathname.includes("/reserve") ||
+            pathname.includes("/purchase") ||
+            pathname.includes("cosignee") ||
+            pathname.includes("courier")
+              ? "bg-[#006aff]"
+              : "hover:bg-[#006aff]"
           }`}
-          href="/dashboard"
+          href={"/dashboard"}
         >
           Account Information
         </Link>
@@ -24,54 +30,79 @@ export default function SidebarItems() {
           className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
             pathname === "/favorite" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
           }`}
-          href="/favorite"
+          onClick={() => {
+            if (user?.email && !isUpdate) {
+              toast.info("Create Profile First");
+            }
+          }}
+          href={!isUpdate ? "" : "/favorite"}
         >
           My Favorite
         </Link>
-
+        {/* 
         <Link
-          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
-            pathname === "/contact-information"
-              ? "bg-[#006aff]"
-              : "hover:bg-[#006aff]"
-          }`}
-          href="/contact-information"
+          onClick={() => {
+            if (user?.email && !isUpdate) {
+              toast.info("Create Profile First")
+            }
+          }}
+          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/contact-information"
+            ? "bg-[#006aff]"
+            : "hover:bg-[#006aff]"
+            }`}
+          href={user?.email && !isUpdate ? "" : "/contact-information"}
         >
           Contact Information
-        </Link>
+        </Link> */}
+
+        {/* <Link
+          onClick={() => {
+            if (user?.email && !isUpdate) {
+              toast.info("Create Profile First")
+            }
+          }}
+          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/connect-accounts"
+            ? "bg-[#006aff]"
+            : "hover:bg-[#006aff]"
+            }`}
+          href={user?.email && !isUpdate ? "" : "/connect-accounts"}
+        >
+          Connect Accounts
+        </Link> */}
 
         <Link
+          onClick={() => {
+            if (user?.email && !isUpdate) {
+              toast.info("Create Profile First");
+            }
+          }}
           className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
-            pathname === "/connect-accounts"
+            pathname === "/payment-history"
               ? "bg-[#006aff]"
               : "hover:bg-[#006aff]"
           }`}
-          href="/connect-accounts"
+          href={user?.email && !isUpdate ? "" : "/payment-history"}
         >
-          Connect Accounts
+          Payment History
         </Link>
 
         <Link
-          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
-            pathname === "/preferences" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
-          }`}
-          href="/Preferences"
-        >
-          Preferences
-        </Link>
-
-        <Link
+          onClick={() => {
+            if (user?.email && !isUpdate) {
+              toast.info("Create Profile First");
+            }
+          }}
           className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14]  ${
             pathname === "/account-activity"
               ? "bg-[#006aff]"
               : "hover:bg-[#006aff]"
           }`}
-          href="/account activity"
+          href={user?.email && !isUpdate ? "" : "/account-activity"}
         >
           Account Activity
         </Link>
       </nav>
-      <div className="w-full h-12 px-[46px] py-2 bg-[#474747] bg-opacity-20 rounded-lg justify-start items-center gap-3 inline-flex">
+      {/* <div className="w-full h-12 px-[46px] py-2 bg-[#474747] bg-opacity-20 rounded-lg justify-start items-center gap-3 inline-flex">
         <div className="justify-start items-center gap-3 flex">
           <div className="w-5 h-5 relative">
             <svg
@@ -101,7 +132,7 @@ export default function SidebarItems() {
         >
           Logout
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

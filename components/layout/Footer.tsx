@@ -1,11 +1,9 @@
 //import {tblBodyTypes, tblMakes, tblMasterCountry} from ".prisma/client";
-import Link from "next/link";
-import Image from "next/image";
-import { Country } from "@/models/Master/Country";
 import { BodyType } from "@/models/Master/BodyType";
+import { Country } from "@/models/Master/Country";
 import { Make } from "@/models/Master/Make";
-import { BsFillTelephoneFill } from "react-icons/bs";
-import { StockCars } from "@/models/StockCars";
+import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   locations: Country[];
@@ -171,7 +169,7 @@ function Footer({ locations, bodyTypes, makes }: Props) {
                     <li key={make.makeId}>
                       <Link
                         href={{
-                          pathname: "/global/results/cars",
+                          pathname: `/global/results/${make.slug}/cars`,
                           query: {
                             makeID: make.makeId,
                           },
@@ -200,7 +198,7 @@ function Footer({ locations, bodyTypes, makes }: Props) {
                     <span className=" inline-flex items-center rounded-md ml-5">
                       <Link
                         href={{
-                          pathname: "/global/results/cars",
+                          pathname: `/global/results/${bodytype.slug}/cars`,
                           query: {
                             bodyTypeID: bodytype.bodyTypeId,
                           },
@@ -218,7 +216,7 @@ function Footer({ locations, bodyTypes, makes }: Props) {
               <ul className="countdrop mkl-5">
                 <Link
                   href={{
-                    pathname: "/global/results/cars",
+                    pathname: `/global/results/under-5000/cars`,
                     query: {
                       price: 5000,
                     },
@@ -228,7 +226,7 @@ function Footer({ locations, bodyTypes, makes }: Props) {
                 </Link>
                 <Link
                   href={{
-                    pathname: "/global/results/cars",
+                    pathname: "/global/results/under-10000/cars",
                     query: {
                       price: 10000,
                     },
@@ -238,7 +236,7 @@ function Footer({ locations, bodyTypes, makes }: Props) {
                 </Link>
                 <Link
                   href={{
-                    pathname: "/global/results/cars",
+                    pathname: "/global/results/between-10000-to-15000/cars",
                     query: {
                       price: 15000,
                     },
@@ -248,7 +246,7 @@ function Footer({ locations, bodyTypes, makes }: Props) {
                 </Link>
                 <Link
                   href={{
-                    pathname: "/global/results/cars",
+                    pathname: "/global/results/between-20000-to-25000/cars",
                     query: {
                       price: 25000,
                     },
@@ -258,7 +256,7 @@ function Footer({ locations, bodyTypes, makes }: Props) {
                 </Link>
                 <Link
                   href={{
-                    pathname: "/global/results/cars",
+                    pathname: "/global/results/40000/cars",
                     query: {
                       price: 40000,
                     },
@@ -288,7 +286,7 @@ function Footer({ locations, bodyTypes, makes }: Props) {
                     <li key={location.countryId}>
                       <Link
                         href={{
-                          pathname: "/global/results/cars",
+                          pathname: `/global/results/${location.slug}/cars`,
                           query: {
                             countryID: location.countryId,
                           },

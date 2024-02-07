@@ -26,6 +26,8 @@ import {
   CourierDispatch,
   Customer,
   CustomerSignUp,
+  SalesOrderDetail,
+  TransactionInfo,
 } from "@/models/Customer";
 import { GetFavorite, TFavorite } from "@/models/Master/AddFav";
 import { PaginationHeader } from "@/models/Master/Pagination";
@@ -185,11 +187,11 @@ const LoadData = {
   consigneeCourierByCustomer: (customerID: number) =>
     request.get<ConsigneeCourier[]>(`customers/Consignee/${customerID}`),
   consigneeCourierByID: (id: number) =>
-    request.get<ConsigneeCourier[]>(`customers/Consignee/id/${id}`),
+    request.get<ConsigneeCourier>(`customers/Consignee/id/${id}`),
   courierDispatchByCustomer: (customerID: number) =>
     request.get<CourierDispatch[]>(`customers/CourierDispatch/${customerID}`),
   courierDispatchByID: (id: number) =>
-    request.get<CourierDispatch[]>(`customers/CourierDispatch/id/${id}`),
+    request.get<CourierDispatch>(`customers/CourierDispatch/id/${id}`),
 
   /*Added on 15th November -------------------------------Start ----------*/
   purchasedCarsByCustomerID: (customerId: number) =>
@@ -223,6 +225,16 @@ const LoadData = {
   moneyAllocationByCustomerIDStockID: (customerId: number, stockId: number) =>
     request.get<Trucks[]>(
       `customers/money_allocation/${customerId}/${stockId}`
+    ),
+  getTransactionsHistory: (customerId: number) =>
+    request.get<TransactionInfo[]>(`customers/transactions/${customerId}`),
+  getSalesOrderDepositInformation: (customerId: number) =>
+    request.get<TransactionInfo[]>(
+      `customers/depositinformation/${customerId}`
+    ),
+  getSalesOrderDetailPerStock: (customerId: number, stockId: number) =>
+    request.get<SalesOrderDetail>(
+      `customers/salesdetail/${stockId}/${customerId}`
     ),
 };
 //
@@ -311,7 +323,6 @@ export async function addFavourite(fav: TFavorite) {
     //   password: user.password,
     // });
 
-    console.log("Fav added Successfully");
     toast.success("Favorite Added Successfully");
   } catch (e) {
     console.log(e);
@@ -340,8 +351,6 @@ export async function removeFavourite(fav: TFavorite) {
     //   username: user.username,
     //   password: user.password,
     // });
-
-    console.log("Fav removed Successfully");
   } catch (e) {
     console.log(e);
   }

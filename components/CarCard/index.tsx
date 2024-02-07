@@ -1,15 +1,12 @@
 "use client";
 import { addFavourite, removeFavourite } from "@/api/agent";
-import { checkEmail } from "@/services/profile";
 import { useUserStore } from "@/store/store";
 import PriceFormat from "@/utils/PriceFormat";
-import { useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa";
-
+import { toast } from "react-toastify";
 type Prop = {
   car: any;
   href: string;
@@ -25,30 +22,29 @@ export default function CarCard({ car, href, fav }: Prop) {
     }
   }, [isfa]);
   const { user, setIsUpdate, update: updateData } = useUserStore();
-
-  const login = useGoogleLogin({
-    onSuccess: async (tokenResponse: any) => {
-      await axios
-        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
-          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-        })
-        .then((res) => {
-          checkEmail(
-            res.data.email,
-            res.data?.picture,
-            res.data?.name,
-            setIsUpdate,
-            updateData,
-            router
-          );
-        });
-    },
-  });
+  // const login = useGoogleLogin({
+  //   onSuccess: async (tokenResponse: any) => {
+  //     await axios
+  //       .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+  //         headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+  //       })
+  //       .then((res) => {
+  //         checkEmail(
+  //           res.data.email,
+  //           res.data?.picture,
+  //           res.data?.name,
+  //           setIsUpdate,
+  //           updateData,
+  //           router
+  //         );
+  //       });
+  //   },
+  // });
   return (
     <div className="transition duration-300 ease-in-out hover:scale-105 my-10 flex min-w-[220px] w-[230px] flex-col overflow-hidden border border-gray-100 bg-[#f1f5f9] shadow-md p-0 rounded-md">
       <div className="relative w-full h-48">
         <Image
-          alt="img"
+          alt={car?.listingTitle}
           style={{
             objectFit: "cover",
             width: "100%",
@@ -60,6 +56,13 @@ export default function CarCard({ car, href, fav }: Prop) {
           height={400}
           src={car.imageUrl}
         />
+        {car?.isReserved && (
+          <div className="absolute top-0 w-full h-full">
+            <div className="bg-[#221C63] mt-3 relative opacity-75 top-10 right-14 w-full h-7 -rotate-[50deg]">
+              <p className="text-white text-center">Reserved</p>
+            </div>
+          </div>
+        )}
 
         <FaHeart
           onClick={() => {
@@ -72,15 +75,19 @@ export default function CarCard({ car, href, fav }: Prop) {
                 setFav(!isfav);
                 return;
               }
-              addFavourite({
-                customerId: user.customerId,
-                stockId: car.stockId,
-              });
-              setFav(!isfav);
+              if (user.phone) {
+                addFavourite({
+                  customerId: user.customerId,
+                  stockId: car.stockId,
+                });
+                setFav(!isfav);
+                return;
+              }
+              toast.info("Make a profile to add to your favorites!");
               return;
             }
-            login();
-            console.log("Not Logged In");
+            // login();
+            router.push("/sign-in");
           }}
           size={"24px"}
           style={{

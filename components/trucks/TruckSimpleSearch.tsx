@@ -74,7 +74,7 @@ export default function TruckSimpleSearch({
     if (toPrice != "0") params.set("toPrice", toPrice);
     if (toYear != "0") params.set("toYear", toYear);
     setLoading(true);
-    router.push(`/global/results/trucks?${params.toString()}`);
+    router.push(`/global/results/list/trucks?${params.toString()}`);
   }
 
   return (

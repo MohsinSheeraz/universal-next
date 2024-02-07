@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import Tabs from "../Tabs";
 import AccountForm from "./accountInfo";
 import CosigneeForm from "./cosignee";
@@ -8,6 +9,8 @@ import Purchased from "./purchased";
 import Reserved from "./reserved";
 
 export default function Forms() {
+  const searchParams = useSearchParams();
+  const search = searchParams.get("tabs");
   const [currentForm, setCurrentForm] = useState<string>("My Profile");
   const getCurrentForm = () => {
     switch (currentForm) {
@@ -27,12 +30,17 @@ export default function Forms() {
         break;
     }
   };
+  useEffect(() => {
+    if (search) {
+      setCurrentForm(search.replaceAll("-", " "));
+    }
+  }, [search]);
   const list = [
     "My Profile",
     // "My Account Info",
     "My Cosignee Details",
     // "My Favorites",
-    "Inquiry & Bid List",
+    // "Inquiry & Bid List",
     "Reserved Vehicles",
     "Purchased Vehicles",
   ];

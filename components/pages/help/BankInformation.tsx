@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { CiBank } from "react-icons/ci";
 
 export default function BankInformation() {
@@ -7,7 +6,6 @@ export default function BankInformation() {
     <>
       <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
         <div className="gceCountry-landing">
-          {/* The breadcrumb Begins*/}
           <div className="breadcrumbs">
             <ul>
               <li>
@@ -110,6 +108,42 @@ export default function BankInformation() {
                 <div className="border rounded-2xl bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
                   <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
                     {" "}
+                    UNIVERSAL GLOBAL CONSORTIUM EURO ACCOUNT
+                  </h5>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Bank Name :</span>
+                    <span className="color-span">
+                      <b> WIO BANK PJSC</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Account Name :</span>
+                    <span className="color-span">
+                      <b> UNIVERSAL GLOBAL CONSORTIUM FZCO</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3"> Account Number :</span>
+                    <span className="color-span">
+                      <b>AE020 8600 0000 9594 8882 15</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">SWIFT Code :</span>
+                    <span className="color-span">
+                      <b>WIOBAEADXXX </b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Branch Name :</span>
+                    <span className="color-span">
+                      <b> Etihad Airways Center, 5TH Floor - Abu Dhabi - UAE</b>
+                    </span>
+                  </p>
+                </div>
+                {/* <div className="border rounded-2xl bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                  <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
+                    {" "}
                     BLUE RHINE OVER SEASEAS USD ACCOUNT
                   </h5>
                   <p style={{ marginBottom: "0rem !important" }}>
@@ -140,6 +174,79 @@ export default function BankInformation() {
                     <span className="mr-3">Branch Name :</span>
                     <span className="color-span">
                       <b>Rolla, Sharjah Branch</b>
+                    </span>
+                  </p>
+                </div> */}
+
+                <div className="border rounded-2xl bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                  <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
+                    {" "}
+                    UNIVERSAL GLOBAL CONSORTIUM GBP ACCOUNT
+                  </h5>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Bank Name :</span>
+                    <span className="color-span">
+                      <b>WIO BANK PJSC</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Account Name :</span>
+                    <span className="color-span">
+                      <b> UNIVERSAL GLOBAL CONSORTIUM-FZCO</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3"> Account Number :</span>
+                    <span className="color-span">
+                      <b>AE160 8600 0000 9158 6555 86</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">SWIFT Code :</span>
+                    <span className="color-span">
+                      <b>WIOBAEADXXX </b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Branch Name :</span>
+                    <span className="color-span">
+                      <b>Etihad Airways Center, 5TH Floor - Abu Dhabi - UAE</b>
+                    </span>
+                  </p>
+                </div>
+                <div className="border rounded-2xl bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                  <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
+                    {" "}
+                    UNIVERSAL GLOBAL CONSORTIUM AED ACCOUNT
+                  </h5>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Bank Name :</span>
+                    <span className="color-span">
+                      <b>Abu Dhabi Islamic Bank</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Account Name :</span>
+                    <span className="color-span">
+                      <b> UNIVERSAL GLOBAL CONSORTIUM FZCO</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3"> Account Number :</span>
+                    <span className="color-span">
+                      <b>AE 1905 0000 0000 0191 90597</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">SWIFT Code :</span>
+                    <span className="color-span">
+                      <b>ABDIAEAD </b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Branch Name :</span>
+                    <span className="color-span">
+                      <b>BLGD of Ahmed Khalifa Salem Al Darm</b>
                     </span>
                   </p>
                 </div>

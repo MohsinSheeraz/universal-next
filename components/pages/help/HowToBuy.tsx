@@ -140,13 +140,11 @@ export default function HowToBuy() {
                       </p>
                       <br />
                       <p>
-                        You can proceed with payments, account details will be
-                        printed on invoice. Once funds are transferred please
-                        email or fax us with TT Copy / Payment proof. Upon
-                        receipt, we will reply you back confirming the sale. To
-                        save as much time as possible, we will get on with
-                        grooming and reconditioning of the vehicle. Ensuring
-                        once payment shows up, vehicle is all ready for export.
+                        You can proceed with payments; account details will be
+                        printed on the invoice. Once funds are transferred,
+                        please email or fax us with TT Copy / Payment proof.
+                        Upon permit, we will reply to you confirming the receipt
+                        of payment.
                       </p>
                     </div>
                   </div>
@@ -276,7 +274,7 @@ export default function HowToBuy() {
                   <div className="col-md-7 col-12 pl-5">
                     <div className="buy-steptxt">
                       <p>
-                        <b>7. Courier of Documents</b>
+                        <b>7. Courier documents and Telex Release</b>
                       </p>
                       <br />
                       <p>
@@ -286,6 +284,13 @@ export default function HowToBuy() {
                         will then be couriered using first class courier
                         service. Our office will email you with track and trace
                         number of parcel for easy online tracking.
+                        <br />
+                        Telex Release: In addition to these services, we are
+                        pleased to provide you with the option of a Telex
+                        Release. The Telex Release is a safe and efficient
+                        electronic release of the Bill of Lading that eliminates
+                        the need for physical papers and speeds up customs
+                        processing.
                       </p>
                     </div>
                   </div>

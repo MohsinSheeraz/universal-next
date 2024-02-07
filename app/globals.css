@@ -1321,7 +1321,7 @@ p.car-price span {
   font-weight: 600;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1025px) {
   .car-inquiry h6.lsitname {
     display: none;
   }
@@ -1378,7 +1378,7 @@ h1.mobicar.carname {
   width: auto !important;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
   .col-xl-8.col-lg-8.col-md-8.col-sm-12.col-12.carboxes {
     margin-top: 150px;
   }

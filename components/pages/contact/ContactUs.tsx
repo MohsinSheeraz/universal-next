@@ -34,7 +34,6 @@ export default function ContactUs({ stockcode }: Props) {
         )
         .then(
           (result) => {
-            console.log(result.text);
             setIsOpen(true);
           },
           (error) => {

@@ -1,7 +1,7 @@
 "use client";
-import Link from "next/link";
 import { Country } from "@/models/Master/Country";
 import { Make } from "@/models/Master/Make";
+import Link from "next/link";
 
 interface Props {
   locations: Country[];
@@ -23,10 +23,10 @@ function Sidebar({ locations, makes }: Props) {
                 <li key={make.makeId}>
                   <Link
                     href={{
-                      pathname: "/global/results/cars",
-                      query: {
-                        makeID: make.makeId,
-                      },
+                      pathname: `/global/results/${make.slug}/cars/list/${make.makeId}`,
+                      // query: {
+                      //   makeID: make.makeId,
+                      // },
                     }}
                   >
                     <span className=" inline-flex items-center rounded-md">
@@ -65,10 +65,10 @@ function Sidebar({ locations, makes }: Props) {
                 <li key={make.makeId}>
                   <Link
                     href={{
-                      pathname: "/global/results/trucks",
-                      query: {
-                        makeID: make.makeId,
-                      },
+                      pathname: `/global/results/${make.slug}/trucks/list/${make.makeId}`,
+                      // query: {
+                      //   makeID: make.makeId,
+                      // },
                     }}
                   >
                     <span className=" inline-flex items-center rounded-md">
@@ -100,7 +100,7 @@ function Sidebar({ locations, makes }: Props) {
             <Link
               className="nav-link"
               href={{
-                pathname: "/global/results/cars",
+                pathname: "/global/results/right-hand/cars",
                 query: {
                   steeringID: 1,
                 },
@@ -118,7 +118,7 @@ function Sidebar({ locations, makes }: Props) {
             <Link
               className="nav-link"
               href={{
-                pathname: "/global/results/cars",
+                pathname: "/global/results/left-hand/cars",
                 query: {
                   steeringID: 2,
                 },
@@ -149,7 +149,7 @@ function Sidebar({ locations, makes }: Props) {
                 <li key={location.countryId}>
                   <Link
                     href={{
-                      pathname: "/global/results/cars",
+                      pathname: `/global/results/${location.slug}/cars`,
                       query: {
                         countryID: location.countryId,
                       },

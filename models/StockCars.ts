@@ -1,9 +1,9 @@
-import { FuelType } from "@/models/Master/FuelType";
 import { BodyType } from "@/models/Master/BodyType";
-import { Colors } from "@/models/Master/Colors";
 import { CarCondition } from "@/models/Master/CarCondition";
-import { DrivetrainType } from "@/models/Master/DrivetrainType";
+import { Colors } from "@/models/Master/Colors";
 import { Country } from "@/models/Master/Country";
+import { DrivetrainType } from "@/models/Master/DrivetrainType";
+import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
 import { SteeringType } from "@/models/Master/SteeringType";
 import { Transmission } from "@/models/Master/Transmission";
@@ -43,6 +43,9 @@ export interface StockCars {
   heightOfCar: number;
   m3: number;
   isReserved: boolean;
+  reservedBy: number;
+  isReservedOn: Date;
+  reservedTill: Date;
   modelCode: string;
   price: number;
   auctionGrade: string;

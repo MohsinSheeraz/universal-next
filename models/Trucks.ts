@@ -26,10 +26,11 @@ export interface Trucks {
   locationId: number;
   locationName: string;
   hotLocationId: number;
-
+  reservedTill: Date;
   engineSize: string;
   year: number;
-
+  reservedBy: number;
+  isReservedOn: Date;
   modelCode: string;
   price: number;
   auctionGrade: string;

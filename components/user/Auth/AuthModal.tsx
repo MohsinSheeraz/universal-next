@@ -2,16 +2,13 @@
 import { Country } from "@/models/Master/Country";
 import { Ports } from "@/models/Master/Ports";
 import { useUserStore } from "@/store/store";
-import { GoogleLogin, googleLogout, useGoogleLogin } from "@react-oauth/google";
+import { UserButton, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import axios from "axios";
+import { toast } from "react-toastify";
 // import { signOut, useSession } from "next-auth/react";
 // import jwt_decode from "jwt-decode";
 // const jwt_decode = require('jwt-decode');
-import { checkEmail } from "@/services/profile";
-import { jwtDecode } from "jwt-decode";
-import Link from "next/link";
 interface Props {
   countryList: Country[];
   portList: Ports[];
@@ -25,10 +22,11 @@ export default function AuthModal({
 }: Props) {
   // Check if user is authenticated
 
-  // const { status, data: session } = useSession();
+  const { isSignedIn } = useUser();
+  const { user } = useUserStore();
   const router = useRouter();
   // const { deleteData } = useUserStore();
-  const { user, update: updateData, deleteData, setIsUpdate } = useUserStore();
+  // const { user, update: updateData, deleteData, setIsUpdate } = useUserStore();
   const [dropdown, setDropdown] = useState(false);
   // let [isOpen, setIsOpen] = useState(false);
   // let [isSignIn, setIsSignIn] = useState(true);
@@ -85,47 +83,47 @@ export default function AuthModal({
   //   }
   // };
 
-  const responseGoogle = (response: any) => {
-    const userObject: any = jwtDecode(response.credential);
-    console.log(response);
-    checkEmail(
-      userObject.email,
-      userObject?.picture,
-      userObject?.name,
-      setIsUpdate,
-      updateData,
-      router
-    );
-  };
-  const login = useGoogleLogin({
-    onSuccess: async (tokenResponse: any) => {
-      await axios
-        .get("https://www.googleapis.com/oauth2/v3/userinfo", {
-          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-        })
-        .then((res) => {
-          checkEmail(
-            res.data.email,
-            res.data?.picture,
-            res.data?.name,
-            setIsUpdate,
-            updateData,
-            router
-          );
-        });
+  // const responseGoogle = (response: any) => {
+  //   const userObject: any = jwtDecode(response.credential);
+  //   console.log(response);
+  //   checkEmail(
+  //     userObject.email,
+  //     userObject?.picture,
+  //     userObject?.name,
+  //     setIsUpdate,
+  //     updateData,
+  //     router
+  //   );
+  // };
+  // const login = useGoogleLogin({
+  //   onSuccess: async (tokenResponse: any) => {
+  //     await axios
+  //       .get("https://www.googleapis.com/oauth2/v3/userinfo", {
+  //         headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+  //       })
+  //       .then((res) => {
+  //         checkEmail(
+  //           res.data.email,
+  //           res.data?.picture,
+  //           res.data?.name,
+  //           setIsUpdate,
+  //           updateData,
+  //           router
+  //         );
+  //       });
 
-      // const userObject: any = await jwtDecode(tokenResponse.access_token
-      // );
-      // console.log(userObject)
-    },
-  });
+  //     // const userObject: any = await jwtDecode(tokenResponse.access_token
+  //     // );
+  //     // console.log(userObject)
+  //   },
+  // });
 
   return (
     <>
       <div className="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
         <div className="registerbox">
           <h2>
-            {user.email && (
+            {/* { user.email && (
               <div className="flex items-center ">
                 <div className="relative mt-2">
                   <button
@@ -163,9 +161,8 @@ export default function AuthModal({
 
                   <div
                     id="dropdownAvatarName"
-                    className={`${
-                      !dropdown && "hidden"
-                    } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
+                    className={`${!dropdown && "hidden"
+                      } z-50 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}
                   >
                     <div className="px-1 py-3 text-sm text-gray-900 dark:text-white">
                       <div className="font-medium ">{user?.name}</div>
@@ -209,10 +206,36 @@ export default function AuthModal({
                   </div>
                 </div>
               </div>
-            )}
+            )} */}
           </h2>
           <div className="currencydropdown">
-            {!user?.email && (
+            {!isSignedIn && (
+              <button className="text-[10px] 2xl:text-sm px:1 py-1 2xl:px-4 2xl:py-2 border flex justify-center items-center gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-200 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-400 dark:hover:text-slate-300 hover:shadow transition duration-150">
+                <span
+                  onClick={() => {
+                    router.push("/sign-in");
+                  }}
+                >
+                  Login / SignUp
+                </span>
+              </button>
+            )}
+            <div className="flex gap-2 items-center mt-2">
+              <UserButton afterSignOutUrl="/" />
+              {isSignedIn && (
+                <div
+                  className="text-white border-2 border-white rounded-lg font-semibold text-[11px] p-2 cursor-pointer"
+                  onClick={() => {
+                    if (!isSignedIn) return toast.info("Create Profile First");
+                    router.push("/dashboard");
+                  }}
+                >
+                  Dashboard
+                </div>
+              )}
+            </div>
+
+            {/* {!user?.email && (
               // <GoogleLogin
               //   // auto_select
               //   useOneTap
@@ -235,7 +258,7 @@ export default function AuthModal({
                   Login with Google
                 </span>
               </button>
-            )}
+            )} */}
             {/* {
               status === "unauthenticated" && (
                 <button

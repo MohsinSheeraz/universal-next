@@ -1,19 +1,20 @@
 "use client";
-import LikeComponent from "@/components/ui/LikeComponent";
-import PriceFormat from "@/utils/PriceFormat";
-import Image from "next/image";
-import Link from "next/link";
 import agent from "@/api/agent";
+import LikeComponent from "@/components/ui/LikeComponent";
 import PaginationComponent from "@/components/ui/PaginationComponent";
 import { Country } from "@/models/Master/Country";
 import { PaginationHeader } from "@/models/Master/Pagination";
 import { Trucks } from "@/models/Trucks";
+import reservedimg from "@/public/assets/images/reserved.png";
+import { useUserStore } from "@/store/store";
+import PriceFormat from "@/utils/PriceFormat";
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BiSolidColorFill } from "react-icons/bi";
 import { FaGasPump, FaTruckLoading } from "react-icons/fa";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 import { PiEngineFill, PiGearFineBold } from "react-icons/pi";
-import { useUserStore } from "@/store/store";
 interface Props {
   locations: Country[];
   params: URLSearchParams;
@@ -23,6 +24,7 @@ export default function TruckSearchResult({ locations, params }: Props) {
   const searchParams: URLSearchParams = params;
   const [sort, setSort] = useState<number>(0);
   const [searchData, setSearchData] = useState<Trucks[]>([]);
+
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [paginationData, setPaginationData] = useState<PaginationHeader>({
     CurrentPage: 1,
@@ -128,14 +130,57 @@ export default function TruckSearchResult({ locations, params }: Props) {
             <div className="row my-5 ">
               <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
                 <div className="searched-carimage ">
-                  <Link href={`/global/results/trucks/${truck.stockId}`}>
-                    <Image
-                      src={truck.imageUrl ?? ""}
-                      className="mb-4"
-                      alt=""
-                      height={150}
-                      width={150}
-                    />
+                  <Link
+                    href={`/global/results/${
+                      truck.makeName.replaceAll(" ", "-") +
+                      "-" +
+                      truck.modelName.replaceAll(" ", "-") +
+                      "-" +
+                      truck.year
+                    }/trucks/${truck.stockId}`}
+                  >
+                    <div className="relative min-w-[150px] min-h-[150px]  md:h-[250px] overflow-hidden ">
+                      <Image
+                        src={truck.imageUrl ?? ""}
+                        className="mb-4"
+                        width={150}
+                        height={150}
+                        style={{
+                          objectFit: "cover",
+                          width: "100%",
+                          height: "100%",
+                          position: "absolute",
+                          top: "0px",
+                        }}
+                        alt=""
+                      />
+                      {
+                        truck?.isReserved && (
+                          <Image
+                            src={reservedimg}
+                            className="mb-4 opacity-60"
+                            width={150}
+                            height={150}
+                            style={{
+                              objectFit: "cover",
+                              width: "100%",
+                              height: "100%",
+                              position: "absolute",
+                              top: "0px",
+                            }}
+                            alt=""
+                          />
+                        )
+                        // <div className="absolute top-0 w-full h-full">
+                        //   <div className="bg-[#221C63]  relative  opacity-75 top-10 right-14 w-full h-7 -rotate-[50deg]">
+                        //     <h1 className="text-white text-[12px] md:text-[16px] text-center">
+                        //       Reserved
+                        //     </h1>
+
+                        //   </div>
+                        // </div>
+                      }
+                    </div>
                   </Link>
 
                   <h4 className="ml-5">
@@ -151,7 +196,15 @@ export default function TruckSearchResult({ locations, params }: Props) {
                 <div className="truck-details">
                   <div className="row ">
                     <div className="col-lg-6 col-md-6 col-sm-6">
-                      <Link href={`/global/results/trucks/${truck.stockId}`}>
+                      <Link
+                        href={`/global/results/${
+                          truck.makeName.replaceAll(" ", "-") +
+                          "-" +
+                          truck.modelName.replaceAll(" ", "-") +
+                          "-" +
+                          truck.year
+                        }/${truck.stockId}`}
+                      >
                         <h6 className="listname font-bold uppercase">
                           {truck.listingTitle}
                         </h6>
@@ -162,9 +215,11 @@ export default function TruckSearchResult({ locations, params }: Props) {
                         <h6 className="text-right">
                           <span className="font-bold inline-flex">
                             <Image
-                              src={`/assets/images/flags/${locations.find(
-                                (x) => x.countryId == truck.locationId
-                              )?.slug}.svg`}
+                              src={`/assets/images/flags/${
+                                locations.find(
+                                  (x) => x.countryId == truck.locationId
+                                )?.slug
+                              }.svg`}
                               className="img-fluid mr-2"
                               height={20}
                               width={20}
@@ -213,7 +268,7 @@ export default function TruckSearchResult({ locations, params }: Props) {
                         </span>
                       </div>
                       <div className="col-sm specs">
-                        <h4>Transmision</h4>
+                        <h4>Transmission</h4>
                         <span className="label-text  p-1 flex items-center rounded-md ml-5">
                           <img
                             decoding="async"
@@ -365,7 +420,15 @@ export default function TruckSearchResult({ locations, params }: Props) {
                   </div>
                   <h4 />
 
-                  <Link href={`/global/results/trucks/${truck.stockId}`}>
+                  <Link
+                    href={`/global/results/${
+                      truck.makeName.replaceAll(" ", "-") +
+                      "-" +
+                      truck.modelName.replaceAll(" ", "-") +
+                      "-" +
+                      truck.year
+                    }/${truck.stockId}`}
+                  >
                     <button className="offerbtn">
                       <span className="font-bold"> Send Offer</span>
                     </button>

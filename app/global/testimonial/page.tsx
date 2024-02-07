@@ -1,11 +1,11 @@
 "use client";
+import Image from "next/image";
 import { FaQuoteLeft } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Image from "next/image";
 export default function Testimonial() {
   return (
     <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
@@ -276,6 +276,34 @@ export default function Testimonial() {
                 width="90%"
                 height="75%"
                 src="https://www.youtube.com/embed/1lpf7D35SBg?si=pQV66mBZJRwkctXg"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-[80%] m-auto h-[500px] flex flex-col lg:flex-row  items-center justify-center ">
+            <div className="h-full w-[90%] lg:w-[50%] flex justify-center flex-col">
+              <p className="text-base text-gray-500 lg:text-lg dark:text-gray-400">
+                “ I recently made my first purchase from Universal Motors, and
+                I'm thoroughly impressed. The customer service was impeccable;
+                they patiently walked me through the process, addressing all my
+                concerns and helping me find the perfect Japanese car. My
+                experience was beyond satisfactory, and I'd gladly refer
+                Universal Motors to friends and family ”
+              </p>
+              <p className="font-bold text-lg lg:text-2xl mt-3 text-gray-600">
+                Mr. Malinga
+              </p>
+            </div>
+            <div className="h-full w-[90%] lg:w-[50%] items-center flex justify-end">
+              <iframe
+                width="90%"
+                height="75%"
+                src="https://www.youtube.com/embed/0PzLhiMo2wE"
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

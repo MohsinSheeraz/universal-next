@@ -1,4 +1,7 @@
 "use client";
+import page from "@/app/(dashboard-layout)/dashboard/[pid]/[id]/page";
+import { currentUser } from "@clerk/nextjs";
+import { values } from "mobx";
 import { Dispatch, SetStateAction } from "react";
 
 interface Props {
@@ -47,9 +50,9 @@ export default function PaginationComponent({
           className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6"
           aria-label="Pagination"
         >
-          <div className="hidden sm:block">
+          {/* <div className="hidden sm:block">
             <p className="text-sm text-gray-700">No Result found</p>
-          </div>
+          </div> */}
         </nav>
       </>
     );
@@ -116,7 +119,9 @@ export default function PaginationComponent({
                   <>
                     <a
                       href="#"
-                      className="relative inline-flex items-center rounded-l-md px-2 py-2 text-white bg-indigo-600 ring-1 ring-inset ring-gray-300 hover:bg-indigo-400 focus:z-20 focus:outline-offset-0"
+                      className={`relative inline-flex items-center rounded-l-md px-2 py-2  text-white ${
+                        pageNumbers === currentPage ? "bg-indigo-600 " : ""
+                      } bg-indigo-600 ring-1 ring-inset ring-gray-300 hover:bg-indigo-400 focus:z-20 focus:outline-offset-0`}
                       onClick={(event) => {
                         event.preventDefault();
                         setCurrentPage(currentPage - 1);
@@ -147,7 +152,11 @@ export default function PaginationComponent({
                   <a
                     href="#"
                     key={page}
-                    className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                    className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
+                      page === currentPage
+                        ? "bg-indigo-600 text-white "
+                        : "text-gray-900 ring-1 ring-inset ring-gray-300 "
+                    }    hover:bg-gray-50 focus:z-20 focus:outline-offset-0`}
                     onClick={(event) => {
                       event.preventDefault();
                       setCurrentPage(page);
@@ -168,7 +177,7 @@ export default function PaginationComponent({
                   <>
                     <a
                       href="#"
-                      className="relative inline-flex items-center bg-indigo-600 rounded-r-md px-2 py-2 text-white ring-1 ring-inset ring-gray-300 hover:bg-indigo-400 focus:z-20 focus:outline-offset-0"
+                      className="relative inline-flex items-center  bg-indigo-600 rounded-r-md px-2 py-2 text-white ring-1 ring-inset ring-gray-300 hover:bg-indigo-400 focus:z-20 focus:outline-offset-0"
                       onClick={(event) => {
                         event.preventDefault();
                         setCurrentPage(currentPage + 1);

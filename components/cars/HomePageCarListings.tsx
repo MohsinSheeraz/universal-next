@@ -23,6 +23,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
     };
     getData();
   }, []);
+
   return (
     <>
       <div className="row ">
@@ -46,12 +47,20 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                     <CarCard
                       fav={fav}
                       car={car}
-                      href={`/global/results/cars/${car.stockId}`}
+                      href={`/global/results/${
+                        car.makeName.replaceAll(" ", "-") +
+                        "-" +
+                        car.modelName.replaceAll(" ", "-") +
+                        "-" +
+                        car.year
+                      }/cars/${car.stockId}`}
                     />
                   ))}
               </div>
             </div>
           </div>
+          <br />
+          <br />
           <div>
             {/*<h2 className="text-blue-800">Most Popular in <span>your Country</span></h2>*/}
             <div className="flex inline">
@@ -67,7 +76,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                   <CarCard
                     fav={fav}
                     car={car}
-                    href={`/global/results/trucks/${car.stockId}`}
+                    href={`/global/results/${
+                      car.makeName.replaceAll(" ", "-") +
+                      "-" +
+                      car.modelName.replaceAll(" ", "-") +
+                      "-" +
+                      car.year
+                    }/trucks/${car.stockId}`}
                   />
                 ))}
               </div>
@@ -96,7 +111,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                         <CarCard
                           fav={fav}
                           car={car}
-                          href={`/global/results/cars/${car.stockId}`}
+                          href={`/global/results/${
+                            car.makeName.replace(" ", "-") +
+                            "-" +
+                            car.modelName.replaceAll(" ", "-") +
+                            "-" +
+                            car.year
+                          }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>
@@ -131,7 +152,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                         <CarCard
                           fav={fav}
                           car={car}
-                          href={`/global/results/cars/${car.stockId}`}
+                          href={`/global/results/${
+                            car.makeName.replace(" ", "-") +
+                            "-" +
+                            car.modelName.replaceAll(" ", "-") +
+                            "-" +
+                            car.year
+                          }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>
