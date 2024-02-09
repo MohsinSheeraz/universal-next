@@ -16,7 +16,15 @@ interface Props {
   fuel: FuelType[];
   yearList: string[];
 }
-export default function BySearch({ bodyTlist, makeList, color, transmission, fuel, drivetrain, yearList }: Props) {
+export default function BySearch({
+  bodyTlist,
+  makeList,
+  color,
+  transmission,
+  fuel,
+  drivetrain,
+  yearList,
+}: Props) {
   return (
     <div className="mb-3">
       <CarsSimpleSearch

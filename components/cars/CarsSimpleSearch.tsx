@@ -36,6 +36,7 @@ export default function CarsSimpleSearch({
   fuel,
 }: Props) {
   const router = useRouter();
+  const [modelCode, setModelCode] = useState("0");
   const [isMore, setIsMore] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [makeId, setMakeId] = useState("0");
@@ -49,13 +50,27 @@ export default function CarsSimpleSearch({
   const [fromYear, setFromYear] = useState("0");
   const [toYear, setToYear] = useState("0");
   const [steeringTypeId, setSteeringTypeId] = useState("0");
+  const [maxEngineSize, setMaxEngineSize] = useState("0");
+  const [minEngineSize, setMinEngineSize] = useState("0");
+  const [minMileage, setMinMileage] = useState("0");
+  const [maxMileage, setMaxMileage] = useState("0");
   const handleValueChange = async (selectedValue: string) => {
     const selectedMakeID = selectedValue;
     setMakeId(selectedMakeID);
     const modelbymake = await GetModelWiseMakeList(selectedMakeID); // models.filter(x=>x.makeId == parseInt(selectedValue));
     setMappedModels(modelbymake.data);
   };
+  // done
+  // FuelId
+  // DrivetrainId
+  // TransmissionId
+  // ColorId
 
+  // remain
+  // MaxEngineSize
+  // MinEngineSize
+  // MinMinMileage
+  // MaxMinMileage
   const renderMappedModels = () => {
     if (mappedModels.length > 0) {
       return (
@@ -86,8 +101,17 @@ export default function CarsSimpleSearch({
     const params = new URLSearchParams();
 
     params.set("searchFromBox", "true");
-    if (makeId !== "0") params.set("makeID", makeId);
     if (modelId !== "0") params.set("modelID", modelId);
+    if (makeId !== "0") params.set("makeID", makeId);
+    if (modelCode !== "0") params.set("modelCode", modelCode);
+    if (drivetrainId !== "0") params.set("DrivetrainId", drivetrainId);
+    if (fuelId !== "0") params.set("FuelId", fuelId);
+    if (colorId !== "0") params.set("ColorId", colorId);
+    if (maxMileage !== "0") params.set("MaxMileage", maxMileage);
+    if (minMileage !== "0") params.set("MinMileage", minMileage);
+    if (minEngineSize !== "0") params.set("MinEngineSize", minEngineSize);
+    if (maxEngineSize !== "0") params.set("MaxEngineSize", maxEngineSize);
+    if (transmissionId !== "0") params.set("TransmissionId", transmissionId);
     if (bodyTypeId != "0") params.set("bodyTypeID", bodyTypeId);
     if (steeringTypeId != "0") params.set("steeringID", steeringTypeId);
     if (fromYear != "0") params.set("fromYear", fromYear);
@@ -100,7 +124,10 @@ export default function CarsSimpleSearch({
   return (
     // <div className='showcase-Box carform mb-5'>
     <form onSubmit={handleSubmit} autoComplete="off">
-      <div className="row  mt-4 gap-y-2 !overflow-scroll sm:!overflow-visible  h-[350px] sm:h-auto  border border-gray-200 mx-2   bg-slate-100 rounded-2xl py-3 shadow-md" style={{ overflowY: 'hidden' }}>
+      <div
+        className="row  mt-4 gap-y-2 !overflow-scroll sm:!overflow-visible  h-[350px] sm:h-auto  border border-gray-200 mx-2   bg-slate-100 rounded-2xl py-3 shadow-md"
+        style={{ overflowY: "hidden" }}
+      >
         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Make:
@@ -126,17 +153,16 @@ export default function CarsSimpleSearch({
           </label>
           {renderMappedModels()}
         </div>
-        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+        {/* <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Model Code:
           </label>
           <input
             placeholder="Model Code"
-            // value={value}
-            // onChange={onChange}
+            onChange={(e) => { setModelCode(e.target.value) }}
             className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
-        </div>
+        </div> */}
         <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Body Type:
@@ -179,10 +205,35 @@ export default function CarsSimpleSearch({
             ))}
           </SearchSelect>
         </div>
+        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+          {/* <div className="showcase-Boxselect "> */}
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Engine Size:
+          </label>
+          <div className="flex flex-col lg:flex-row flex-wrap justify-between">
+            <div className="w-full lg:w-[49%] h-15 ">
+              <input
+                type="number"
+                placeholder="Engine Size(cc)"
+                value={minEngineSize}
+                onChange={(e) => setMinEngineSize(e.target.value)}
+                className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+            <div className="w-full lg:w-[49%]">
+              <input
+                type="number"
+                placeholder="Engine Size(cc)"
+                value={maxEngineSize}
+                onChange={(e) => setMaxEngineSize(e.target.value)}
+                className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+          </div>
+        </div>
         {isMore && (
           <>
-            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-              {/* <div className="showcase-Boxselect "> */}
+            {/* <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Engine Size:
               </label>
@@ -191,8 +242,6 @@ export default function CarsSimpleSearch({
                   <input
                     type="number"
                     placeholder="Engine Size(cc)"
-                    // value={value}
-                    // onChange={onChange}
                     className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   />
                 </div>
@@ -200,13 +249,11 @@ export default function CarsSimpleSearch({
                   <input
                     type="number"
                     placeholder="Engine Size(cc)"
-                    // value={value}
-                    // onChange={onChange}
                     className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* <div className="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Manufacturing Year:
@@ -249,7 +296,7 @@ export default function CarsSimpleSearch({
               <div className="flex flex-col lg:flex-row flex-wrap justify-between">
                 <div className="flex-none w-full lg:w-[49%] h-15 ">
                   <SearchSelect
-                    style={{ minWidth: '50px' }}
+                    style={{ minWidth: "50px" }}
                     placeholder="starting year"
                     value={fromYear}
                     onValueChange={setFromYear}
@@ -263,7 +310,7 @@ export default function CarsSimpleSearch({
                 </div>
                 <div className="w-full lg:w-[49%] w-30">
                   <SearchSelect
-                    style={{ minWidth: '50px' }}
+                    style={{ minWidth: "50px" }}
                     placeholder="ending year"
                     value={toYear}
                     onValueChange={setToYear}
@@ -288,8 +335,8 @@ export default function CarsSimpleSearch({
                     <input
                       placeholder="Milage"
                       type="number"
-                      // value={value}
-                      // onChange={onChange}
+                      value={minMileage}
+                      onChange={(e) => setMinMileage(e.target.value)}
                       className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
                   </div>
@@ -297,8 +344,8 @@ export default function CarsSimpleSearch({
                     <input
                       type="number"
                       placeholder="Milage"
-                      // value={value}
-                      // onChange={onChange}
+                      value={maxMileage}
+                      onChange={(e) => setMaxMileage(e.target.value)}
                       className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
                   </div>
@@ -353,18 +400,16 @@ export default function CarsSimpleSearch({
                 ))}
               </SearchSelect>
             </div>
-            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
+            {/* <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Max Loading Capacity:
               </label>
               <input
                 placeholder="Max Loading Capacity"
                 type="number"
-                // value={value}
-                // onChange={onChange}
                 className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
-            </div>
+            </div> */}
             {/* </div> */}
             {/* </div> */}
             {/* </div> */}
@@ -399,6 +444,6 @@ export default function CarsSimpleSearch({
           {/* </div> */}
         </div>
       </div>
-    </form >
+    </form>
   );
 }

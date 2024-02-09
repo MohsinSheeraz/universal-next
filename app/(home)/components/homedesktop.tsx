@@ -26,8 +26,6 @@ const GetCarMakes = async () => {
   return result.data;
 };
 
-
-
 const GetDrivetrain = async () => {
   const result = await agent.LoadData.drtivetrainList(); //db.tblMakes.findMany({where: {isActive:true}} );
   return result.data;

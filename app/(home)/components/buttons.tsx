@@ -31,7 +31,9 @@ export default function TabButtons({
   color,
   transmission,
   drivetrain,
-  fuel, locations }: Props) {
+  fuel,
+  locations,
+}: Props) {
   const [current, setCurrent] = useState("By Make");
   const [type, setType] = useState(false);
 

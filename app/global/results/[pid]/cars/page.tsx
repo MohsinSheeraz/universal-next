@@ -16,6 +16,13 @@ interface Props {
     fromYear: number;
     toYear: number;
     searchTerm: string;
+    modelCode: string;
+    DrivetrainId: number;
+    TransmissionId: number;
+    FuelId: Number;
+    ColorId: Number;
+    MaxEngineSize: number;
+    MinEngineSize: number;
     //searchFromBox:string
   };
 }
@@ -64,6 +71,8 @@ export default async function ResultPage({ searchParams }: Props) {
     params.set("countryID", searchParams.countryID.toString());
   if (searchParams.modelID)
     params.set("ModelID", searchParams.modelID.toString());
+  if (searchParams.modelCode)
+    params.set("modelCode", searchParams.modelCode.toString());
   if (searchParams.steeringID)
     params.set("SteeringID", searchParams.steeringID.toString());
   if (searchParams.minPrice)
@@ -77,6 +86,17 @@ export default async function ResultPage({ searchParams }: Props) {
     params.set("MinMileage", searchParams.minMileage.toString());
   if (searchParams.maxMileage)
     params.set("MaxMileage", searchParams.maxMileage.toString());
+  if (searchParams.maxMileage)
+    params.set("DrivetrainId", searchParams.DrivetrainId.toString());
+  if (searchParams.FuelId) params.set("FuelId", searchParams.FuelId.toString());
+  if (searchParams.TransmissionId)
+    params.set("TransmissionId", searchParams.TransmissionId.toString());
+  if (searchParams.ColorId)
+    params.set("ColorId", searchParams.ColorId.toString());
+  if (searchParams.MinEngineSize)
+    params.set("MinEngineSize", searchParams.MinEngineSize.toString());
+  if (searchParams.MaxEngineSize)
+    params.set("MaxEngineSize", searchParams.MaxEngineSize.toString());
   if (searchParams.searchTerm)
     params.set("SearchTerm", searchParams.searchTerm);
   params.set("OrderBy", "stockid%20desc");

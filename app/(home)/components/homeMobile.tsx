@@ -3,11 +3,11 @@ import { GetBodyTypes } from "@/app/global/results/[pid]/cars/list/[id]/componen
 import TabButtons from "./buttons";
 const GetLocations = async () => {
   const res = await agent.LoadData.countryList(); //return await prisma.tblMasterCountry.findMany({where: {IsActive:true}} );
-  return res.data
+  return res.data;
 };
 const GetCarMakes = async () => {
   const res = await agent.LoadData.carMakeList(); //return await prisma.tblMakes.findMany({where: {isActive:true}} );
-  return res.data
+  return res.data;
 };
 const GetDrivetrain = async () => {
   const result = await agent.LoadData.drtivetrainList(); //db.tblMakes.findMany({where: {isActive:true}} );
