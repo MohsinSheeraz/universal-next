@@ -16,7 +16,7 @@ export default async function CarDetailedSlideshow({
   isReserved,
 }: Props) {
   const stockPicture = await agent.LoadData.stockSliderList(stockID);
-  const images = stockPicture.data?.map((pic) => ({
+  const images = stockPicture.data?.map((pic: any) => ({
     src: pic.imageURL,
   }));
   images.unshift({ src: mainPic });

@@ -8,7 +8,11 @@ import { useEffect, useState } from "react";
 import {
   GetBodyTypes,
   GetCarMakes,
+  GetColors,
+  GetDrivetrain,
+  GetFuel,
   GetLocations,
+  GetTransmission,
 } from "../../../cars/list/[id]/components/loadData";
 
 interface Props {
@@ -24,20 +28,9 @@ interface Props {
     //searchFromBox:string
   };
 }
-// const GetLocations = async () => {
-//     const result = await agent.LoadData.inventoryLocationList(); // db.tblBodyTypes.findMany({where: {isActive:true}});
-//     return result.data;
-// };
 
-// const GetBodyTypes = async () => {
-//     const result = await agent.LoadData.bodyTypeList(); // db.tblBodyTypes.findMany({where: {isActive:true}});
-//     return result.data;
-// };
 
-// const GetCarMakes = async () => {
-//     const result = await agent.LoadData.carMakeList(); //db.tblMakes.findMany({where: {isActive:true}} );
-//     return result.data;
-// };
+
 
 export default async function ResultPage({ searchParams }: Props) {
   const { id } = useParams();
@@ -45,6 +38,10 @@ export default async function ResultPage({ searchParams }: Props) {
   const [bodyTypes, setbodytypes] = useState<BodyType[]>([]);
   const [carMake, setmakes] = useState<Make[]>([]);
   const [locations, setlocations] = useState<any>([]);
+  const [fuel, setfuel] = useState<any[]>([]);
+  const [transmission, settransmission] = useState<any[]>([]);
+  const [color, setcolor] = useState<any>([]);
+  const [drivetrain, setdrivetrain] = useState<any>([]);
 
   if (searchParams.makeID) params.set("MakeID", searchParams.makeID.toString());
   if (searchParams.modelID)
@@ -63,6 +60,14 @@ export default async function ResultPage({ searchParams }: Props) {
       const bodyTypes = await GetBodyTypes();
       const carMake = await GetCarMakes();
       const locations = await GetLocations();
+      const drivetrain = await GetDrivetrain();
+      const color = await GetColors();
+      const transmission = await GetTransmission();
+      const fuel = await GetFuel();
+      setdrivetrain(drivetrain);
+      setcolor(color);
+      settransmission(transmission);
+      setfuel(fuel);
       setbodytypes(bodyTypes);
       setmakes(carMake);
       setlocations(locations);
@@ -72,7 +77,14 @@ export default async function ResultPage({ searchParams }: Props) {
   return (
     <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
       {/*<DetailedSearchBox />*/}
-      <HomeUI makeList={carMake} bodyTlist={bodyTypes} />
+      <HomeUI
+        bodyTlist={bodyTypes}
+        drivetrain={drivetrain}
+        color={color}
+        transmission={transmission}
+        fuel={fuel}
+        makeList={carMake}
+      />
       {/*<SearchingCriteria resultCount={cars.length} locations={locations} />*/}
       <TruckSearchResult params={params} locations={locations} />
     </div>

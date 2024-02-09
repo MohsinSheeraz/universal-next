@@ -43,7 +43,7 @@ export default async function RootLayout({
   const bodyTypes = await GetBodyTypes();
   const locations = await GetLocations();
   const inventoryLocation = locations.filter(
-    (x) => x.isInventoryLocation && x.isActive
+    (x: any) => x.isInventoryLocation && x.isActive
   );
   const makes = await GetCarMakes();
   const portList = await GetAllPorts();
