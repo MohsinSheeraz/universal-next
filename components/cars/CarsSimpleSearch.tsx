@@ -119,6 +119,7 @@ export default function CarsSimpleSearch({
 
     setLoading(true);
     router.push(`/global/results/search/cars?${params.toString()}`);
+    setLoading(false);
   }
 
   return (
@@ -445,5 +446,6 @@ export default function CarsSimpleSearch({
         </div>
       </div>
     </form>
+
   );
 }

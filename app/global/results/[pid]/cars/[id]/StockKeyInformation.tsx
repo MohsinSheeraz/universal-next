@@ -141,8 +141,8 @@ export default async function StockKeyInformation({ car }: Props) {
         </h2>
         <div className=" flex flex-wrap gap-3">
           {stockOptions.data
-            .filter((op) => op.stockId === car.stockId)
-            .map((op) => (
+            .filter((op: any) => op.stockId === car.stockId)
+            .map((op: any) => (
               // <li className="active" key={op.id}>
               //   <h5>
               //     {
@@ -167,7 +167,7 @@ export default async function StockKeyInformation({ car }: Props) {
                 <div className="mt-px !text-[9px] sm:!text-[12px]">
                   {
                     optionsMaster.data.find(
-                      (x) => x.optionId == op.carOptionsId
+                      (x: any) => x.optionId == op.carOptionsId
                     )?.optionName
                   }
                 </div>

@@ -8,7 +8,7 @@ import { Make } from "@/models/Master/Make";
 import content from "@/utils/categoryContent.json";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { GetBodyTypes, GetCarMakes, GetLocations } from "./components/loadData";
+import { GetBodyTypes, GetCarMakes, GetColors, GetDrivetrain, GetFuel, GetLocations, GetTransmission } from "./components/loadData";
 interface Props {
   searchParams: {
     makeID: number;
@@ -52,8 +52,14 @@ export default function ResultPage({ searchParams }: Props) {
   const [bodyTypes, setbodytypes] = useState<BodyType[]>([]);
   const [makes, setmakes] = useState<Make[]>([]);
   const [locations, setlocations] = useState<Country[]>([]);
+  const [fuel, setfuel] = useState<any[]>([]);
+  const [transmission, settransmission] = useState<any[]>([]);
+  const [color, setcolor] = useState<any>([]);
+  const [drivetrain, setdrivetrain] = useState<any>([]);
+
   const { id, pid } = useParams();
   const params = new URLSearchParams();
+
   // console.log("search", searchParams)
   // if (!searchParams) {
   //     console.log("not")
@@ -90,6 +96,15 @@ export default function ResultPage({ searchParams }: Props) {
       const bodyTypes = await GetBodyTypes();
       const makes = await GetCarMakes();
       const locations = await GetLocations();
+      const drivetrain = await GetDrivetrain();
+      const color = await GetColors();
+      const transmission = await GetTransmission();
+      const fuel = await GetFuel();
+      setdrivetrain(drivetrain);
+      setcolor(color);
+      settransmission(transmission);
+      setfuel(fuel);
+      setbodytypes(bodyTypes);
       setbodytypes(bodyTypes);
       setmakes(makes);
       setlocations(locations);
@@ -102,7 +117,14 @@ export default function ResultPage({ searchParams }: Props) {
   return (
     <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
       {/*<DetailedSearchBox />*/}
-      <HomeUI makeList={makes} bodyTlist={bodyTypes} />
+      <HomeUI
+        bodyTlist={bodyTypes}
+        drivetrain={drivetrain}
+        color={color}
+        transmission={transmission}
+        fuel={fuel}
+        makeList={makes}
+      />
       {/*<SearchingCriteria resultCount={cars.length} locations={locations} />*/}
       <CarSearchResult params={params} locations={locations} />
       {categoryContent && categoryContent?.tag && (

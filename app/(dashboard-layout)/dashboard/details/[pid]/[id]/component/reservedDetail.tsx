@@ -17,7 +17,7 @@ export default async function ReservedDetail({ params }: Props) {
   const Stock = await agent.LoadData.stock(Number(params?.id));
   const Countries = await agent.LoadData.countryList();
   const InventoryLocation = Countries.data.find(
-    (x) => x.countryId == Stock.data.locationId
+    (x: any) => x.countryId == Stock.data.locationId
   );
   const list = [
     "My Profile",

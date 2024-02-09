@@ -41,7 +41,7 @@ export default async function CarDetailed({ params }: Props) {
   const PortMapping = await agent.LoadData.portmapping();
   const Ports = await agent.LoadData.portsList();
   const InventoryLocation = Countries.data.find(
-    (x) => x.countryId == Stock.data.locationId
+    (x: any) => x.countryId == Stock.data.locationId
   );
   const freightChargeMaster = await agent.LoadData.freightcost();
   const inspectionCost = await agent.LoadData.inspectioncost();
