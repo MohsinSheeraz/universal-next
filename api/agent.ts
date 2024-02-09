@@ -73,8 +73,14 @@ const requestNoCache = {
 
 const request = {
   get: async <T>(url: string) => {
-    const response = await fetch(baseURL + url);
-    return parseResponse<T>(response);
+    try {
+      const response = await fetch(baseURL + url);
+      return parseResponse<T>(response);
+    } catch (error) {
+      console.error("Error in GET request:", error);
+      let data: any;
+      return data;
+    }
   },
 
   post: async <T>(url: string, body: object) => {
