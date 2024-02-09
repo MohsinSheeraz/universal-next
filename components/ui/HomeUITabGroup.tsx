@@ -4,7 +4,11 @@ import Tabs from "@/app/(dashboard-layout)/dashboard/components/Tabs";
 import CarsSimpleSearch from "@/components/cars/CarsSimpleSearch";
 import TruckSimpleSearch from "@/components/trucks/TruckSimpleSearch";
 import { BodyType } from "@/models/Master/BodyType";
+import { Colors } from "@/models/Master/Colors";
+import { DrivetrainType } from "@/models/Master/DrivetrainType";
+import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
+import { Transmission } from "@/models/Master/Transmission";
 import { Tab } from "@headlessui/react";
 import { useState } from "react";
 
@@ -17,6 +21,10 @@ interface TabType {
 interface Props {
   bodyTypes: BodyType[];
   makes: Make[];
+  color: Colors[];
+  transmission: Transmission[];
+  drivetrain: DrivetrainType[];
+  fuel: FuelType[];
 }
 
 function classNames(...classes: any[]) {
@@ -29,7 +37,14 @@ const tabs: TabType[] = [
   { name: "Heavy Machinery", href: "#", current: false },
 ];
 
-export default function HomeUITabGroup({ bodyTypes, makes }: Props) {
+export default function HomeUITabGroup({
+  bodyTypes,
+  makes,
+  color,
+  transmission,
+  drivetrain,
+  fuel,
+}: Props) {
   const [currentForm, setCurrentForm] = useState("Cars");
   const currentYear = new Date().getFullYear();
   const fromYear = 1970;
@@ -45,6 +60,10 @@ export default function HomeUITabGroup({ bodyTypes, makes }: Props) {
             bodyTypes={bodyTypes}
             makes={makes}
             yearList={yearList}
+            color={color}
+            transmission={transmission}
+            drivetrain={drivetrain}
+            fuel={fuel}
           />
         );
       case "Truck":

@@ -64,7 +64,6 @@ export default function TruckSearchResult({ locations, params }: Props) {
         return 0; // Default sorting order (no sorting)
     }
   }
-
   useEffect(() => {
     if (sort >= 1) {
       const sortedData = [...searchData];

@@ -56,25 +56,30 @@ export default function Status({ stock }: Prop) {
               <td className="first !text-[12px] sm:!text-[16px]">
                 Action Tracker
               </td>
+              <td className="first !text-[12px] sm:!text-[16px]">Date</td>
               <td className="first !text-[12px] sm:!text-[16px]">Status</td>
+
               {/* <td className="first !text-[12px] sm:!text-[16px]">Action</td> */}
             </tr>
           </thead>
           <tbody>
             <tr>
               <td className=" !text-[12px] sm:!text-[16px]">Consignee</td>
+              <td className=" !text-[12px] sm:!text-[16px]"></td>
               <td className="!text-[12px] sm:!text-[16px]">
                 {stock?.consigneeName ? "✔️" : "❌"}
               </td>
             </tr>
             <tr>
               <td className=" !text-[12px] sm:!text-[16px]">Notify Party</td>
+              <td className=" !text-[12px] sm:!text-[16px]"></td>
               <td className="!text-[12px] sm:!text-[16px]">
                 {stock?.notifyPartyName ? "✔️" : "❌"}
               </td>
             </tr>
             <tr>
               <td className=" !text-[12px] sm:!text-[16px]">OK to Book</td>
+              <td className=" !text-[12px] sm:!text-[16px]"></td>
               <td className="!text-[12px] sm:!text-[16px]">
                 {stock?.shipOk ? "✔️" : "❌"}
               </td>
@@ -84,6 +89,7 @@ export default function Status({ stock }: Prop) {
               <td className=" !text-[12px] sm:!text-[16px]">
                 Courier Address Updated
               </td>
+              <td className=" !text-[12px] sm:!text-[16px]"></td>
               <td className="!text-[12px] sm:!text-[16px]">
                 {stock?.courierPersonName ? "✔️" : "❌"}
               </td>
@@ -92,7 +98,7 @@ export default function Status({ stock }: Prop) {
               <td className=" !text-[12px] sm:!text-[16px]">
                 Documents Dispatched
               </td>
-
+              <td className=" !text-[12px] sm:!text-[16px]"></td>
               <td className="!text-[12px] sm:!text-[16px]">
                 {stock?.release ? "✔️" : "❌"}
               </td>

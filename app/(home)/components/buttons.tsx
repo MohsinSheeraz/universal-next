@@ -1,7 +1,11 @@
 "use client";
 import { BodyType } from "@/models/Master/BodyType";
+import { Colors } from "@/models/Master/Colors";
 import { Country } from "@/models/Master/Country";
+import { DrivetrainType } from "@/models/Master/DrivetrainType";
+import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
+import { Transmission } from "@/models/Master/Transmission";
 import { useUserStore } from "@/store/store";
 import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
@@ -14,10 +18,22 @@ import BySearch from "./bySearch";
 import ByType from "./byType";
 interface Props {
   locations: Country[];
-  makes: Make[];
-  bodyTypes: BodyType[];
+  bodyTlist: BodyType[];
+  makeList: Make[];
+  color: Colors[];
+  transmission: Transmission[];
+  drivetrain: DrivetrainType[];
+  fuel: FuelType[];
 }
-export default function TabButtons({ makes, locations, bodyTypes }: Props) {
+export default function TabButtons({
+  makeList,
+  bodyTlist,
+  color,
+  transmission,
+  drivetrain,
+  fuel,
+  locations,
+}: Props) {
   const [current, setCurrent] = useState("By Make");
   const [type, setType] = useState(false);
 
@@ -31,14 +47,22 @@ export default function TabButtons({ makes, locations, bodyTypes }: Props) {
   const getCurrent = () => {
     switch (current) {
       case "By Make":
-        return <ByMake makes={makes} />;
+        return <ByMake makes={makeList} />;
 
       case "By Inventory Location":
         return <ByType locations={locations} />;
 
       case "Quick Search":
         return (
-          <BySearch bodyTypes={bodyTypes} makes={makes} yearList={yearList} />
+          <BySearch
+            drivetrain={drivetrain}
+            color={color}
+            transmission={transmission}
+            fuel={fuel}
+            makeList={makeList}
+            bodyTlist={bodyTlist}
+            yearList={yearList}
+          />
         );
       default:
         break;
