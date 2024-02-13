@@ -1,9 +1,10 @@
 import agent from "@/api/agent";
 import DescriptionUI from "@/components/ui/DescriptionUI";
 import CarDetailedSlideshow from "../../cars/[id]/CarDetailedSlideshow";
+import PriceCalculator from "../../cars/[id]/PriceCalculator";
 import CountdownTimer from "../../cars/[id]/counter";
-import TruckKeyInformation from "./TruckKeyInformation";
-import TruckSpecification from "./TruckSpecification";
+import MachineryKeyInformation from "./MachineryKeyInformation";
+import MachinerySpecification from "./MachinerySpecification";
 
 interface Props {
   params: {
@@ -77,11 +78,11 @@ export default async function CarDetailed({ params }: Props) {
                       </div>
                       <hr />
                       <div className="shipping-details">
-                        <TruckSpecification
+                        <MachinerySpecification
                           car={Stock.data}
                           location={InventoryLocation}
                         />
-                        <TruckKeyInformation car={Stock.data} />
+                        <MachineryKeyInformation car={Stock.data} />
                         <DescriptionUI description={Stock.data.description} />
                       </div>
                     </div>
@@ -152,7 +153,7 @@ export default async function CarDetailed({ params }: Props) {
                       {/*        </div>*/}
                       {/*    </div>*/}
                       {/*</div>*/}
-                      {/* <PriceCalculator
+                      <PriceCalculator
                         car={Stock.data}
                         countries={Countries.data}
                         ports={Ports.data}
@@ -162,7 +163,7 @@ export default async function CarDetailed({ params }: Props) {
                         stockCode={Stock.data.stockCode}
                         reservedBy={Stock.data.reservedBy}
                         isReserved={Stock.data.isReserved}
-                      /> */}
+                      />
                       {/*<InquiryForm/>*/}
                       {/* <ContactUs stockcode={Stock.data.stockCode} /> */}
                     </div>

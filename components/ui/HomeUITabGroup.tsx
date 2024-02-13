@@ -85,6 +85,10 @@ export default function HomeUITabGroup({
             bodyTypes={bodyTypes}
             makes={makes}
             yearList={yearList}
+            color={color}
+            transmission={transmission}
+            drivetrain={drivetrain}
+            fuel={fuel}
           />
         );
       default:

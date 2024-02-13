@@ -201,7 +201,7 @@ export default function MachinerySearchResult({ locations, params }: Props) {
                           truck.modelName.replaceAll(" ", "-") +
                           "-" +
                           truck.year
-                          }/${truck.stockId}`}
+                          }/machinery/${truck.stockId}`}
                       >
                         <h6 className="listname font-bold uppercase">
                           {truck.listingTitle}

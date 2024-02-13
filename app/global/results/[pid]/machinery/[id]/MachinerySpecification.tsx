@@ -6,7 +6,7 @@ interface Props {
   car: Trucks;
   location: Country | undefined;
 }
-export default function TruckSpecification({ car, location }: Props) {
+export default function MachinerySpecification({ car, location }: Props) {
   return (
     <>
       <div className="row specsrow">
@@ -20,7 +20,7 @@ export default function TruckSpecification({ car, location }: Props) {
               className="mx-auto mr-2"
             />
             <br />
-            {NumberFormat(car?.mileage)} Kms
+            {NumberFormat(car?.mileage ?? 0)} Kms
           </span>
         </div>
         <div className="col-sm specs  !text-[9px] sm:!text-base ">

@@ -98,6 +98,8 @@ export default function TruckSimpleSearch({
     if (colorId !== "0") params.set("ColorId", colorId);
     setLoading(true);
     router.push(`/global/results/list/trucks?${params.toString()}`);
+    setLoading(false);
+
   }
 
   return (
@@ -105,7 +107,7 @@ export default function TruckSimpleSearch({
     <Form onSubmit={handleSubmit} autoComplete="off">
       <div className=" row mt-4 gap-y-2  border border-gray-200 mx-2 bg-slate-100 rounded-2xl py-3 shadow-md">
         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
-          <label>Make: </label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Make: </label>
           {/*<SearchSelect value={makeId} onValueChange={setMakeId}>*/}
           <SearchSelect value={makeId} onValueChange={handleValueChange}>
             {makes

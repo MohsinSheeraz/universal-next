@@ -5,7 +5,7 @@ import { Trucks } from "@/models/Trucks";
 interface Props {
   car: Trucks;
 }
-export default async function TruckKeyInformation({ car }: Props) {
+export default async function MachineryKeyInformation({ car }: Props) {
   const stockOptions = await agent.LoadData.caroptionMappingList(car.stockId);
   const optionsMaster = await agent.LoadData.caroptionsList(); //db.tblCarOptions.findMany({where: {isActive:true}});
 

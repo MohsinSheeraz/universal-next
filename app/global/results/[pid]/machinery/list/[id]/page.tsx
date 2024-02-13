@@ -1,5 +1,5 @@
 "use client";
-import TruckSearchResult from "@/components/trucks/TruckSearchResult";
+import MachinerySearchResult from "@/components/machinery/MachinerySearchResult";
 import HomeUI from "@/components/ui/HomeUI";
 import { BodyType } from "@/models/Master/BodyType";
 import { Make } from "@/models/Master/Make";
@@ -25,6 +25,11 @@ interface Props {
     maxMileage: number;
     toYear: number;
     searchTerm: string;
+    DrivetrainId: number;
+    TransmissionId: number;
+    FuelId: Number;
+    ColorId: Number;
+    steeringID: number;
     //searchFromBox:string
   };
 }
@@ -53,6 +58,14 @@ export default async function ResultPage({ searchParams }: Props) {
   if (searchParams.searchTerm)
     params.set("SearchTerm", searchParams.searchTerm);
   if (id) params.set("MakeID", id.toString());
+  params.set("DrivetrainId", searchParams.DrivetrainId.toString());
+  if (searchParams.FuelId) params.set("FuelId", searchParams.FuelId.toString());
+  if (searchParams.TransmissionId)
+    params.set("TransmissionId", searchParams.TransmissionId.toString());
+  if (searchParams.ColorId)
+    params.set("ColorId", searchParams.ColorId.toString());
+  if (searchParams.steeringID)
+    params.set("SteeringID", searchParams.steeringID.toString());
   params.set("OrderBy", "stockid%20desc");
 
   useEffect(() => {
@@ -86,7 +99,7 @@ export default async function ResultPage({ searchParams }: Props) {
         makeList={carMake}
       />
       {/*<SearchingCriteria resultCount={cars.length} locations={locations} />*/}
-      <TruckSearchResult params={params} locations={locations} />
+      <MachinerySearchResult params={params} locations={locations} />
     </div>
   );
 }
