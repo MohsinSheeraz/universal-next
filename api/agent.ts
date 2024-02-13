@@ -126,13 +126,14 @@ const LoadData = {
     request.get<Trucks[]>(
       `trucks?PageSize=25&pageNumber=${currentPage}&${filter}`
     ),
-  machineryList: () =>
-    request.get<Machinery[]>("machinery?pageNumber=1&pageSize=50"),
+  machineryList: (filter: string, currentPage: number) =>
+    request.get<Machinery[]>(`machinery?pageNumber=${currentPage}&pageSize=25&${filter}`),
   homepageStockList: () =>
     requestNoCache.get<StockCars[]>("carstock/homepage_cars"),
   //test: () => await fetch(baseURL+"carstock/homepage_cars", {cache: 'no-store'});
   stock: (stockID: number) => request.get<StockCars>(`carstock/${stockID}`),
   truck: (stockID: number) => request.get<Trucks>(`trucks/${stockID}`),
+  machinery: (stockID: number) => request.get<Trucks>(`machinery/${stockID}`),
 
   stockSliderList: (stockID: number) =>
     request.get<StockPictures[]>(`carstock/imagestock/${stockID}`),

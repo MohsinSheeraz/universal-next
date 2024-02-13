@@ -215,8 +215,7 @@ export default function CarsSimpleSearch({
             <div className="w-full lg:w-[49%] h-15 ">
               <input
                 type="number"
-                placeholder="Engine Size(cc)"
-                value={minEngineSize}
+                placeholder="Min Engine Size(cc)"
                 onChange={(e) => setMinEngineSize(e.target.value)}
                 className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
@@ -224,8 +223,7 @@ export default function CarsSimpleSearch({
             <div className="w-full lg:w-[49%]">
               <input
                 type="number"
-                placeholder="Engine Size(cc)"
-                value={maxEngineSize}
+                placeholder="Max Engine Size(cc)"
                 onChange={(e) => setMaxEngineSize(e.target.value)}
                 className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
@@ -334,9 +332,8 @@ export default function CarsSimpleSearch({
                 <div className="flex flex-col lg:flex-row flex-wrap justify-between">
                   <div className="w-full lg:w-[49%] h-15 ">
                     <input
-                      placeholder="Milage"
+                      placeholder="Min Milage (KM)"
                       type="number"
-                      value={minMileage}
                       onChange={(e) => setMinMileage(e.target.value)}
                       className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
@@ -344,8 +341,7 @@ export default function CarsSimpleSearch({
                   <div className="w-full lg:w-[49%] w-30">
                     <input
                       type="number"
-                      placeholder="Milage"
-                      value={maxMileage}
+                      placeholder="Max Milage (KM)"
                       onChange={(e) => setMaxMileage(e.target.value)}
                       className=" border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />

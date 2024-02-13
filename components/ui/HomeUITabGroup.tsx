@@ -11,6 +11,7 @@ import { Make } from "@/models/Master/Make";
 import { Transmission } from "@/models/Master/Transmission";
 import { Tab } from "@headlessui/react";
 import { useState } from "react";
+import MachinerySimpleSearch from "../machinery/MachinerySimpleSearch";
 
 interface TabType {
   name: string;
@@ -69,6 +70,18 @@ export default function HomeUITabGroup({
       case "Truck":
         return (
           <TruckSimpleSearch
+            bodyTypes={bodyTypes}
+            makes={makes}
+            yearList={yearList}
+            color={color}
+            transmission={transmission}
+            drivetrain={drivetrain}
+            fuel={fuel}
+          />
+        );
+      case "Heavy Machinery":
+        return (
+          <MachinerySimpleSearch
             bodyTypes={bodyTypes}
             makes={makes}
             yearList={yearList}

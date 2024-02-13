@@ -25,11 +25,6 @@ interface Props {
     maxMileage: number;
     toYear: number;
     searchTerm: string;
-    DrivetrainId: number;
-    TransmissionId: number;
-    FuelId: Number;
-    ColorId: Number;
-    steeringID: number;
     //searchFromBox:string
   };
 }
@@ -57,15 +52,6 @@ export default async function ResultPage({ searchParams }: Props) {
     params.set("MaxMileage", searchParams.maxMileage.toString());
   if (searchParams.searchTerm)
     params.set("SearchTerm", searchParams.searchTerm);
-  if (searchParams.DrivetrainId)
-    params.set("DrivetrainId", searchParams.DrivetrainId.toString());
-  if (searchParams.FuelId) params.set("FuelId", searchParams.FuelId.toString());
-  if (searchParams.TransmissionId)
-    params.set("TransmissionId", searchParams.TransmissionId.toString());
-  if (searchParams.ColorId)
-    params.set("ColorId", searchParams.ColorId.toString());
-  if (searchParams.steeringID)
-    params.set("SteeringID", searchParams.steeringID.toString());
   if (id) params.set("MakeID", id.toString());
   params.set("OrderBy", "stockid%20desc");
 

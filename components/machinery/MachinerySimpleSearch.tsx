@@ -2,11 +2,7 @@
 import agent from "@/api/agent";
 import { BodyType } from "@/models/Master/BodyType";
 import { CarModel } from "@/models/Master/CarModel";
-import { Colors } from "@/models/Master/Colors";
-import { DrivetrainType } from "@/models/Master/DrivetrainType";
-import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
-import { Transmission } from "@/models/Master/Transmission";
 import { SearchSelect, SearchSelectItem } from "@tremor/react";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
@@ -16,34 +12,20 @@ interface Props {
   bodyTypes: BodyType[]; //tblBodyTypes[],
   makes: Make[]; //tblMakes[],
   yearList: string[];
-  color: Colors[];
-  transmission: Transmission[];
-  drivetrain: DrivetrainType[];
-  fuel: FuelType[];
   // stockcars : StockCars[]
 }
 
 const GetModelWiseMakeList = async (modelID: string) => {
   return await agent.LoadData.carModelByMakeList(modelID); // db.tblBodyTypes.findMany({where: {isActive:true}});
 };
-export default function TruckSimpleSearch({
+export default function MachinerySimpleSearch({
   bodyTypes,
   makes,
   yearList,
-  color,
-  transmission,
-  drivetrain,
-  fuel
 }: Props) {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
-  const [isMore, setIsMore] = useState(false);
   const [makeId, setMakeId] = useState("0");
-  const [steeringTypeId, setSteeringTypeId] = useState("0");
-  const [colorId, setColorId] = useState("0");
-  const [transmissionId, setTransmissionId] = useState("0");
-  const [drivetrainId, setDrivetrainId] = useState("0");
-  const [fuelId, setFuelId] = useState("0");
   const [mappedModels, setMappedModels] = useState<CarModel[]>([]);
   const [modelId, setModelId] = useState("0");
   const [mileage, setMileage] = useState("0");
@@ -91,25 +73,20 @@ export default function TruckSimpleSearch({
     if (mileage != "0") params.set("mileage", mileage);
     if (toPrice != "0") params.set("toPrice", toPrice);
     if (toYear != "0") params.set("toYear", toYear);
-    if (steeringTypeId != "0") params.set("steeringID", steeringTypeId);
-    if (transmissionId !== "0") params.set("TransmissionId", transmissionId);
-    if (drivetrainId !== "0") params.set("DrivetrainId", drivetrainId);
-    if (fuelId !== "0") params.set("FuelId", fuelId);
-    if (colorId !== "0") params.set("ColorId", colorId);
     setLoading(true);
-    router.push(`/global/results/list/trucks?${params.toString()}`);
+    router.push(`/global/results/list/machinery?${params.toString()}`);
   }
 
   return (
     // <div className="showcase-Box carform mb-5">
     <Form onSubmit={handleSubmit} autoComplete="off">
-      <div className=" row mt-4 gap-y-2  border border-gray-200 mx-2 bg-slate-100 rounded-2xl py-3 shadow-md">
+      <div className=" row mt-4 gap-y-5  border border-gray-200 mx-2 bg-slate-100 rounded-2xl py-3 shadow-md">
         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
           <label>Make: </label>
           {/*<SearchSelect value={makeId} onValueChange={setMakeId}>*/}
           <SearchSelect value={makeId} onValueChange={handleValueChange}>
             {makes
-              .filter((make) => make.vehicleTypeId == 2)
+              .filter((make) => make.vehicleTypeId == 3)
               .map((make) => (
                 <SearchSelectItem
                   key={make.makeId}
@@ -156,18 +133,6 @@ export default function TruckSimpleSearch({
         </div>
         <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-            Steering:
-          </label>
-          <SearchSelect
-            value={steeringTypeId}
-            onValueChange={setSteeringTypeId}
-          >
-            <SearchSelectItem value="1">Right Hand</SearchSelectItem>
-            <SearchSelectItem value="2">Left Hand</SearchSelectItem>
-          </SearchSelect>
-        </div>
-        <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Price Until:
           </label>
           <SearchSelect value={toPrice} onValueChange={setToPrice}>
@@ -177,86 +142,6 @@ export default function TruckSimpleSearch({
             <SearchSelectItem value="40000">$40,000</SearchSelectItem>
             <SearchSelectItem value="50000">$50,000</SearchSelectItem>
           </SearchSelect>
-        </div>
-        {isMore && (
-          <>
-
-
-
-            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Transmission:
-              </label>
-              <SearchSelect
-                value={transmissionId}
-                onValueChange={setTransmissionId}
-              >
-                {transmission.map((trans) => (
-                  <SearchSelectItem
-                    key={trans.transmissionId}
-                    value={trans.transmissionId.toString()}
-                  >
-                    {trans.transmissionName}
-                  </SearchSelectItem>
-                ))}
-              </SearchSelect>
-            </div>
-            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Fuel:
-              </label>
-              <SearchSelect value={fuelId} onValueChange={setFuelId}>
-                {fuel.map((fueltype) => (
-                  <SearchSelectItem
-                    key={fueltype.fuelTypeId}
-                    value={fueltype.fuelTypeId.toString()}
-                  >
-                    {fueltype.typeOfFuel}
-                  </SearchSelectItem>
-                ))}
-              </SearchSelect>
-            </div>
-            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Drivetrain:
-              </label>
-              <SearchSelect value={drivetrainId} onValueChange={setDrivetrainId}>
-                {drivetrain.map((train) => (
-                  <SearchSelectItem
-                    key={train.drivetrainId}
-                    value={train.drivetrainId.toString()}
-                  >
-                    {train.drivetrainType}
-                  </SearchSelectItem>
-                ))}
-              </SearchSelect>
-            </div>
-            <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Exterior Color:
-              </label>
-              <SearchSelect value={colorId} onValueChange={setColorId}>
-                {color.map((color) => (
-                  <SearchSelectItem
-                    key={color.colorId}
-                    value={color.colorId.toString()}
-                  >
-                    {color.colorName}
-                  </SearchSelectItem>
-                ))}
-              </SearchSelect>
-            </div>
-          </>
-        )}
-        <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6 flex items-center">
-          <span
-            className="text-blue-700 cursor-pointer  text-sm underline "
-            onClick={() => {
-              setIsMore(!isMore);
-            }}
-          >
-            {isMore ? "Show less" : "Show More"}
-          </span>
         </div>
         <div className="col-xl-4 col-lg-4 col-md-8 col-sm-6 col-6">
           {/* <div className="showcase-Boxbtn"> */}
