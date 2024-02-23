@@ -149,27 +149,26 @@ export default function CarSearchResult({ locations, params }: Props) {
               }}
               className={`w-[200px] relative xl:static ${i % 2 ? "bg-slate-100" : "bg-white"} !pt-2 xl:!pt-0 xl:w-[95%] px-[10px]  items-center gap-3 shadow-md m-auto flex flex-col xl:flex-row h-[460px] xl:h-[200px] border border-gray-100 rounded-3xl `}
             >
-              <div className="relative !pb-0 xl:!pb-14">
-                <Image
-                  src={car.imageUrl}
-                  width={181}
-                  height={176}
-                  className="rounded-3xl"
-                  style={{
-                    objectFit: "cover",
-                    position: "absolute",
-                    width: "181px",
-                    height: "176px",
-                  }}
-                  alt={car.listingTitle}
-                />
-                {car?.isReserved && (
-                  <div className="relative">
-                    <Image className="w-[200px]" src={reserved} alt="" />
-                  </div>
-                )}
-              </div>
-
+              {/* <div className="relative !pb-0 xl:!pb-10"> */}
+              <Image
+                src={car.imageUrl}
+                width={181}
+                height={176}
+                className="rounded-3xl"
+                style={{
+                  objectFit: "cover",
+                  // position: "absolute",
+                  width: "181px",
+                  height: "176px",
+                }}
+                alt={car.listingTitle}
+              />
+              {/* </div> */}
+              {car?.isReserved && (
+                <div className="absolute">
+                  <Image className="w-[180px]" src={reserved} alt="" />
+                </div>
+              )}
               <div className="w-full  h-full xl:relative flex xl:items-center justify-center xl:justify-between">
                 <div className="absolute top-0 right-[40%] bg-[#221C63] text-white px-3 hidden xl:flex py-1 font-semibold rounded-b-lg text-[14px]">
                   {" "}
