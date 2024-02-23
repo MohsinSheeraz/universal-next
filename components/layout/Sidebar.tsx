@@ -9,6 +9,8 @@ interface Props {
 }
 
 function Sidebar({ locations, makes }: Props) {
+  const params = new URLSearchParams();
+
   return (
     <>
       <div className="col-xl-2 col-lg-2 col-md-2 d-md-block d-none">
@@ -23,10 +25,10 @@ function Sidebar({ locations, makes }: Props) {
                 <li key={make.makeId}>
                   <Link
                     href={{
-                      pathname: `/global/results/${make.slug}/cars/list/${make.makeId}`,
-                      // query: {
-                      //   makeID: make.makeId,
-                      // },
+                      pathname: `/global/results/${make.slug}/cars`,
+                      query: {
+                        makeID: make.makeId,
+                      },
                     }}
                   >
                     <span className=" inline-flex items-center rounded-md">
@@ -65,10 +67,10 @@ function Sidebar({ locations, makes }: Props) {
                 <li key={make.makeId}>
                   <Link
                     href={{
-                      pathname: `/global/results/${make.slug}/trucks/list/${make.makeId}`,
-                      // query: {
-                      //   makeID: make.makeId,
-                      // },
+                      pathname: `/global/results/${make.slug}/trucks`,
+                      query: {
+                        makeID: make.makeId,
+                      },
                     }}
                   >
                     <span className=" inline-flex items-center rounded-md">

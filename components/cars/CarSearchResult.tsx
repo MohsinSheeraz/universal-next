@@ -112,7 +112,6 @@ export default function CarSearchResult({ locations, params }: Props) {
         if (paginationHeader) {
           setPaginationData(paginationHeader);
         }
-
         setSearchData(data);
       } catch (error: any) {
         console.log(error);
@@ -143,7 +142,8 @@ export default function CarSearchResult({ locations, params }: Props) {
       <div className="w-full flex flex-wrap flex-row xl:flex-col gap-4">
 
         {Array.isArray(searchData) &&
-          searchData.map((car) => (
+          searchData.map((car, i) => (
+
             <div
               key={car.stockId}
               onClick={() => {
@@ -154,7 +154,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                   car.year
                   }/${type?.type}/${car.stockId}`)
               }}
-              className="w-[200px] relative xl:static !pt-2 xl:!pt-0 xl:w-[95%] px-[10px]  items-center gap-3 shadow-md m-auto flex flex-col xl:flex-row h-[460px] xl:h-[200px] border border-gray-100 rounded-3xl "
+              className={`w-[200px] relative xl:static ${i % 2 ? 'bg-slate-100' : 'bg-white'} !pt-2 xl:!pt-0 xl:w-[95%] px-[10px]  items-center gap-3 shadow-md m-auto flex flex-col xl:flex-row h-[460px] xl:h-[200px] border border-gray-100 rounded-3xl `}
             >
               <Image src={car.imageUrl}
                 width={181}
@@ -252,7 +252,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                     </div>
                     <div className="flex items-center flex-col ">
                       <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">Color</p>
-                      <div className="w-[60px] rounded-lg h-[20px] bg-yellow-700 mt-1" >
+                      <div style={{ backgroundColor: car.colorHex }} className={`border-[2px] border-black w-[60px] rounded-lg h-[20px] bg-[${car.colorHex}] mt-1`} >
 
                       </div>
                       {/* <p className=" p-1  flex items-center rounded-md ">
