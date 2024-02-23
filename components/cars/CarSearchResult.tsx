@@ -314,11 +314,14 @@ export default function CarSearchResult({ locations, params }: Props) {
                     {" "}
                     {car.listingTitle}
                   </p>
-                  <p className="text-[#221C63] !mt-4 xl:!mt-0 text-center py-2 text-[14px] font-semibold border-b border-gray-100 w-[90%] mx-auto">
+                  <p className="text-[#221C63] flex !mt-4 xl:!mt-0 text-center py-2 text-[14px] font-semibold border-b border-gray-100 w-[90%] mx-auto">
                     FOB Price:{" "}
                     <span className="ml-2">
                       {" "}
-                      <PriceFormat carPrice={car.price} />
+                      <div className="bg-[#221C63] text-white  rounded-tl-3xl rounded-bl-3xl flex items-center gap-3 w-24 h-6">
+                        <div className="text-[30px] pl-4 pb-3">.</div>
+                        <PriceFormat carPrice={car.price} />
+                      </div>
                     </span>
                   </p>
                   <p className="text-[#221C63] font-semibold text-center text-[18px] xl:text-[20px]">

@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap");
+
 /* @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap'); */
 body {
   font-family: "Poppins", sans-serif;
@@ -16,6 +17,7 @@ h5,
 h6 {
   font-weight: 600;
 }
+
 .showcase-Recheading .row p {
   margin: 0 !important;
 }
@@ -25,11 +27,13 @@ h6 {
   width: 100%;
   padding-top: 15px;
 }
+
 .detailedsection section.product-slider-section .container-fluid,
 footer .container-fluid {
   padding-left: 6%;
   padding-right: 6%;
 }
+
 .download-soialmedia ul {
   padding: 0;
   display: flex;
@@ -56,10 +60,12 @@ footer .container-fluid {
   color: red !important;
   font-weight: 700;
 }
+
 .showcase-Boxselect input {
   padding: 6px 28px 6px 12px !important;
   font-size: 12px;
 }
+
 .currencdd a {
   border-bottom: 1px solid #d5d5d5;
   padding: 2px 5px !important;
@@ -121,9 +127,11 @@ footer .container-fluid {
   font-size: 14px;
   margin: 0;
 }
+
 div#carousel-thumbs .row {
   width: max-content;
 }
+
 /*div#carousel-thumbs .img-fluid {
     width: 30%;
 }*/
@@ -132,6 +140,7 @@ div#carousel-thumbs .carousel-item {
   overflow-x: scroll;
   overflow-y: hidden;
 }
+
 .headerbg .currencydropdown {
   margin-top: 5px;
 }
@@ -162,13 +171,16 @@ button.currencydropbtn {
 .currencydropdown-content a {
   font-size: 13px;
 }
+
 li.highlighted a {
   display: contents !important;
   color: black !important;
 }
+
 .countrydrop {
   width: 100%;
 }
+
 /* ul.countdrop {
     margin-top: 6px;
 } */
@@ -276,6 +288,7 @@ header.headerbg .currencydropdown-content {
 section.menuhead.sticky-header .currencydropdown {
   border: none !important;
 }
+
 .supportcontent .row.bg-white {
   border-radius: 3px;
 }
@@ -301,13 +314,16 @@ section.menuhead.sticky-header,
   top: 0;
   z-index: 999;
 }
+
 .formvariation,
 .formss {
   max-width: 70% !important;
 }
+
 .showcase-Make.rightsidebar ul.countdrop {
   background: #f9f9f9;
 }
+
 button.regisbtn {
   background: #ffb703;
   border: none;
@@ -491,6 +507,7 @@ section.sidebar-menu .col-xl-2.col-lg-2.col-md-2.col-sm-2.col-12 {
   margin-top: 20px;
   margin-bottom: 50px;
 }
+
 .col-xl-8.col-lg-8.col-md-8.col-sm-8.col-8.p-0.formss {
   margin-bottom: -150px;
 }
@@ -520,12 +537,15 @@ li.highlighted {
   margin: 10px 0;
   font-size: 15px !important;
 }
+
 div.thumb {
   max-width: fit-content !important;
 }
+
 .results ul.nav.nav-tabs li.nav-item a {
   padding: 8px 5px;
 }
+
 .notice h6 {
   font-size: 15px;
   line-height: 22px;
@@ -542,10 +562,12 @@ div.thumb {
 .results a.nav-link a:active {
   background: #ffb703 !important;
 }
+
 .results a.nav-link a:hover span,
 .results a.nav-link a:active span {
   color: white;
 }
+
 .detail-leftsection div#wrap .row .col-12 {
   border: 1px solid #f3f3f3;
   padding: 0 !important;
@@ -602,6 +624,7 @@ ul.sidelist li {
   display: block;
   width: 100%;
 }
+
 ul.sidelist li a span {
   padding-left: 5px;
 }
@@ -651,9 +674,11 @@ ul.sidelist li a {
   overflow: hidden;
   font-weight: 600;
 }
+
 .results li.nav-item a.nav-link {
   border: none !important;
 }
+
 .searched select {
   border-radius: 5px;
   padding: 5px 10px;
@@ -710,16 +735,19 @@ a.nav-link2,
   box-shadow: 1px 7px 11px 0px #cdcdcd;
   border-top: 5px solid #221c63;
 }
+
 .searched-carimage img {
   width: 100%;
   height: 195px;
   object-fit: contain;
   box-shadow: -1px 1px 5px 1px #d6d6d6;
 }
+
 div#carousel .carousel-inner .carousel-item.zoom-image img {
   height: 500px;
   object-fit: contain;
 }
+
 .searched-carimage p {
   background: linear-gradient(0deg, #f7941d, #f7941d), #fff;
   border-radius: 5px 0;
@@ -731,6 +759,7 @@ div#carousel .carousel-inner .carousel-item.zoom-image img {
   font-size: 13px;
   letter-spacing: 1px;
 }
+
 .currencdd a {
   text-align: center;
 }
@@ -748,9 +777,11 @@ div#carousel .carousel-inner .carousel-item.zoom-image img {
 .car-country img {
   width: 20px;
 }
+
 h6.listname {
   color: #221c63 !important;
 }
+
 .scolumn h6 {
   background: #ebf3ff;
   /* color: white; */
@@ -775,6 +806,7 @@ h6.listname {
   text-align: center;
   padding: 0;
 }
+
 span.fav-text {
   font-size: 16px;
   color: #ffb703;
@@ -834,6 +866,7 @@ button.offerbtn {
   width: auto;
   display: inline-block;
 }
+
 .searched-carimage h5 {
   color: #ffb703;
   font-size: 17px;
@@ -842,9 +875,11 @@ button.offerbtn {
 .results {
   padding: 50px 10px;
 }
+
 .second-searchform img.img-fluid {
   width: 20px;
 }
+
 ul.nav.nav-tab li.nav-item {
   max-width: 100%;
   padding: 8px 16px;
@@ -872,6 +907,7 @@ ul.nav.nav-tab li.nav-item:active a {
   color: white !important;
   text-decoration: none !important;
 }
+
 .second-searchform .nav-tabs {
   border: none !important;
 }
@@ -911,24 +947,29 @@ section.mobile-header .col-7 {
   font-size: 25px;
   padding: 5px;
 }
+
 @media only screen and (min-width: 1601px) and (max-width: 2000px) {
   .cardimage img {
     height: 170px !important;
   }
 }
+
 @media only screen and (min-width: 2001px) and (max-width: 2400px) {
   .cardimage img {
     height: 210px !important;
   }
 }
+
 @media only screen and (min-width: 2401px) and (max-width: 3200px) {
   div#carousel .carousel-inner .carousel-item.zoom-image img {
     height: 650px;
   }
+
   .cardimage img {
     height: 270px !important;
   }
 }
+
 @media only screen and (min-width: 3201px) and (max-width: 6400px) {
   .cardimage img {
     height: auto !important;
@@ -977,6 +1018,7 @@ section.sidebar-menu .container-fluid {
   margin-bottom: 0;
   margin-top: 6px;
 }
+
 h6.lsitname {
   color: #221c63;
   font-size: 18px;
@@ -1022,6 +1064,7 @@ h4.buy-stepheading {
 .col-md-4.b1 {
   padding: 5px;
 }
+
 /*.filt {*/
 /*  width: 100%;*/
 /*  display: flex;*/
@@ -1382,6 +1425,7 @@ h1.mobicar.carname {
   .col-xl-8.col-lg-8.col-md-8.col-sm-12.col-12.carboxes {
     margin-top: 150px;
   }
+
   select#max-price-select,
   select#min-price-select,
   select#max-mileage-select,
@@ -1389,9 +1433,11 @@ h1.mobicar.carname {
     font-size: 8px !important;
     padding: 5px 2px;
   }
+
   div.thumb img {
     height: 64px;
   }
+
   .searched-carimage img {
     height: 140px;
   }
@@ -1828,6 +1874,7 @@ h1.carname {
   color: #1b3593;
   font-weight: bolder;
 }
+
 .detaillight input#insuranceCostLabel {
   font-weight: bolder;
 }
@@ -2234,14 +2281,17 @@ p.inquire-text {
   0% {
     -webkit-transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
   }
 }
+
 @keyframes nprogress-spinner {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
