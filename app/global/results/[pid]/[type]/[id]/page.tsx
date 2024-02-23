@@ -17,15 +17,15 @@ export async function generateMetadata({ params }: Props) {
   if (params && params?.id) {
     const data = async () => {
       switch (params?.type) {
-        case 'trucks':
+        case "trucks":
           return await agent.LoadData.truck(params.id);
-        case 'machinery':
+        case "machinery":
           return await agent.LoadData.machinery(params.id);
         default:
           return await agent.LoadData.stock(params.id);
       }
-    }
-    const stockitem = await data()
+    };
+    const stockitem = await data();
     return {
       title: stockitem.data.stockCode + " - " + stockitem.data.listingTitle,
       description:
@@ -43,20 +43,18 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 export default async function CarDetailed({ params }: Props) {
-
   const data = async () => {
     switch (params.type) {
-      case 'trucks':
+      case "trucks":
         return await agent.LoadData.truck(params.id);
-      case 'machinery':
+      case "machinery":
         return await agent.LoadData.machinery(params.id);
 
       default:
         return await agent.LoadData.stock(params.id);
     }
-
-  }
-  const Stock = await data()
+  };
+  const Stock = await data();
   const Countries = await agent.LoadData.countryList(); //db.tblMasterCountry.findMany({where: {IsActive:true}});
   const PortMapping = await agent.LoadData.portmapping();
   const Ports = await agent.LoadData.portsList();

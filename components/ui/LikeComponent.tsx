@@ -55,7 +55,16 @@ export default function LikeComponent({ fav, car }: Prop) {
   };
   return (
     <>
-      <Image alt="fav" className="cursor-pointer" width={25} height={25} onClick={toggle} src={isfav ? '/assets/images/heart.png' : '/assets/images/heartblack.png'} />
+      <Image
+        alt="fav"
+        className="cursor-pointer"
+        width={25}
+        height={25}
+        onClick={toggle}
+        src={
+          isfav ? "/assets/images/heart.png" : "/assets/images/heartblack.png"
+        }
+      />
       {/* {isfav ? (
         <AiFillHeart
           className="xl:ml-0 2xl:ml-20 cursor-pointer"

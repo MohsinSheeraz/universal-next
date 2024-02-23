@@ -442,6 +442,5 @@ export default function CarsSimpleSearch({
         </div>
       </div>
     </form>
-
   );
 }

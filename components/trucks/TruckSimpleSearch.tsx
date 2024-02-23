@@ -33,7 +33,7 @@ export default function TruckSimpleSearch({
   color,
   transmission,
   drivetrain,
-  fuel
+  fuel,
 }: Props) {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
@@ -99,7 +99,6 @@ export default function TruckSimpleSearch({
     setLoading(true);
     router.push(`/global/results/list/trucks?${params.toString()}`);
     setLoading(false);
-
   }
 
   return (
@@ -107,7 +106,9 @@ export default function TruckSimpleSearch({
     <Form onSubmit={handleSubmit} autoComplete="off">
       <div className=" row mt-4 gap-y-2  border border-gray-200 mx-2 bg-slate-100 rounded-2xl py-3 shadow-md">
         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Make: </label>
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Make:{" "}
+          </label>
           {/*<SearchSelect value={makeId} onValueChange={setMakeId}>*/}
           <SearchSelect value={makeId} onValueChange={handleValueChange}>
             {makes
@@ -117,7 +118,7 @@ export default function TruckSimpleSearch({
                   key={make.makeId}
                   value={make.makeId.toString()}
                 >
-                  {make.makeName} { }
+                  {make.makeName} {}
                 </SearchSelectItem>
               ))}
           </SearchSelect>
@@ -182,9 +183,6 @@ export default function TruckSimpleSearch({
         </div>
         {isMore && (
           <>
-
-
-
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Transmission:
@@ -222,7 +220,10 @@ export default function TruckSimpleSearch({
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Drivetrain:
               </label>
-              <SearchSelect value={drivetrainId} onValueChange={setDrivetrainId}>
+              <SearchSelect
+                value={drivetrainId}
+                onValueChange={setDrivetrainId}
+              >
                 {drivetrain.map((train) => (
                   <SearchSelectItem
                     key={train.drivetrainId}
