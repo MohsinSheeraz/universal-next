@@ -127,7 +127,9 @@ const LoadData = {
       `trucks?PageSize=25&pageNumber=${currentPage}&${filter}`
     ),
   machineryList: (filter: string, currentPage: number) =>
-    request.get<Machinery[]>(`machinery?pageNumber=${currentPage}&pageSize=25&${filter}`),
+    request.get<Machinery[]>(
+      `machinery?pageNumber=${currentPage}&pageSize=25&${filter}`
+    ),
   homepageStockList: () =>
     requestNoCache.get<StockCars[]>("carstock/homepage_cars"),
   //test: () => await fetch(baseURL+"carstock/homepage_cars", {cache: 'no-store'});

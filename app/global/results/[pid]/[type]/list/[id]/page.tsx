@@ -8,7 +8,15 @@ import { Make } from "@/models/Master/Make";
 import content from "@/utils/categoryContent.json";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { GetBodyTypes, GetCarMakes, GetColors, GetDrivetrain, GetFuel, GetLocations, GetTransmission } from "./components/loadData";
+import {
+  GetBodyTypes,
+  GetCarMakes,
+  GetColors,
+  GetDrivetrain,
+  GetFuel,
+  GetLocations,
+  GetTransmission,
+} from "./components/loadData";
 interface Props {
   searchParams: {
     makeID: number;

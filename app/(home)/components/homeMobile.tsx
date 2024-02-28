@@ -1,5 +1,5 @@
 import agent from "@/api/agent";
-import { GetBodyTypes } from "@/app/global/results/[pid]/cars/list/[id]/components/loadData";
+import { GetBodyTypes } from "@/app/global/results/[pid]/[type]/list/[id]/components/loadData";
 import TabButtons from "./buttons";
 const GetLocations = async () => {
   const res = await agent.LoadData.countryList(); //return await prisma.tblMasterCountry.findMany({where: {IsActive:true}} );
