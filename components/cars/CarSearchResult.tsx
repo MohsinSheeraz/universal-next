@@ -117,7 +117,7 @@ export default function CarSearchResult({ locations, params }: Props) {
     }
 
     const filterString = queryStringParts.join("&");
-    GetStock(filterString).then((r) => console.log(r));
+    GetStock(filterString).then((r) => { });
   }, [searchParams, currentPage]);
   const router = useRouter();
   return (
@@ -311,7 +311,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                     {" "}
                     {car.listingTitle}
                   </p>
-                  <p className="text-[#221C63] flex items-center !mt-4 xl:!mt-0 text-center py-2 text-[14px] font-semibold border-b border-gray-100 w-[90%] mx-auto">
+                  <div className="text-[#221C63] flex items-center !mt-4 xl:!mt-0 text-center py-2 text-[14px] font-semibold border-b border-gray-100 w-[90%] mx-auto">
                     FOB Price:{" "}
                     <span className="ml-2">
                       {" "}
@@ -320,7 +320,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                         <PriceFormat carPrice={car.price} />
                       </div>
                     </span>
-                  </p>
+                  </div>
                   <p className="text-[#221C63] font-semibold text-center text-[18px] xl:text-[20px]">
                     Total Price: <br /> ASK{" "}
                   </p>

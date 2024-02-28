@@ -92,22 +92,22 @@ export default function SearchBar() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="m1 1 4 4 4-4"
               />
             </svg>
           </button>
           <div
             id="dropdown"
-            className={` ${
-              !dropdown && "hidden"
-            } absolute z-50  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
+            className={` ${!dropdown && "hidden"
+              } absolute z-50  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
           >
-            {vehicleTypes.map((item) => {
+            {vehicleTypes.map((item, i) => {
               return (
                 <button
+                  key={i}
                   onClick={() => {
                     setSearchCategory(item.id);
                   }}
@@ -145,9 +145,9 @@ export default function SearchBar() {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                 />
               </svg>

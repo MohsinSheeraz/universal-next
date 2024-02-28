@@ -26,7 +26,7 @@ const initialState = {
   toYear: 0,
 };
 
-export default async function HomeUI({
+export default function HomeUI({
   makeList,
   bodyTlist,
   color,
