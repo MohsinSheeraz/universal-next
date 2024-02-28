@@ -12,12 +12,11 @@ import { FaGasPump } from "react-icons/fa";
 import { GiCarDoor } from "react-icons/gi";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 
+import reserved from "@/public/assets/images/reserved.png";
 import PriceFormat from "@/utils/PriceFormat";
 import Link from "next/link";
 import { PiEngineFill, PiGearFineBold } from "react-icons/pi";
 import LikeComponent from "../ui/LikeComponent";
-import Reserved from "@/app/(dashboard-layout)/dashboard/components/Forms/reserved";
-import reserved from "@/public/assets/images/reserved.png";
 interface Props {
   locations: Country[];
   params: URLSearchParams;
@@ -138,12 +137,11 @@ export default function CarSearchResult({ locations, params }: Props) {
               key={car.stockId}
               onClick={() => {
                 router.push(
-                  `/global/results/${
-                    car.makeName.replaceAll(" ", "-") +
-                    "-" +
-                    car.modelName.replaceAll(" ", "-") +
-                    "-" +
-                    car.year
+                  `/global/results/${car.makeName.replaceAll(" ", "-") +
+                  "-" +
+                  car.modelName.replaceAll(" ", "-") +
+                  "-" +
+                  car.year
                   }/${type?.type}/${car.stockId}`
                 );
               }}
@@ -176,9 +174,8 @@ export default function CarSearchResult({ locations, params }: Props) {
                 </div>
                 <div className="absolute bottom-2 right-[22%] flex  font-semibold text-[14px]">
                   <Image
-                    src={`/assets/images/flags/${
-                      locations.find((x) => x.countryId == car.locationId)?.slug
-                    }.svg`}
+                    src={`/assets/images/flags/${locations.find((x) => x.countryId == car.locationId)?.slug
+                      }.svg`}
                     className="img-fluid mr-2"
                     height={20}
                     width={20}
@@ -314,7 +311,7 @@ export default function CarSearchResult({ locations, params }: Props) {
                     {" "}
                     {car.listingTitle}
                   </p>
-                  <p className="text-[#221C63] flex !mt-4 xl:!mt-0 text-center py-2 text-[14px] font-semibold border-b border-gray-100 w-[90%] mx-auto">
+                  <p className="text-[#221C63] flex items-center !mt-4 xl:!mt-0 text-center py-2 text-[14px] font-semibold border-b border-gray-100 w-[90%] mx-auto">
                     FOB Price:{" "}
                     <span className="ml-2">
                       {" "}
@@ -328,13 +325,12 @@ export default function CarSearchResult({ locations, params }: Props) {
                     Total Price: <br /> ASK{" "}
                   </p>
                   <Link
-                    href={`/global/results/${
-                      car.makeName.replaceAll(" ", "-") +
+                    href={`/global/results/${car.makeName.replaceAll(" ", "-") +
                       "-" +
                       car.modelName.replaceAll(" ", "-") +
                       "-" +
                       car.year
-                    }/${type?.type}/${car.stockId}`}
+                      }/${type?.type}/${car.stockId}`}
                   >
                     <button className="text-[18px] mt-3 xl:mt-0 px-4 mb-2 py-1 rounded-full text-[#221C63] font-semibold border-[1px] border-[#221C63]  ">
                       Send Offer
