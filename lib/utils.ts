@@ -11,7 +11,7 @@ export function formatPrice(
 }
 
 export default function NumberFormat(numbers: number) {
-  return numbers.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return numbers?.toString()?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 export function slugify(str: string) {

@@ -22,6 +22,31 @@ export default function Favorite() {
     getData();
   }, [fetch]);
   const totalPages = Math.ceil(fav.length / itemsPerPage);
+  const getLink = (item: any) => {
+    switch (item?.vehicleTypeId) {
+      case 1:
+        return `/global/results/${item.makeName.replace(" ", "-") +
+          "-" +
+          item.modelName.replaceAll(" ", "-") +
+          "-" +
+          item.year
+          }/cars/${item.stockID}`
+      case 2:
+        return `/global/results/${item.makeName.replace(" ", "-") +
+          "-" +
+          item.modelName.replaceAll(" ", "-") +
+          "-" +
+          item.year
+          }/trucks/${item.stockID}`
+      default:
+        return `/global/results/${item.makeName.replace(" ", "-") +
+          "-" +
+          item.modelName.replaceAll(" ", "-") +
+          "-" +
+          item.year
+          }/machinery/${item.stockID}`
+    }
+  }
   return (
     <div className="flex flex-col gap-5 my-5">
       {/* {fav.map((item: any) => {
@@ -68,24 +93,11 @@ export default function Favorite() {
                   <td className="px-6 py-4">
                     <PriceFormat carPrice={item.price} />
                   </td>
+                  {/* TODO add machinery link in favorite */}
                   <td className="px-6 py-4 flex gap-1">
                     <Link
                       href={
-                        item?.vehicleTypeId == 2
-                          ? `/global/results/${
-                              item.makeName.replace(" ", "-") +
-                              "-" +
-                              item.modelName.replaceAll(" ", "-") +
-                              "-" +
-                              item.year
-                            }/trucks/${item.stockID}`
-                          : `/global/results/${
-                              item.makeName.replace(" ", "-") +
-                              "-" +
-                              item.modelName.replaceAll(" ", "-") +
-                              "-" +
-                              item.year
-                            }/cars/${item.stockID}`
+                        getLink(item)
                       }
                     >
                       <button className="bg-[#221C63] hover:bg-[#857de0] text-white font-bold py-2 px-4 rounded">

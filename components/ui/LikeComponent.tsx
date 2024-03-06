@@ -1,9 +1,9 @@
 "use client";
 import { addFavourite, removeFavourite } from "@/api/agent";
 import { useUserStore } from "@/store/store";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-toastify";
 
 type Prop = {
@@ -20,26 +20,7 @@ export default function LikeComponent({ fav, car }: Prop) {
     }
   }, [isfa]);
 
-  const { user, setIsUpdate, update: updateData } = useUserStore();
-
-  // const login = useGoogleLogin({
-  //   onSuccess: async (tokenResponse: any) => {
-  //     await axios
-  //       .get("https://www.googleapis.com/oauth2/v3/userinfo", {
-  //         headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
-  //       })
-  //       .then((res) => {
-  //         checkEmail(
-  //           res.data.email,
-  //           res.data?.picture,
-  //           res.data?.name,
-  //           setIsUpdate,
-  //           updateData,
-  //           router
-  //         );
-  //       });
-  //   },
-  // });
+  const { user } = useUserStore();
   const addToFavourite = () => {
     if (user && user.customerId) {
       if (isfav) {
@@ -65,20 +46,33 @@ export default function LikeComponent({ fav, car }: Prop) {
     router.push("/sign-in");
   };
 
-  const toggle = () => {
+  const toggle = (e: any) => {
+    e.stopPropagation();
+
     // setStatus(!status);
     addToFavourite();
     //        onClick();
   };
   return (
     <>
-      {isfav ? (
+      <Image
+        alt="fav"
+        className="cursor-pointer"
+        width={25}
+        height={25}
+        onClick={toggle}
+        src={
+          isfav ? "/assets/images/heart.png" : "/assets/images/heartblack.png"
+        }
+      />
+      {/* {isfav ? (
         <AiFillHeart
           className="xl:ml-0 2xl:ml-20 cursor-pointer"
           color="#ff6b81"
           size={20}
           onClick={toggle}
         />
+
       ) : (
         <span
           onClick={toggle}
@@ -91,7 +85,7 @@ export default function LikeComponent({ fav, car }: Prop) {
           />{" "}
           Add to Favorites
         </span>
-      )}
+      )} */}
     </>
   );
 }

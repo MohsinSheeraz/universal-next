@@ -26,7 +26,7 @@ interface Props {
 const GetModelWiseMakeList = async (modelID: string) => {
   return await agent.LoadData.carModelByMakeList(modelID); // db.tblBodyTypes.findMany({where: {isActive:true}});
 };
-export default function TruckSimpleSearch({
+export default function MachinerySimpleSearch({
   bodyTypes,
   makes,
   yearList,
@@ -37,8 +37,8 @@ export default function TruckSimpleSearch({
 }: Props) {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
-  const [isMore, setIsMore] = useState(false);
   const [makeId, setMakeId] = useState("0");
+  const [isMore, setIsMore] = useState(false);
   const [steeringTypeId, setSteeringTypeId] = useState("0");
   const [colorId, setColorId] = useState("0");
   const [transmissionId, setTransmissionId] = useState("0");
@@ -49,6 +49,7 @@ export default function TruckSimpleSearch({
   const [mileage, setMileage] = useState("0");
   const [toPrice, setToPrice] = useState("0");
   const [toYear, setToYear] = useState("0");
+
   const handleValueChange = async (selectedValue: string) => {
     const selectedMakeID = selectedValue;
     setMakeId(selectedMakeID);
@@ -97,14 +98,14 @@ export default function TruckSimpleSearch({
     if (fuelId !== "0") params.set("FuelId", fuelId);
     if (colorId !== "0") params.set("ColorId", colorId);
     setLoading(true);
-    router.push(`/global/results/list/trucks?${params.toString()}`);
+    router.push(`/global/results/list/machinery?${params.toString()}`);
     setLoading(false);
   }
 
   return (
     // <div className="showcase-Box carform mb-5">
     <Form onSubmit={handleSubmit} autoComplete="off">
-      <div className=" row mt-4 gap-y-2  border border-gray-200 mx-2 bg-slate-100 rounded-2xl py-3 shadow-md">
+      <div className=" row mt-4 gap-y-5  border border-gray-200 mx-2 bg-slate-100 rounded-2xl py-3 shadow-md">
         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Make:{" "}
@@ -112,7 +113,7 @@ export default function TruckSimpleSearch({
           {/*<SearchSelect value={makeId} onValueChange={setMakeId}>*/}
           <SearchSelect value={makeId} onValueChange={handleValueChange}>
             {makes
-              .filter((make) => make.vehicleTypeId == 2)
+              .filter((make) => make.vehicleTypeId == 3)
               .map((make) => (
                 <SearchSelectItem
                   key={make.makeId}
@@ -181,6 +182,7 @@ export default function TruckSimpleSearch({
             <SearchSelectItem value="50000">$50,000</SearchSelectItem>
           </SearchSelect>
         </div>
+
         {isMore && (
           <>
             <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">

@@ -66,4 +66,5 @@ export interface StockCars {
   model: any;
   steeringType: SteeringType;
   transmission: Transmission;
+  colorHex: string;
 }

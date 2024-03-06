@@ -286,6 +286,114 @@ export default function BankInformation() {
                     </span>
                   </p>
                 </div>
+                <div className="border rounded-2xl bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                  <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
+                    {" "}
+                    UNIVERSAL AUTO TRADING AED ACCOUNT
+                  </h5>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Bank Name :</span>
+                    <span className="color-span">
+                      <b> WIO BANK PJSC</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Account Name :</span>
+                    <span className="color-span">
+                      <b>Universal Auto Trading FZ-LLC</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3"> Account Number :</span>
+                    <span className="color-span">
+                      <b>AE360860000009948535053</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">SWIFT Code :</span>
+                    <span className="color-span">
+                      <b>WIOBAEADXXX</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Branch Name :</span>
+                    <span className="color-span">
+                      <b>Etihad Airways Center, 5TH Floor - Abu Dhabi - UAE</b>
+                    </span>
+                  </p>
+                </div>
+                <div className="border rounded-2xl bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                  <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
+                    {" "}
+                    UNIVERSAL AUTO TRADING USD ACCOUNT
+                  </h5>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Bank Name :</span>
+                    <span className="color-span">
+                      <b> WIO BANK PJSC</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Account Name :</span>
+                    <span className="color-span">
+                      <b>Universal Auto Trading FZ-LLC</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3"> Account Number :</span>
+                    <span className="color-span">
+                      <b>AE060860000009573377714</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">SWIFT Code :</span>
+                    <span className="color-span">
+                      <b>WIOBAEADXXX</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Branch Name :</span>
+                    <span className="color-span">
+                      <b>Etihad Airways Center, 5TH Floor - Abu Dhabi - UAE</b>
+                    </span>
+                  </p>
+                </div>
+                <div className="border rounded-2xl bg-[#F9FAFB] border-gray-100 px-4 py-6 sm:col-span-1 sm:px-0">
+                  <h5 className="text-2xl font-semibold underline underline-offset-4 leading-normal mt-0 mb-2 text-blue-950">
+                    {" "}
+                    RIZUBI TRADING JAPAN ACCOUNT
+                  </h5>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Bank Name :</span>
+                    <span className="color-span">
+                      <b>Mitsubishi UFJ Bank</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Account Name :</span>
+                    <span className="color-span">
+                      <b>Rizubi Trading</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3"> Account Number :</span>
+                    <span className="color-span">
+                      <b>318-1024791</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">SWIFT Code :</span>
+                    <span className="color-span">
+                      <b> BOTKJPJT</b>
+                    </span>
+                  </p>
+                  <p style={{ marginBottom: "0rem !important" }}>
+                    <span className="mr-3">Branch Name :</span>
+                    <span className="color-span">
+                      <b>Ebara Branch</b>
+                    </span>
+                  </p>
+                </div>
               </dl>
             </div>
           </div>

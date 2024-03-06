@@ -1,8 +1,4 @@
 import agent from "@/api/agent";
-// import CarDetailedSlideshow from "@/app/global/results/cars/[id]/CarDetailedSlideshow";
-// import PriceCalculator from "@/app/global/results/cars/[id]/PriceCalculator";
-// import StockKeyInformation from "@/app/global/results/cars/[id]/StockKeyInformation";
-// import StockSpecification from "@/app/global/results/cars/[id]/StockSpecification";
 import DescriptionUI from "@/components/ui/DescriptionUI";
 import CarDetailedSlideshow from "./CarDetailedSlideshow";
 import PriceCalculator from "./PriceCalculator";
@@ -13,12 +9,23 @@ import CountdownTimer from "./counter";
 interface Props {
   params: {
     id: number;
+    type: string;
   };
 }
 
 export async function generateMetadata({ params }: Props) {
   if (params && params?.id) {
-    const stockitem = await agent.LoadData.stock(params.id);
+    const data = async () => {
+      switch (params?.type) {
+        case "trucks":
+          return await agent.LoadData.truck(params.id);
+        case "machinery":
+          return await agent.LoadData.machinery(params.id);
+        default:
+          return await agent.LoadData.stock(params.id);
+      }
+    };
+    const stockitem = await data();
     return {
       title: stockitem.data.stockCode + " - " + stockitem.data.listingTitle,
       description:
@@ -36,7 +43,18 @@ export async function generateMetadata({ params }: Props) {
   }
 }
 export default async function CarDetailed({ params }: Props) {
-  const Stock = await agent.LoadData.stock(params.id);
+  const data = async () => {
+    switch (params.type) {
+      case "trucks":
+        return await agent.LoadData.truck(params.id);
+      case "machinery":
+        return await agent.LoadData.machinery(params.id);
+
+      default:
+        return await agent.LoadData.stock(params.id);
+    }
+  };
+  const Stock = await data();
   const Countries = await agent.LoadData.countryList(); //db.tblMasterCountry.findMany({where: {IsActive:true}});
   const PortMapping = await agent.LoadData.portmapping();
   const Ports = await agent.LoadData.portsList();
@@ -45,6 +63,7 @@ export default async function CarDetailed({ params }: Props) {
   );
   const freightChargeMaster = await agent.LoadData.freightcost();
   const inspectionCost = await agent.LoadData.inspectioncost();
+
   if (Stock != null)
     return (
       <>

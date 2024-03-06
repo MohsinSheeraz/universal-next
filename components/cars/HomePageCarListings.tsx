@@ -43,17 +43,17 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                   .filter((car) => car.locationId == 84)
                   .sort((a, b) => b.stockId - a.stockId)
                   // .slice(0,10)
-                  .map((car) => (
+                  .map((car, i) => (
                     <CarCard
+                      key={i}
                       fav={fav}
                       car={car}
-                      href={`/global/results/${
-                        car.makeName.replaceAll(" ", "-") +
+                      href={`/global/results/${car.makeName.replaceAll(" ", "-") +
                         "-" +
                         car.modelName.replaceAll(" ", "-") +
                         "-" +
                         car.year
-                      }/cars/${car.stockId}`}
+                        }/cars/${car.stockId}`}
                     />
                   ))}
               </div>
@@ -72,17 +72,17 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
 
             <div className="w-[95%] lg:w-full m-auto overflow-x-auto ">
               <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-3 w-full ">
-                {trucks.slice(0, 10).map((car) => (
+                {trucks.slice(0, 10).map((car, i) => (
                   <CarCard
+                    key={i}
                     fav={fav}
                     car={car}
-                    href={`/global/results/${
-                      car.makeName.replaceAll(" ", "-") +
+                    href={`/global/results/${car.makeName.replaceAll(" ", "-") +
                       "-" +
                       car.modelName.replaceAll(" ", "-") +
                       "-" +
                       car.year
-                    }/trucks/${car.stockId}`}
+                      }/trucks/${car.stockId}`}
                   />
                 ))}
               </div>
@@ -106,18 +106,18 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                       .filter((car) => car.locationId == 185)
                       .sort((a, b) => b.stockId - a.stockId)
                       // .slice(0,10)
-                      .map((car) => (
+                      .map((car, i) => (
                         // <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
                         <CarCard
                           fav={fav}
                           car={car}
-                          href={`/global/results/${
-                            car.makeName.replace(" ", "-") +
+                          key={i}
+                          href={`/global/results/${car.makeName.replace(" ", "-") +
                             "-" +
                             car.modelName.replaceAll(" ", "-") +
                             "-" +
                             car.year
-                          }/cars/${car.stockId}`}
+                            }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>
@@ -148,17 +148,17 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                       )
                       .sort((a, b) => b.stockId - a.stockId)
                       // .slice(0,10)
-                      .map((car) => (
+                      .map((car, i) => (
                         <CarCard
+                          key={i}
                           fav={fav}
                           car={car}
-                          href={`/global/results/${
-                            car.makeName.replace(" ", "-") +
+                          href={`/global/results/${car.makeName.replace(" ", "-") +
                             "-" +
                             car.modelName.replaceAll(" ", "-") +
                             "-" +
                             car.year
-                          }/cars/${car.stockId}`}
+                            }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>
