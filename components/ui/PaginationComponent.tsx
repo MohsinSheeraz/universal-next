@@ -116,8 +116,9 @@ export default function PaginationComponent({
                   <>
                     <a
                       href="#"
-                      className={`relative inline-flex items-center rounded-l-md px-2 py-2  text-white ${pageNumbers === currentPage ? "bg-indigo-600 " : ""
-                        } bg-indigo-600 ring-1 ring-inset ring-gray-300 hover:bg-indigo-400 focus:z-20 focus:outline-offset-0`}
+                      className={`relative inline-flex items-center rounded-l-md px-2 py-2  text-white ${
+                        pageNumbers === currentPage ? "bg-indigo-600 " : ""
+                      } bg-indigo-600 ring-1 ring-inset ring-gray-300 hover:bg-indigo-400 focus:z-20 focus:outline-offset-0`}
                       onClick={(event) => {
                         event.preventDefault();
                         setCurrentPage(currentPage - 1);
@@ -148,10 +149,11 @@ export default function PaginationComponent({
                   <a
                     href="#"
                     key={page}
-                    className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${page === currentPage
-                      ? "bg-indigo-600 text-white "
-                      : "text-gray-900 ring-1 ring-inset ring-gray-300 "
-                      }    hover:bg-gray-50 focus:z-20 focus:outline-offset-0`}
+                    className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold ${
+                      page === currentPage
+                        ? "bg-indigo-600 text-white "
+                        : "text-gray-900 ring-1 ring-inset ring-gray-300 "
+                    }    hover:bg-gray-50 focus:z-20 focus:outline-offset-0`}
                     onClick={(event) => {
                       event.preventDefault();
                       setCurrentPage(page);

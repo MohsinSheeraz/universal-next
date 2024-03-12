@@ -117,7 +117,7 @@ export default function CarSearchResult({ locations, params }: Props) {
     }
 
     const filterString = queryStringParts.join("&");
-    GetStock(filterString).then((r) => { });
+    GetStock(filterString).then((r) => {});
   }, [searchParams, currentPage]);
   const router = useRouter();
   return (
@@ -137,15 +137,16 @@ export default function CarSearchResult({ locations, params }: Props) {
               key={car.stockId}
               onClick={() => {
                 router.push(
-                  `/global/results/${car.makeName.replaceAll(" ", "-") +
-                  "-" +
-                  car.modelName.replaceAll(" ", "-") +
-                  "-" +
-                  car.year
+                  `/global/results/${
+                    car.makeName.replaceAll(" ", "-") +
+                    "-" +
+                    car.modelName.replaceAll(" ", "-") +
+                    "-" +
+                    car.year
                   }/${type?.type}/${car.stockId}`
                 );
               }}
-              className={`w-[200px] relative xl:static ${i % 2 ? "bg-slate-100" : "bg-white"} !pt-2 xl:!pt-0 xl:w-[95%] px-[10px]  items-center gap-3 shadow-md m-auto flex flex-col xl:flex-row h-[460px] xl:h-[200px] border border-gray-100 rounded-3xl `}
+              className={`w-[200px] relative xl:static ${i % 2 ? "bg-slate-100" : "bg-white"}  !pt-2 xl:!pt-0 xl:w-[95%] px-[10px]  items-center gap-3 shadow-md m-auto flex flex-col xl:flex-row h-[500px] xl:h-[200px] border border-gray-100 rounded-3xl `}
             >
               {/* <div className="relative !pb-0 xl:!pb-10"> */}
               <Image
@@ -167,15 +168,16 @@ export default function CarSearchResult({ locations, params }: Props) {
                   <Image className="w-[180px]" src={reserved} alt="" />
                 </div>
               )}
-              <div className="w-full  h-full xl:relative flex xl:items-center justify-center xl:justify-between">
+              <div className="w-full h-full  xl:relative flex xl:items-center justify-center xl:justify-between ">
                 <div className="absolute top-0 right-[40%] bg-[#221C63] text-white px-3 hidden xl:flex py-1 font-semibold rounded-b-lg text-[14px]">
                   {" "}
                   Stock ID: <span>{car.stockCode}</span>
                 </div>
                 <div className="absolute bottom-2 right-[22%] flex  font-semibold text-[14px]">
                   <Image
-                    src={`/assets/images/flags/${locations.find((x) => x.countryId == car.locationId)?.slug
-                      }.svg`}
+                    src={`/assets/images/flags/${
+                      locations.find((x) => x.countryId == car.locationId)?.slug
+                    }.svg`}
                     className="img-fluid mr-2"
                     height={20}
                     width={20}
@@ -311,11 +313,11 @@ export default function CarSearchResult({ locations, params }: Props) {
                     {" "}
                     {car.listingTitle}
                   </p>
-                  <div className="text-[#221C63] flex items-center !mt-4 xl:!mt-0 text-center py-2 text-[14px] font-semibold border-b border-gray-100 w-[90%] mx-auto">
+                  <div className="text-[#221C63] flex flex-col xl:flex-row items-center !mt-4 xl:!mt-0 text-center py-2 text-[14px] font-semibold border-b border-gray-100 w-[90%] mx-auto">
                     FOB Price:{" "}
                     <span className="ml-2">
                       {" "}
-                      <div className="bg-[#221C63] text-white  rounded-tl-3xl rounded-bl-3xl flex items-center gap-3 w-24 h-6">
+                      <div className="bg-[#221C63] text-white  rounded-tl-3xl rounded-bl-3xl flex items-center gap-3 w-28 h-6">
                         <div className="text-[30px] pl-4 pb-3">.</div>
                         <PriceFormat carPrice={car.price} />
                       </div>
@@ -325,14 +327,15 @@ export default function CarSearchResult({ locations, params }: Props) {
                     Total Price: <br /> ASK{" "}
                   </p>
                   <Link
-                    href={`/global/results/${car.makeName.replaceAll(" ", "-") +
+                    href={`/global/results/${
+                      car.makeName.replaceAll(" ", "-") +
                       "-" +
                       car.modelName.replaceAll(" ", "-") +
                       "-" +
                       car.year
-                      }/${type?.type}/${car.stockId}`}
+                    }/${type?.type}/${car.stockId}`}
                   >
-                    <button className="text-[18px] mt-3 xl:mt-0 px-4 mb-2 py-1 rounded-full text-[#221C63] font-semibold border-[1px] border-[#221C63]  ">
+                    <button className="text-[18px]  xl:mt-0 px-4 mb-2 py-1 rounded-full text-[#221C63] font-semibold border-[1px] border-[#221C63]  ">
                       Send Offer
                     </button>
                   </Link>

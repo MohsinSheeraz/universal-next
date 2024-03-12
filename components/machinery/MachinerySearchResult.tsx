@@ -108,7 +108,7 @@ export default function MachinerySearchResult({ locations, params }: Props) {
     }
 
     const filterString = queryStringParts.join("&");
-    GetStock(filterString).then((r) => { });
+    GetStock(filterString).then((r) => {});
   }, [searchParams, currentPage]);
 
   return (
@@ -131,12 +131,13 @@ export default function MachinerySearchResult({ locations, params }: Props) {
               <div className="col-xl-3 col-lg-3 col-md-3 col-sm-4 col-5">
                 <div className="searched-carimage ">
                   <Link
-                    href={`/global/results/${truck.makeName.replaceAll(" ", "-") +
+                    href={`/global/results/${
+                      truck.makeName.replaceAll(" ", "-") +
                       "-" +
                       truck.modelName.replaceAll(" ", "-") +
                       "-" +
                       truck.year
-                      }/machinery/${truck.stockId}`}
+                    }/machinery/${truck.stockId}`}
                   >
                     <div className="relative min-w-[150px] min-h-[150px]  md:h-[250px] overflow-hidden ">
                       <Image
@@ -196,12 +197,13 @@ export default function MachinerySearchResult({ locations, params }: Props) {
                   <div className="row ">
                     <div className="col-lg-6 col-md-6 col-sm-6">
                       <Link
-                        href={`/global/results/${truck.makeName.replaceAll(" ", "-") +
+                        href={`/global/results/${
+                          truck.makeName.replaceAll(" ", "-") +
                           "-" +
                           truck.modelName.replaceAll(" ", "-") +
                           "-" +
                           truck.year
-                          }/machinery/${truck.stockId}`}
+                        }/machinery/${truck.stockId}`}
                       >
                         <h6 className="listname font-bold uppercase">
                           {truck.listingTitle}
@@ -213,10 +215,11 @@ export default function MachinerySearchResult({ locations, params }: Props) {
                         <h6 className="text-right">
                           <span className="font-bold inline-flex">
                             <Image
-                              src={`/assets/images/flags/${locations.find(
-                                (x) => x.countryId == truck.locationId
-                              )?.slug
-                                }.svg`}
+                              src={`/assets/images/flags/${
+                                locations.find(
+                                  (x) => x.countryId == truck.locationId
+                                )?.slug
+                              }.svg`}
                               className="img-fluid mr-2"
                               height={20}
                               width={20}
@@ -418,12 +421,13 @@ export default function MachinerySearchResult({ locations, params }: Props) {
                   <h4 />
 
                   <Link
-                    href={`/global/results/${truck.makeName.replaceAll(" ", "-") +
+                    href={`/global/results/${
+                      truck.makeName.replaceAll(" ", "-") +
                       "-" +
                       truck.modelName.replaceAll(" ", "-") +
                       "-" +
                       truck.year
-                      }/${truck.stockId}`}
+                    }/${truck.stockId}`}
                   >
                     <button className="offerbtn">
                       <span className="font-bold"> Send Offer</span>
