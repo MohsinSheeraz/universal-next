@@ -48,12 +48,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                       key={i}
                       fav={fav}
                       car={car}
-                      href={`/global/results/${car.makeName.replaceAll(" ", "-") +
+                      href={`/global/results/${
+                        car.makeName.replaceAll(" ", "-") +
                         "-" +
                         car.modelName.replaceAll(" ", "-") +
                         "-" +
                         car.year
-                        }/cars/${car.stockId}`}
+                      }/cars/${car.stockId}`}
                     />
                   ))}
               </div>
@@ -77,12 +78,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                     key={i}
                     fav={fav}
                     car={car}
-                    href={`/global/results/${car.makeName.replaceAll(" ", "-") +
+                    href={`/global/results/${
+                      car.makeName.replaceAll(" ", "-") +
                       "-" +
                       car.modelName.replaceAll(" ", "-") +
                       "-" +
                       car.year
-                      }/trucks/${car.stockId}`}
+                    }/trucks/${car.stockId}`}
                   />
                 ))}
               </div>
@@ -112,12 +114,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                           fav={fav}
                           car={car}
                           key={i}
-                          href={`/global/results/${car.makeName.replace(" ", "-") +
+                          href={`/global/results/${
+                            car.makeName.replace(" ", "-") +
                             "-" +
                             car.modelName.replaceAll(" ", "-") +
                             "-" +
                             car.year
-                            }/cars/${car.stockId}`}
+                          }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>
@@ -153,12 +156,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                           key={i}
                           fav={fav}
                           car={car}
-                          href={`/global/results/${car.makeName.replace(" ", "-") +
+                          href={`/global/results/${
+                            car.makeName.replace(" ", "-") +
                             "-" +
                             car.modelName.replaceAll(" ", "-") +
                             "-" +
                             car.year
-                            }/cars/${car.stockId}`}
+                          }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>
