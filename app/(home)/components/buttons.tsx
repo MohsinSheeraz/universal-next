@@ -112,7 +112,8 @@ export default function TabButtons({
         <div className="grid grid-cols-3 gap-2 mb-2 mt-4">
           {button.map((e, i) => {
             return (
-              <button key={i}
+              <button
+                key={i}
                 className={`w-full h-auto py-1 border text-[12px] ${current === e ? "bg-[#221C63] text-white" : "text-[#333333] bg-[#efefef] "} `}
                 onClick={() => setCurrent(e)}
               >
