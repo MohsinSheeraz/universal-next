@@ -1,21 +1,14 @@
-import agent from "@/api/agent";
-import PaginationComponent from "@/components/ui/PaginationComponent";
-import { Country } from "@/models/Master/Country";
-import { PaginationHeader } from "@/models/Master/Pagination";
 import { StockCars } from "@/models/StockCars";
-import { useUserStore } from "@/store/store";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { FaGasPump } from "react-icons/fa";
 import { GiCarDoor } from "react-icons/gi";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 
+import LikeComponent from "@/components/ui/LikeComponent";
 import reserved from "@/public/assets/images/reserved.png";
 import PriceFormat from "@/utils/PriceFormat";
 import Link from "next/link";
 import { PiEngineFill, PiGearFineBold } from "react-icons/pi";
-import LikeComponent from "@/components/ui/LikeComponent";
 
 interface Props {
   // locations: Country[];
@@ -41,12 +34,11 @@ export default function WebCardCars({
             key={car.stockId}
             onClick={() => {
               router.push(
-                `/global/results/${
-                  car.makeName.replaceAll(" ", "-") +
-                  "-" +
-                  car.modelName.replaceAll(" ", "-") +
-                  "-" +
-                  car.year
+                `/global/results/${car.makeName.replaceAll(" ", "-") +
+                "-" +
+                car.modelName.replaceAll(" ", "-") +
+                "-" +
+                car.year
                 }/${type?.type}/${car.stockId}`
               );
             }}
@@ -79,12 +71,11 @@ export default function WebCardCars({
               </div>
               <div className="absolute bottom-2 mx-auto xl:right-[22%] flex  font-semibold text-[14px]">
                 <Image
-                  src={`/assets/images/flags/${
-                    locations.find(
-                      (x: { countryId: number }) =>
-                        x.countryId == car.locationId
-                    )?.slug
-                  }.svg`}
+                  src={`/assets/images/flags/${locations.find(
+                    (x: { countryId: number }) =>
+                      x.countryId == car.locationId
+                  )?.slug
+                    }.svg`}
                   className="img-fluid mr-2"
                   height={20}
                   width={20}
@@ -250,13 +241,12 @@ export default function WebCardCars({
                   Total Price: <br /> ASK{" "}
                 </p>
                 <Link
-                  href={`/global/results/${
-                    car.makeName.replaceAll(" ", "-") +
+                  href={`/global/results/${car.makeName.replaceAll(" ", "-") +
                     "-" +
                     car.modelName.replaceAll(" ", "-") +
                     "-" +
                     car.year
-                  }/${type?.type}/${car.stockId}`}
+                    }/${type?.type}/${car.stockId}`}
                 >
                   <button className="text-[18px]  xl:mt-0 px-4 mb-2 py-1 rounded-full text-[#221C63] font-semibold border-[1px] border-[#221C63]  ">
                     Send Offer

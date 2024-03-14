@@ -5,18 +5,9 @@ import { Country } from "@/models/Master/Country";
 import { PaginationHeader } from "@/models/Master/Pagination";
 import { StockCars } from "@/models/StockCars";
 import { useUserStore } from "@/store/store";
-import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FaGasPump } from "react-icons/fa";
-import { GiCarDoor } from "react-icons/gi";
-import { MdAirlineSeatReclineExtra } from "react-icons/md";
 
-import reserved from "@/public/assets/images/reserved.png";
-import PriceFormat from "@/utils/PriceFormat";
-import Link from "next/link";
-import { PiEngineFill, PiGearFineBold } from "react-icons/pi";
-import LikeComponent from "../ui/LikeComponent";
 import MobileCardCars from "./MobileCardCars";
 import WebCardCars from "./WebCardCars";
 interface Props {
@@ -119,7 +110,7 @@ export default function CarSearchResult({ locations, params }: Props) {
     }
 
     const filterString = queryStringParts.join("&");
-    GetStock(filterString).then((r) => {});
+    GetStock(filterString).then((r) => { });
   }, [searchParams, currentPage]);
   const router = useRouter();
   return (

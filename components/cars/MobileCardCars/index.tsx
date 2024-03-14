@@ -1,28 +1,17 @@
-import React from "react";
-import agent from "@/api/agent";
-import PaginationComponent from "@/components/ui/PaginationComponent";
-import { Country } from "@/models/Master/Country";
-import { PaginationHeader } from "@/models/Master/Pagination";
 import { StockCars } from "@/models/StockCars";
-import { useUserStore } from "@/store/store";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { FaGasPump } from "react-icons/fa";
 import { GiCarDoor } from "react-icons/gi";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
 
+import LikeComponent from "@/components/ui/LikeComponent";
 import reserved from "@/public/assets/images/reserved.png";
 import PriceFormat from "@/utils/PriceFormat";
 import Link from "next/link";
-import { PiEngineFill, PiGearFineBold } from "react-icons/pi";
-import LikeComponent from "@/components/ui/LikeComponent";
 import router from "next/router";
+import { PiEngineFill, PiGearFineBold } from "react-icons/pi";
 
-// import LikeComponent from "../ui/LikeComponent";
 interface Props {
-  // locations: Country[];
-  // params: URLSearchParams;
   searchdata: StockCars[];
   type: any;
   fav: any;
@@ -42,12 +31,11 @@ export default function MobileCardCars({
             key={car.stockId}
             onClick={() => {
               router.push(
-                `/global/results/${
-                  car.makeName.replaceAll(" ", "-") +
-                  "-" +
-                  car.modelName.replaceAll(" ", "-") +
-                  "-" +
-                  car.year
+                `/global/results/${car.makeName.replaceAll(" ", "-") +
+                "-" +
+                car.modelName.replaceAll(" ", "-") +
+                "-" +
+                car.year
                 }/${type?.type}/${car.stockId}`
               );
             }}
@@ -74,10 +62,7 @@ export default function MobileCardCars({
               </div>
             )}
             <div className="w-full h-full  xl:relative flex flex-col xl:items-center justify-center xl:justify-between ">
-              <div className="absolute top-0 right-[40%]  bg-[#221C63] text-white px-3 hidden xl:flex py-1 font-semibold rounded-b-lg text-[14px]">
-                {" "}
-                Stock ID: <span>{car.stockCode}</span>
-              </div>
+
               {/* <div className="absolute bottom-2 mx-auto xl:right-[22%] flex  font-semibold text-[14px]">
               <Image
                 src={`/assets/images/flags/${locations.find((x) => x.countryId == car.locationId)?.slug
@@ -99,7 +84,7 @@ export default function MobileCardCars({
                     {" "}
                     {car.listingTitle}
                   </p>
-                  <div className="bg-[#221C63] mx-auto w-[40%] h-[20px] text-white px-1 flex justify-center py-1 font-semibold rounded-lg text-[8px]">
+                  <div className="bg-[#221C63] mx-auto w-[40%] h-[20px] text-white px-1 flex items-center justify-center py-1 font-semibold rounded-lg text-[8px]">
                     {" "}
                     Stock ID: <span>{car.stockCode}</span>
                   </div>
@@ -257,12 +242,11 @@ export default function MobileCardCars({
                 <div className="flex items-center justify-between">
                   <div className=" flex items-center  font-semibold text-[14px]">
                     <Image
-                      src={`/assets/images/flags/${
-                        locations.find(
-                          (x: { countryId: any }) =>
-                            x.countryId == car.locationId
-                        )?.slug
-                      }.svg`}
+                      src={`/assets/images/flags/${locations.find(
+                        (x: { countryId: any }) =>
+                          x.countryId == car.locationId
+                      )?.slug
+                        }.svg`}
                       className="img-fluid mr-2"
                       height={20}
                       width={20}
@@ -271,13 +255,12 @@ export default function MobileCardCars({
                     {car.locationName}
                   </div>
                   <Link
-                    href={`/global/results/${
-                      car.makeName.replaceAll(" ", "-") +
+                    href={`/global/results/${car.makeName.replaceAll(" ", "-") +
                       "-" +
                       car.modelName.replaceAll(" ", "-") +
                       "-" +
                       car.year
-                    }/${type?.type}/${car.stockId}`}
+                      }/${type?.type}/${car.stockId}`}
                   >
                     <button className="text-[12px]  xl:mt-0 px-4 mb-2 py-1 rounded-full text-[#221C63] font-semibold border-[1px] border-[#221C63] ml-4 ">
                       Send Offer
