@@ -110,7 +110,7 @@ export default function CarSearchResult({ locations, params }: Props) {
     }
 
     const filterString = queryStringParts.join("&");
-    GetStock(filterString).then((r) => { });
+    GetStock(filterString).then((r) => {});
   }, [searchParams, currentPage]);
   const router = useRouter();
   return (
