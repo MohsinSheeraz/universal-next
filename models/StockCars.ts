@@ -67,4 +67,5 @@ export interface StockCars {
   steeringType: SteeringType;
   transmission: Transmission;
   colorHex: string;
+  operationHours: number;
 }

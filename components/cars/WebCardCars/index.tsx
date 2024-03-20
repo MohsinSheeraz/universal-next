@@ -94,20 +94,22 @@ export default function WebCardCars({
                   {car.listingTitle}
                 </p>
                 <div className="w-full  grid grid-cols-5  gap-x-4 gap-3">
-                  <div className="flex items-center flex-col ">
-                    <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
-                      Milage
-                    </p>
-                    <p className=" p-1  flex items-center rounded-md ">
-                      <img
-                        decoding="async"
-                        src="/assets/images/kmsDriven.svg"
-                        loading="eager"
-                        className="h-4 mr-2"
-                      />
-                      {car.mileage}
-                    </p>
-                  </div>
+                  {type.type !== "machinery" && (
+                    <div className="flex items-center flex-col ">
+                      <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
+                        Milage
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md ">
+                        <img
+                          decoding="async"
+                          src="/assets/images/kmsDriven.svg"
+                          loading="eager"
+                          className="h-4 mr-2"
+                        />
+                        {car.mileage}
+                      </p>
+                    </div>
+                  )}
                   <div className="flex items-center flex-col ">
                     <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
                       YEAR
@@ -122,29 +124,45 @@ export default function WebCardCars({
                       {car.year}
                     </p>
                   </div>
-                  <div className="flex items-center flex-col ">
-                    <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
-                      Engine
-                    </p>
-                    <p className=" p-1  flex items-center rounded-md ">
-                      <PiEngineFill style={{ marginRight: "8px" }} />
-                      {car.engineSize}
-                    </p>
-                  </div>
-                  <div className="flex items-center flex-col ">
-                    <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
-                      Transmission
-                    </p>
-                    <p className=" p-1  flex items-center rounded-md ">
-                      <img
-                        decoding="async"
-                        src="/assets/images/transmission.svg"
-                        loading="eager"
-                        className="h-4 mr-2"
-                      />
-                      {car.transmissionName}
-                    </p>
-                  </div>
+                  {type.type !== "machinery" && (
+                    <div className="flex items-center flex-col ">
+                      <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
+                        Engine
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md ">
+                        <PiEngineFill style={{ marginRight: "8px" }} />
+                        {car.engineSize}
+                      </p>
+                    </div>
+                  )}
+                  {type.type == "machinery" && (
+                    <div>
+                      <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
+                        Opertional Hours
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md justify-center">
+                        {car.operationHours}
+                      </p>
+                    </div>
+                  )}
+
+                  {type.type !== "machinery" && (
+                    <div className="flex items-center flex-col ">
+                      <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
+                        Transmission
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md ">
+                        <img
+                          decoding="async"
+                          src="/assets/images/transmission.svg"
+                          loading="eager"
+                          className="h-4 mr-2"
+                        />
+                        {car.transmissionName}
+                      </p>
+                    </div>
+                  )}
+
                   <div className="flex items-center flex-col ">
                     <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
                       Fuel
@@ -154,33 +172,41 @@ export default function WebCardCars({
                       {car.typeOfFuel}
                     </p>
                   </div>
-                  <div className="flex items-center flex-col ">
-                    <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
-                      Drivetrain
-                    </p>
-                    <p className=" p-1  flex items-center rounded-md ">
-                      <PiGearFineBold style={{ marginRight: "8px" }} />
-                      {car.drivetrainType}
-                    </p>
-                  </div>
-                  <div className="flex items-center flex-col ">
-                    <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
-                      Doors
-                    </p>
-                    <p className=" p-1  flex items-center rounded-md ">
-                      <GiCarDoor style={{ marginRight: "8px" }} />
-                      {car.noOfDoors}
-                    </p>
-                  </div>
-                  <div className="flex items-center flex-col ">
-                    <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
-                      Seats
-                    </p>
-                    <p className=" p-1  flex items-center rounded-md ">
-                      <MdAirlineSeatReclineExtra />
-                      {car.noOfSeats}
-                    </p>
-                  </div>
+                  {type.type !== "machinery" && (
+                    <div className="flex items-center flex-col ">
+                      <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
+                        Drivetrain
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md ">
+                        <PiGearFineBold style={{ marginRight: "8px" }} />
+                        {car.drivetrainType}
+                      </p>
+                    </div>
+                  )}
+                  {type.type !== "machinery" && (
+                    <div className="flex items-center flex-col ">
+                      <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
+                        Doors
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md ">
+                        <GiCarDoor style={{ marginRight: "8px" }} />
+                        {car.noOfDoors}
+                      </p>
+                    </div>
+                  )}
+
+                  {type.type !== "machinery" && (
+                    <div className="flex items-center flex-col ">
+                      <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
+                        Seats
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md ">
+                        <MdAirlineSeatReclineExtra />
+                        {car.noOfSeats}
+                      </p>
+                    </div>
+                  )}
+
                   <div className="flex items-center flex-col ">
                     <p className="!text-[10px] text-[#221C63] font-semibold xl:!text-[15px] 2xl:!text-base">
                       Color
