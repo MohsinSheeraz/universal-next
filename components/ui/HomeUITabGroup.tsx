@@ -10,7 +10,8 @@ import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
 import { Transmission } from "@/models/Master/Transmission";
 import { Tab } from "@headlessui/react";
-import { useState } from "react";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import MachinerySimpleSearch from "../machinery/MachinerySimpleSearch";
 
 interface TabType {
@@ -47,12 +48,29 @@ export default function HomeUITabGroup({
   fuel,
 }: Props) {
   const [currentForm, setCurrentForm] = useState("Cars");
+  const type = useParams();
   const currentYear = new Date().getFullYear();
   const fromYear = 1970;
   const yearList = Array.from({ length: currentYear - fromYear }, (_, index) =>
     (fromYear + index).toString()
   );
   const list = ["Cars", "Truck", "Heavy Machinery"];
+  useEffect(() => {
+    switch (type?.type) {
+      case "cars":
+        setCurrentForm("Cars")
+        return
+      case "trucks":
+        setCurrentForm("Truck")
+        return
+      case "machinery":
+        setCurrentForm("Heavy Machinery")
+        return
+
+      default:
+        break;
+    }
+  }, [])
   const getForm = () => {
     switch (currentForm) {
       case "Cars":
