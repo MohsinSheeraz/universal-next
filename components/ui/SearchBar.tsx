@@ -33,7 +33,9 @@ export default function SearchBar() {
         break;
 
       case "3":
-        router.push(`/global/results/search/machinery/?searchTerm=${searchKey}`);
+        router.push(
+          `/global/results/search/machinery/?searchTerm=${searchKey}`
+        );
         // Code to execute when searchCategory is 'case2'
         break;
       // Add more cases as needed
@@ -102,8 +104,9 @@ export default function SearchBar() {
           </button>
           <div
             id="dropdown"
-            className={` ${!dropdown && "hidden"
-              } absolute z-50  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
+            className={` ${
+              !dropdown && "hidden"
+            } absolute z-50  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}
           >
             {vehicleTypes.map((item, i) => {
               return (
@@ -111,6 +114,7 @@ export default function SearchBar() {
                   key={i}
                   onClick={() => {
                     setSearchCategory(item.id);
+                    setDropdown(!dropdown);
                   }}
                   className="inline-flex  text-gray-700 text-sm w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
