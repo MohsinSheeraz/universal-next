@@ -100,8 +100,8 @@ export default function MobileCardCars({
                     }/${type?.type}/${car.stockId}`}
                   >
                     {" "}
-                    {car.listingTitle
-                      </Link>
+                    {car.listingTitle}
+                     </Link>
                   </p>
                   <div className="bg-[#221C63] mx-auto w-[40%] h-[20px] text-white px-1 flex items-center justify-center py-1 font-semibold rounded-lg text-[8px]">
                     {" "}
