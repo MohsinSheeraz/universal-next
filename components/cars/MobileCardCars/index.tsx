@@ -3,7 +3,6 @@ import Image from "next/image";
 import { FaGasPump } from "react-icons/fa";
 import { GiCarDoor } from "react-icons/gi";
 import { MdAirlineSeatReclineExtra } from "react-icons/md";
-
 import LikeComponent from "@/components/ui/LikeComponent";
 import reserved from "@/public/assets/images/reserved.png";
 import PriceFormat from "@/utils/PriceFormat";
@@ -43,6 +42,15 @@ export default function MobileCardCars({
             className={`w-[90%] max-w-[400px] sm:w-[280px] relative xl:static ${i % 2 ? "bg-slate-100" : "bg-white"}  !pt-2 xl:!pt-0 xl:w-[95%] px-[10px]  items-center gap-3 shadow-md m-auto flex flex-col xl:flex-row h-[420px] xl:h-[200px] border border-gray-100 rounded-3xl `}
           >
             {/* <div className="relative !pb-0 xl:!pb-10"> */}
+             <Link
+                    href={`/global/results/${
+                      car.makeName.replaceAll(" ", "-") +
+                      "-" +
+                      car.modelName.replaceAll(" ", "-") +
+                      "-" +
+                      car.year
+                    }/${type?.type}/${car.stockId}`}
+                  >
             <Image
               src={car.imageUrl}
               width={261}
@@ -56,6 +64,7 @@ export default function MobileCardCars({
               }}
               alt={car.listingTitle}
             />
+               </Link>
             {/* </div> */}
             {car?.isReserved && (
               <div className="absolute">
@@ -81,8 +90,18 @@ export default function MobileCardCars({
               <div className="w-[95%] flex flex-col gap-2 ">
                 <div className="flex">
                   <p className="font-bold text-[#221C63] text-[10px] ">
+                     <Link
+                    href={`/global/results/${
+                      car.makeName.replaceAll(" ", "-") +
+                      "-" +
+                      car.modelName.replaceAll(" ", "-") +
+                      "-" +
+                      car.year
+                    }/${type?.type}/${car.stockId}`}
+                  >
                     {" "}
-                    {car.listingTitle}
+                    {car.listingTitle
+                      </Link>
                   </p>
                   <div className="bg-[#221C63] mx-auto w-[40%] h-[20px] text-white px-1 flex items-center justify-center py-1 font-semibold rounded-lg text-[8px]">
                     {" "}
@@ -91,20 +110,23 @@ export default function MobileCardCars({
                 </div>
 
                 <div className="w-full  grid grid-cols-5  gap-x-1 gap-3">
-                  <div className="flex items-center flex-col ">
-                    <p className="text-[6px] text-[#221C63] font-semibold ">
-                      Milage
-                    </p>
-                    <p className=" p-1  flex items-center rounded-md text-[8px]">
-                      <img
-                        decoding="async"
-                        src="/assets/images/kmsDriven.svg"
-                        loading="eager"
-                        className="h-3 mr-2 "
-                      />
-                      {car.mileage}
-                    </p>
-                  </div>
+                  {type.type !== "machinery" && (
+                    <div className="flex items-center flex-col ">
+                      <p className="text-[6px] text-[#221C63] font-semibold ">
+                        Milage
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md text-[8px]">
+                        <img
+                          decoding="async"
+                          src="/assets/images/kmsDriven.svg"
+                          loading="eager"
+                          className="h-3 mr-2 "
+                        />
+                        {car.mileage}
+                      </p>
+                    </div>
+                  )}
+
                   <div className="flex items-center flex-col ">
                     <p className="text-[6px] text-[#221C63] font-semibold ">
                       YEAR
@@ -119,29 +141,44 @@ export default function MobileCardCars({
                       {car.year}
                     </p>
                   </div>
-                  <div className="flex items-center flex-col ">
-                    <p className="text-[6px] text-[#221C63] font-semibold ">
-                      Engine
-                    </p>
-                    <p className=" p-1  flex items-center rounded-md text-[8px]">
-                      <PiEngineFill style={{ marginRight: "8px" }} />
-                      {car.engineSize}
-                    </p>
-                  </div>
-                  <div className="flex items-center flex-col ">
-                    <p className="text-[6px] text-[#221C63] font-semibold ">
-                      Transmission
-                    </p>
-                    <p className=" p-1  flex items-center rounded-md text-[8px]">
-                      <img
-                        decoding="async"
-                        src="/assets/images/transmission.svg"
-                        loading="eager"
-                        className="h-3 mr-2"
-                      />
-                      {car.transmissionName}
-                    </p>
-                  </div>
+                  {type.type == "machinery" && (
+                    <div>
+                      <p className="text-[6px] text-[#221C63] font-semibold ">
+                        Opertional Hours
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md text-[8px]">
+                        {car.operationHours}
+                      </p>
+                    </div>
+                  )}
+                  {type.type !== "machinery" && (
+                    <div className="flex items-center flex-col ">
+                      <p className="text-[6px] text-[#221C63] font-semibold ">
+                        Engine
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md text-[8px]">
+                        <PiEngineFill style={{ marginRight: "8px" }} />
+                        {car.engineSize}
+                      </p>
+                    </div>
+                  )}
+                  {type.type !== "machinery" && (
+                    <div className="flex items-center flex-col ">
+                      <p className="text-[6px] text-[#221C63] font-semibold ">
+                        Transmission
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md text-[8px]">
+                        <img
+                          decoding="async"
+                          src="/assets/images/transmission.svg"
+                          loading="eager"
+                          className="h-3 mr-2"
+                        />
+                        {car.transmissionName}
+                      </p>
+                    </div>
+                  )}
+
                   <div className="flex items-center flex-col ">
                     <p className="text-[6px] text-[#221C63] font-semibold ">
                       Fuel
@@ -151,33 +188,40 @@ export default function MobileCardCars({
                       {car.typeOfFuel}
                     </p>
                   </div>
-                  <div className="flex items-center flex-col ">
-                    <p className="text-[6px] text-[#221C63] font-semibold ">
-                      Drivetrain
-                    </p>
-                    <p className=" p-1  flex items-center rounded-md text-[8px]">
-                      <PiGearFineBold style={{ marginRight: "8px" }} />
-                      {car.drivetrainType}
-                    </p>
-                  </div>
-                  <div className="flex items-center flex-col ">
-                    <p className="text-[6px] text-[#221C63] font-semibold ">
-                      Doors
-                    </p>
-                    <p className=" p-1  flex items-center rounded-md text-[8px]">
-                      <GiCarDoor style={{ marginRight: "8px" }} />
-                      {car.noOfDoors}
-                    </p>
-                  </div>
-                  <div className="flex items-center flex-col ">
-                    <p className="text-[6px] text-[#221C63] font-semibold ">
-                      Seats
-                    </p>
-                    <p className=" p-1  flex items-center rounded-md text-[8px]">
-                      <MdAirlineSeatReclineExtra />
-                      {car.noOfSeats}
-                    </p>
-                  </div>
+                  {type.type !== "machinery" && (
+                    <div className="flex items-center flex-col ">
+                      <p className="text-[6px] text-[#221C63] font-semibold ">
+                        Drivetrain
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md text-[8px]">
+                        <PiGearFineBold style={{ marginRight: "8px" }} />
+                        {car.drivetrainType}
+                      </p>
+                    </div>
+                  )}
+                  {type.type !== "machinery" && (
+                    <div className="flex items-center flex-col ">
+                      <p className="text-[6px] text-[#221C63] font-semibold ">
+                        Doors
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md text-[8px]">
+                        <GiCarDoor style={{ marginRight: "8px" }} />
+                        {car.noOfDoors}
+                      </p>
+                    </div>
+                  )}
+                  {type.type !== "machinery" && (
+                    <div className="flex items-center flex-col ">
+                      <p className="text-[6px] text-[#221C63] font-semibold ">
+                        Seats
+                      </p>
+                      <p className=" p-1  flex items-center rounded-md text-[8px]">
+                        <MdAirlineSeatReclineExtra />
+                        {car.noOfSeats}
+                      </p>
+                    </div>
+                  )}
+
                   <div className="flex items-center flex-col ">
                     <p className="text-[6px] text-[#221C63] font-semibold ">
                       Color
