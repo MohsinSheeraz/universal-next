@@ -70,13 +70,13 @@ export default async function CarDetailed({ params }: Props) {
         <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 detailedsection">
           <div className="row">
             <section className="product-slider-section">
-              <div className="container-fluid ">
+              <div className="container-fluid px-[6%] lg:!px-0 ">
                 <div id="productslider" className="carousel slide">
                   <div className="row">
                     <h1 className="mobicar carname">
                       {Stock.data.listingTitle}
                     </h1>
-                    <div className="col-lg-6  detail-leftsection">
+                    <div className="col-lg-8  detail-leftsection">
                       <div className="row">
                         <div
                           id="wrap"
@@ -101,7 +101,7 @@ export default async function CarDetailed({ params }: Props) {
                         <DescriptionUI description={Stock.data.description} />
                       </div>
                     </div>
-                    <div className="col-lg-6 ">
+                    <div className="col-lg-4 ">
                       <h1 className="pccar carname">
                         {Stock.data.listingTitle}
                       </h1>
