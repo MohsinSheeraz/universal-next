@@ -20,7 +20,7 @@ export default function ByMake({ makes }: prop) {
             >
               <Link
                 href={{
-                  pathname: `/global/results/${make.slug}/cars/list/${make.makeId}`,
+                  pathname: `/global/results/${make.slug}/cars?makeID=${make.makeId}`,
                   // query: {
                   //   makeID: make.makeId,
                   // },
