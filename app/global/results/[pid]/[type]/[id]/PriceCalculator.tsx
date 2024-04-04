@@ -21,6 +21,7 @@ interface Props {
   stockCode: string;
   reservedBy: Number;
   isReserved: Boolean;
+  isSold: Boolean;
 }
 
 export default function PriceCalculator({
@@ -33,6 +34,7 @@ export default function PriceCalculator({
   reservedBy,
   stockCode,
   isReserved,
+  isSold
 }: Props) {
   const [countryID, setCountryID] = useState(0);
   const [portID, setPortID] = useState(0);

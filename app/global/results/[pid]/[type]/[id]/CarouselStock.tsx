@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import Carousel from "react-gallery-carousel";
+// import Carousel from "react-gallery-carousel";
 import "react-gallery-carousel/dist/index.css";
-
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 interface Props {
   imageURLs: { src: string }[];
   isReserved: Boolean;
@@ -23,13 +24,26 @@ export default function CarouselStock({ imageURLs, isReserved }: Props) {
   return (
     <>
       {/* <div className="w-full"> */}
-      <Carousel
+      {/* <div className="px-28 bg-black"> */}
+      {/* <Carousel
+
         images={imageURLs}
         className="!h-auto md:!h-[500px]"
         widgetsHasShadow={true}
         shouldMaximizeOnClick={hasSizeButton}
         playIcon={false}
-      />
+      /> */}
+      <ImageGallery autoPlay={false} showPlayButton={false} items={imageURLs.map((itm: any) => {
+        return {
+          original: itm?.src,
+          thumbnail: itm?.src
+
+        }
+      })} />
+      {/* </div> */}
+
+      {/* <Carousel.Components.Thumbnail className="object-none" /> */}
+      {/* </Carousel> */}
       {/* </div> */}
 
       {isReserved && (

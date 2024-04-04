@@ -175,6 +175,7 @@ export default async function CarDetailed({ params }: Props) {
                         portMapping={PortMapping.data}
                         freightCharges={freightChargeMaster.data}
                         inspectionCost={inspectionCost.data}
+                        isSold={Stock.data}
                         reservedBy={Stock.data.reservedBy}
                         stockCode={Stock.data.stockCode}
                         isReserved={Stock.data.isReserved}
