@@ -88,17 +88,19 @@ export default function MobileCardCars({
               <div className="w-[95%] flex flex-col gap-2 ">
                 <div className="flex">
                   <p className="font-bold text-[#221C63] text-[10px] ">
-                    <Link
-                      href={`/global/results/${car.makeName.replaceAll(" ", "-") +
-                        "-" +
-                        car.modelName.replaceAll(" ", "-") +
-                        "-" +
-                        car.year
-                        }/${type?.type}/${car.stockId}`}
-                    >
-                      {" "}
-                      {car.listingTitle}
-                    </Link>
+
+                     <Link
+                    href={`/global/results/${
+                      car.makeName.replaceAll(" ", "-") +
+                      "-" +
+                      car.modelName.replaceAll(" ", "-") +
+                      "-" +
+                      car.year
+                    }/${type?.type}/${car.stockId}`}
+                  >
+                    {" "}
+                    {car.listingTitle}
+                     </Link>
                   </p>
                   <div className="bg-[#221C63] mx-auto w-[40%] h-[20px] text-white px-1 flex items-center justify-center py-1 font-semibold rounded-lg text-[8px]">
                     {" "}
