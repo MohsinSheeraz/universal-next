@@ -20,10 +20,10 @@ export default function ByMake({ makes }: prop) {
             >
               <Link
                 href={{
-                  pathname: `/global/results/${make.slug}/cars?makeID=${make.makeId}`,
-                  // query: {
-                  //   makeID: make.makeId,
-                  // },
+                  pathname: `/global/results/${make.slug}/cars`,
+                  query: {
+                makeID: make.makeId,
+                 },
                 }}
               >
                 <div className="flex flex-col justify-center items-center ">
