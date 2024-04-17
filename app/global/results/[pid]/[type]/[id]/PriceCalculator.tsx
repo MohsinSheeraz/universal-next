@@ -168,11 +168,11 @@ export default function PriceCalculator({
                   <select
                     value={countryID}
                     onChange={handleCountryChange}
-                    className="w-2/3  gap-x-1.5 rounded-md bg-white px-3 py-2 !text-[9px] sm:!text-sm font-semibold text-blue-900 hover:bg-blue-100"
+                    className="w-2/3  gap-x-1.5 rounded-md bg-white !px-1 py-2 !text-[9px] sm:!text-[10px] font-semibold text-blue-900 hover:bg-blue-100"
                     aria-expanded="true"
                     aria-haspopup="true"
                   >
-                    <option value={0}>Select Destination</option>
+                    <option value={0} >Select Destination</option>
                     {countries.map((country) => (
                       // <SelectItem key={country.countryId} value={country.countryId.toString()}>{country.countryName}</SelectItem>
                       <option key={country.countryId} value={country.countryId}>
@@ -387,20 +387,20 @@ export default function PriceCalculator({
               </div>
             </div>
             <hr />
-            <div className="flex flex-row w-full">
-              <div className="flex !flex-col sm:!flex-row  basis-1/2 m-2">
-                <span className="m-2 text-sm !text-[9px] sm:!text-[15px]">
+            <div className="flex flex-row w-full my-3">
+              <div className="flex !flex-col sm:!flex-row items-center  basis-1/2 m-2">
+                <span className="m-2 text-sm !text-[9px] sm:!text-[13px] whitespace-nowrap">
                   Freight To :{" "}
                 </span>
 
                 <select
                   value={countryID}
                   onChange={handleCountryChange}
-                  className="w-2/3  gap-x-1.5 rounded-md bg-white px-3 py-2 !text-[9px] sm:!text-sm font-semibold text-blue-900 hover:bg-blue-100"
+                  className="w-2/3  gap-x-1.5 rounded-md bg-white px-2 py-2 !text-[9px] sm:!text-[11px] font-semibold text-blue-900 hover:bg-blue-100"
                   aria-expanded="true"
                   aria-haspopup="true"
                 >
-                  <option value={0}>Select Destination</option>
+                  <option value={0} >Select Destination</option>
                   {countries.map((country) => (
                     // <SelectItem key={country.countryId} value={country.countryId.toString()}>{country.countryName}</SelectItem>
                     <option key={country.countryId} value={country.countryId}>
@@ -408,15 +408,16 @@ export default function PriceCalculator({
                     </option>
                   ))}
                 </select>
+                {/* <Dropdown /> */}
               </div>
-              <div className="flex !flex-col sm:!flex-row  basis-1/2 m-2">
-                <span className="m-2 text-sm !text-[9px] sm:!text-[15px]">
+              <div className="flex !flex-col sm:!flex-row items-center basis-1/2 m-2">
+                <span className="m-2 text-sm !text-[9px] sm:!text-[13px] whitespace-nowrap">
                   Port/City :
                 </span>
                 <select
                   value={portID}
                   onChange={handlePortChange}
-                  className="w-2/3  gap-x-1.5 rounded-md  !text-[9px] sm:!text-sm bg-white px-3 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-100"
+                  className="w-2/3  gap-x-1.5 rounded-md  !text-[9px] sm:!text-[11px] bg-white px-3 py-2 text-sm font-semibold text-blue-900 hover:bg-blue-100"
                   aria-expanded="true"
                   aria-haspopup="true"
                 >
