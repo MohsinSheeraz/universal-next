@@ -6,6 +6,7 @@ const nextConfig = {
     missingSuspenseWithCSRBailout: false,
   },
   images: {
+    domains: ["avatars.githubusercontent.com", "cdn.sanity.io"],
     remotePatterns: [
       {
         protocol: "https",
@@ -13,6 +14,7 @@ const nextConfig = {
         port: "",
         pathname: "/umimages/**",
       },
+
     ],
   },
 };
