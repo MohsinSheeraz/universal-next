@@ -6,7 +6,9 @@ import { Button } from "@tremor/react";
 import classNames from "classnames";
 import Link from "next/link";
 import { Fragment } from "react";
+import { AiOutlineRead } from "react-icons/ai";
 import { CiBank } from "react-icons/ci";
+
 import { PiCreditCardBold } from "react-icons/pi";
 import { TbSquareRoundedChevronDownFilled } from "react-icons/tb";
 import { toast } from "react-toastify";
@@ -883,6 +885,27 @@ export default function Navigation() {
                             <span className="flex inline !text-[10px] xl:!text-xs">
                               Bank Information{" "}
                               <CiBank
+                                className="ml-2 h-4 w-4"
+                                aria-hidden="true"
+                              />
+                            </span>
+                          </Link>
+                        </Button>
+                      </li>
+                      <li className="p-4">
+                        <Button className="transition duration-300 ease-in-out hover:scale-110 inline-flex w-full justify-center gap-x-1.5 bg-transparent rounded-md px-1 xl:!px-3 py-1 xl:!py-2 text-xs  font-semibold !text-white border-2 !border-white hover:!border-[#9CA3AF] hover:!text-[#9CA3AF] shadow-sm ring-1 ring-inset ">
+                          <Link
+                            onClick={checkUser}
+                            href={
+                              user?.email && !isUpdate
+                                ? ""
+                                : "/blog"
+                            }
+                            className=""
+                          >
+                            <span className="flex inline !text-[10px] xl:!text-xs">
+                              Blogs
+                              <AiOutlineRead
                                 className="ml-2 h-4 w-4"
                                 aria-hidden="true"
                               />

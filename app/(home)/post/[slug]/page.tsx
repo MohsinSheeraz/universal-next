@@ -1,9 +1,9 @@
 import { PortableText } from "@portabletext/react";
 import { groq } from "next-sanity";
 import Image from "next/image";
-import { RichTextComponents } from "../../../../components/RichTextComponents";
 import { client } from "../../../../lib/sanity.client";
 import urlFor from "../../../../lib/urlFor";
+import { RichTextComponents } from "../../blog/components/RichTextComponents";
 
 type Props = {
   params: {
@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 		}
 		`;
 
-  const slugs: Post[] = await client.fetch(query);
+  const slugs: any[] = await client.fetch(query);
   const slugRoutes = slugs.map((slug) => slug.slug.current);
 
   return slugRoutes.map((slug) => ({
@@ -38,7 +38,7 @@ async function Post({ params: { slug } }: Props) {
 		}
 	`;
 
-  const post: Post = await client.fetch(query, { slug });
+  const post: any = await client.fetch(query, { slug });
 
   return (
     <article className="px-10 pb-28">
@@ -110,7 +110,7 @@ async function Post({ params: { slug } }: Props) {
             <div>
               <h2 className="italic pt-10">{post.description}</h2>
               <div className="flex items-center justify-end mt-auto space-x-2">
-                {post?.categories?.map((category) => (
+                {post?.categories?.map((category: any) => (
                   <p
                     key={category._id}
                     className="bg-gray-800 text-white px-3 py-1 rounded-lg text-sm font-semibold mt-4"
