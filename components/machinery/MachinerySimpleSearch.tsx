@@ -7,9 +7,10 @@ import { DrivetrainType } from "@/models/Master/DrivetrainType";
 import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
 import { Transmission } from "@/models/Master/Transmission";
+import { VehicleCategory } from "@/models/Master/VehicleCategory";
 import { SearchSelect, SearchSelectItem } from "@tremor/react";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 
 interface Props {
@@ -22,6 +23,10 @@ interface Props {
   fuel: FuelType[];
   // stockcars : StockCars[]
 }
+const getCategory = async () => {
+  const result = await agent.LoadData.vehicleCategoryList(); //db.tblMakes.findMany({where: {isActive:true}} );
+  return result.data;
+};
 
 const GetModelWiseMakeList = async (modelID: string) => {
   return await agent.LoadData.carModelByMakeList(modelID); // db.tblBodyTypes.findMany({where: {isActive:true}});
@@ -38,6 +43,7 @@ export default function MachinerySimpleSearch({
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
   const [makeId, setMakeId] = useState("0");
+  const [category, setCategory] = useState<any>("0");
   const [isMore, setIsMore] = useState(false);
   const [steeringTypeId, setSteeringTypeId] = useState("0");
   const [colorId, setColorId] = useState("0");
@@ -50,6 +56,15 @@ export default function MachinerySimpleSearch({
   const [toPrice, setToPrice] = useState("0");
   const [toYear, setToYear] = useState("0");
 
+  const [categories, setCategories] = useState<VehicleCategory[]>([])
+  useEffect(() => {
+
+    getData()
+  }, [])
+  const getData = async () => {
+    const category = await getCategory()
+    setCategories(category)
+  }
   const handleValueChange = async (selectedValue: string) => {
     const selectedMakeID = selectedValue;
     setMakeId(selectedMakeID);
@@ -97,6 +112,7 @@ export default function MachinerySimpleSearch({
     if (drivetrainId !== "0") params.set("DrivetrainId", drivetrainId);
     if (fuelId !== "0") params.set("FuelId", fuelId);
     if (colorId !== "0") params.set("ColorId", colorId);
+    if (category !== "0") params.set("categoryID", category);
     setLoading(true);
     router.push(`/global/results/list/machinery?${params.toString()}`);
     setLoading(false);
@@ -106,6 +122,19 @@ export default function MachinerySimpleSearch({
     // <div className="showcase-Box carform mb-5">
     <Form onSubmit={handleSubmit} autoComplete="off">
       <div className=" row mt-4 gap-y-5  border border-gray-200 mx-2 bg-slate-100 rounded-2xl py-3 shadow-md">
+        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Category:{" "}
+          </label>
+          {/*<SearchSelect value={makeId} onValueChange={setMakeId}>*/}
+          <SearchSelect value={category} onValueChange={setCategory}>
+            {categories.map((item, i) => (
+              <SearchSelectItem key={i} value={item.categoryId.toString()}>
+                {item.categoryName}
+              </SearchSelectItem>
+            ))}
+          </SearchSelect>
+        </div>
         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Make:{" "}
@@ -119,7 +148,7 @@ export default function MachinerySimpleSearch({
                   key={make.makeId}
                   value={make.makeId.toString()}
                 >
-                  {make.makeName} {}
+                  {make.makeName} { }
                 </SearchSelectItem>
               ))}
           </SearchSelect>
