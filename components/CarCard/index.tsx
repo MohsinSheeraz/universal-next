@@ -1,5 +1,6 @@
 "use client";
-import { addFavourite, removeFavourite } from "@/api/agent";
+import agent, { addFavourite, removeFavourite } from "@/api/agent";
+import { countries } from "@/lib/utils";
 import { useUserStore } from "@/store/store";
 import PriceFormat from "@/utils/PriceFormat";
 import Image from "next/image";
@@ -14,7 +15,18 @@ type Prop = {
 };
 export default function CarCard({ car, href, fav }: Prop) {
   const [isfav, setFav] = useState(false);
+  const [countries, setCountries] = useState<any>()
   const router = useRouter();
+  useEffect(() => {
+    const getData = async () => {
+      const Countries = await agent.LoadData.countryList();
+      setCountries(Countries)
+    }
+    getData()
+  })
+  const InventoryLocation = countries?.data?.find(
+    (x: any) => x.countryId == car.locationId
+  );
   const isfa = fav?.find((itm: any) => itm.stockID === car.stockId);
   useEffect(() => {
     if (isfa) {
@@ -108,9 +120,21 @@ export default function CarCard({ car, href, fav }: Prop) {
         <p className=" font-semibold text-slate-600 mt-2 ">
           {car.listingTitle}
         </p>
-        <p className="text-slate-600 text-xs font-semibold mt-3">
-          {car.stockCode}
-        </p>
+
+        <div
+          className="mt-2"
+        >
+          <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-black ring-1 ring-inset ring-indigo-700/10">
+            <img
+              src={`/assets/images/flags/${InventoryLocation?.slug}.svg`}
+              className="img-fluid h-[15px] mr-3"
+              height="15px"
+              alt="Bahamas flag"
+            />
+            {car.stockCode}
+          </span>
+        </div>
+
         <p className=" absolute bottom-3 text-white bg-[#221C63] border-[1px] border-slate-400 rounded-lg py-1 px-4">
           <span className="font-semibold">Price:</span>{" "}
           <span>
