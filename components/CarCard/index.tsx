@@ -109,7 +109,7 @@ export default function CarCard({ car, href, fav }: Prop) {
           {car.listingTitle}
         </p>
         <p className="text-slate-600 text-xs font-semibold mt-3">
-          {car.modelCode}
+          {car.stockCode}
         </p>
         <p className=" absolute bottom-3 text-white bg-[#221C63] border-[1px] border-slate-400 rounded-lg py-1 px-4">
           <span className="font-semibold">Price:</span>{" "}
