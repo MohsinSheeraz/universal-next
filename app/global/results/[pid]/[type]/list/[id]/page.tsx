@@ -38,6 +38,7 @@ interface Props {
     ColorId: Number;
     MaxEngineSize: number;
     MinEngineSize: number;
+    categoryID: number
     //searchFromBox:string
   };
 }
@@ -116,6 +117,8 @@ export default function ResultPage({ searchParams }: Props) {
     params.set("MaxEngineSize", searchParams.MaxEngineSize.toString());
   if (searchParams.searchTerm)
     params.set("SearchTerm", searchParams.searchTerm);
+  if (searchParams.categoryID)
+    params.set("categoryID", searchParams.categoryID.toString());
   params.set("OrderBy", "stockid%20desc");
 
   useEffect(() => {
