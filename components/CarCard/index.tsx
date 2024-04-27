@@ -124,7 +124,7 @@ export default function CarCard({ car, href, fav }: Prop) {
         <div
           className="mt-2"
         >
-          <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-black ring-1 ring-inset ring-indigo-700/10">
+{/*           <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-black ring-1 ring-inset ring-indigo-700/10">
             <img
               src={`/assets/images/flags/${InventoryLocation?.slug}.svg`}
               className="img-fluid h-[15px] mr-3"
@@ -132,7 +132,7 @@ export default function CarCard({ car, href, fav }: Prop) {
               alt="Bahamas flag"
             />
             {car.stockCode}
-          </span>
+          </span> */}
         </div>
 
         <p className=" absolute bottom-3 text-white bg-[#221C63] border-[1px] border-slate-400 rounded-lg py-1 px-4">
