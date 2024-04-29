@@ -123,7 +123,8 @@ export default function CarCard({ car, href, fav, countries }: Prop) {
               src={`/assets/images/flags/${InventoryLocation?.slug}.svg`}
               className="img-fluid h-[15px] mr-3"
               height="15px"
-              alt="Bahamas flag"
+              alt={InventoryLocation?.slug}
+
             />
             {car.stockCode}
           </span>
