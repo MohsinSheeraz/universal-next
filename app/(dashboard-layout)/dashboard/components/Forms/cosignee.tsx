@@ -12,7 +12,6 @@ export default function CosigneeForm() {
 
   useEffect(() => {
     const getData = async () => {
-      const countries = await agent.LoadData.countryList();
       const { data } = await agent.LoadData.consigneeCourierByCustomer(
         user.customerId
       );
