@@ -2,7 +2,6 @@
 import ClerkWrapProvider from "@/components/clerkProvider";
 import { Analytics } from "@vercel/analytics/react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import LogRocket from 'logrocket';
 import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
 import { ReactNode } from "react";
@@ -13,7 +12,6 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 }) {
-  LogRocket.init('zzkxbq/test');
   return (
     <ClerkWrapProvider>
       <html lang="en">
