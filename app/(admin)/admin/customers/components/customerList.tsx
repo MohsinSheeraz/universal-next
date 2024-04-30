@@ -6,15 +6,30 @@ import { useEffect, useState } from "react";
 
 export default function CustomerList() {
     const [consignee, setConsignee] = useState<Customer[]>([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10
+    const totalPages = Math.ceil(consignee.length / itemsPerPage);
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await agent.LoadData.getAllCustomer()
+            const { data } = await agent.LoadData.getAllCustomer(currentPage, itemsPerPage)
             setConsignee(data);
         };
 
         getData();
     }, []);
+
+    const handleNextPage = () => {
+        if (currentPage < totalPages) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const handlePrevPage = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
 
     return (
         <div className="w-[95%] mx-auto flex flex-col gap-5 my-5">
@@ -49,7 +64,8 @@ export default function CustomerList() {
                             </tr>
                         </thead>
                         <tbody>
-                            {consignee.map((item: Customer) => {
+                            {/* TODO  Remove this when api pagination is working */}
+                            {consignee.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage).map((item: Customer) => {
                                 return (
                                     <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                         <td className="px-6 py-4">{item.name}</td>
@@ -67,6 +83,14 @@ export default function CustomerList() {
                             })}
                         </tbody>
                     </table>
+                </div>
+                <div className="flex justify-between mt-4">
+                    {currentPage > 1 ? <button onClick={handlePrevPage} disabled={currentPage === 1} className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded">
+                        Previous
+                    </button> : <div></div>}
+                    {currentPage < totalPages ? <button onClick={handleNextPage} disabled={currentPage === totalPages} className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded">
+                        Next
+                    </button> : <div></div>}
                 </div>
             </div>
 

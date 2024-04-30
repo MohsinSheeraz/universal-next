@@ -190,8 +190,8 @@ const LoadData = {
   //   request.get<string>(`customers/GenerateCustomerCode/${locationID}`),
   customerCheck: (email: string) =>
     request.get<boolean>(`customers/Exists/${email}`),
-  getAllCustomer: () =>
-    request.get<boolean>(`customers`),
+  getAllCustomer: (currentPage: number, pageSize: number) =>
+    request.get<boolean>(`customers?PageSize=${pageSize}&pageNumber=${currentPage}`),
   register: (user: CustomerSignUp) => registerUser(user), //request.post<CustomerSignUp>('authentication', user),
   customerProfile: (email: string) =>
     request.get<Customer[]>(`customers/ByEmail/${email}/`),
