@@ -1,29 +1,29 @@
 "use client";
-import { useAdminStore } from "@/store/store";
-import SignInForm from "../user/Auth/SignInForm";
+import { useUserStore } from "@/store/store";
+import { redirect, usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 type Prop = {
   children: JSX.Element;
 };
 
 export default function CheckAdminLogin({ children }: Prop) {
-  const { isLogin } = useAdminStore();
-  // const route = usePathname();
+  const { user, isUpdate } = useUserStore();
+  const route = usePathname();
   // useEffect(() => {
   //   if (user?.email && !isUpdate && route !== "/dashboard") {
   //     toast.info("Create Profile First");
   //     redirect("/dashboard");
   //   }
   // }, [user, isUpdate]);
-  // useEffect(() => {
-  //   if (!isLogin) return redirect("/");
-  // }, []);
+  useEffect(() => {
+    if (!user.isAdmin) {
+      redirect("/");
+    }
+  }, [user]);
 
   // if (!user.email) {
   //     return null;
   // }
-  if (!isLogin) {
-    return <SignInForm />
-  }
   return <>{children}</>;
 }

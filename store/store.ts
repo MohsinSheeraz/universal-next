@@ -38,6 +38,7 @@ export const initialUserData = {
   assignedAgentId: 0,
   isTrxAccActive: false,
   isActive: false,
+  isAdmin: false,
   createdOn: "",
 };
 
