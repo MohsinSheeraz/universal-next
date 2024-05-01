@@ -177,7 +177,9 @@ export default function ProfileForm() {
               error &&
               error.message === "Request failed with status code 404"
             ) {
-              console.log(error.message);
+
+
+              (error.message);
             } // this is the main part. Use the response property from the error object
 
             // return error.response;
@@ -389,9 +391,9 @@ export default function ProfileForm() {
                     setValue={(e: any) => {
                       updatePhone(i, e);
                     }}
-                    //  setValue={(e: any) => {
-                    //   updatePhone(i, e.target.value);
-                    // }}
+                  //  setValue={(e: any) => {
+                  //   updatePhone(i, e.target.value);
+                  // }}
                   />
                   {i >= 1 && (
                     <AiFillDelete
