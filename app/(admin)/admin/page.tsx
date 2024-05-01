@@ -1,6 +1,5 @@
 "use client";
 
-import Forms from "./components/Forms";
 
 export default async function Dashboard() {
   //const session = await getServerSession(options)
@@ -9,7 +8,8 @@ export default async function Dashboard() {
 
   return (
     <>
-      <Forms />
+
+      {/* <Forms /> */}
     </>
   );
 }

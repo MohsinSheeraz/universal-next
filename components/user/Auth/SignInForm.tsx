@@ -1,130 +1,83 @@
-"use client";
+import { useAdminStore } from "@/store/store"
 
-import { CustomerSignUp } from "@/models/Customer";
-import { Button } from "@tremor/react";
-// import { signIn, signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
-import { useForm } from "react-hook-form";
-
-export interface User {
-  username: string;
-  password: string;
-  email: string;
-}
-interface Props {
-  signin: boolean;
-  setSignIn: (value: boolean) => void;
-}
-
-function SignInForm({ signin, setSignIn }: Props) {
-  const [submit, setSubmit] = useState<boolean>(false);
-
-  const router = useRouter();
-  // const { userStore } = useStore();
-  //var loading = false;
-  // const { data: session } = useSession();
-  const form = useForm<CustomerSignUp>();
-  const { register, control, formState, handleSubmit } = form;
-
-  // if (session && session.user) {
-  //   return (
-  //     <>
-  //       <button onClick={() => signOut()}>Sign Out</button>
-  //     </>
-  //   );
-  // }
-
-  const handleSignUp = (event: FormEvent) => {
-    event.preventDefault();
-
-    setSignIn(false);
-  };
-  const signInWithGoogle = () => {
-    // signIn("google");
-  };
+export default function SignInForm() {
+  const { setIsLogin } = useAdminStore()
   return (
     <>
-      <div className="p-3">
-        <div className="text-sm text-gray-500">
-          <form
-            onSubmit={handleSubmit((data) => {
-              // console.log(submit)
-              setSubmit(true);
-              // console.log(submit)
-              try {
-                // userStore.login(data).then((r) => {
-                //   if (userStore.isLoggedIn) {
-                //     router.push("/dashboard");
-                //   }
-                // });
-              } catch (e) {
-                console.log(e);
-              } finally {
-                setSubmit(false);
-              }
-            })}
-          >
-            <div className="mb-6">
-              <label
-                htmlFor="username"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Your Username
-              </label>
-              <input
-                // {...register("username", {
-                //   required: "Username is required",
-                // })}
-                id="username"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Username"
-                required
-              />
-            </div>
-            <div className="mb-6">
-              <label
-                htmlFor="password"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Your password
-              </label>
-              <input
-                // {...register("password")}
-                type="password"
-                id="password"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Password"
-                required
-              />
-            </div>
-            <div className="my-3 flex justify-between text-sm">
-              <Button
-                loading={submit}
-                type="submit"
-                className="px-4 py-2 rounded-xl text-white m-0 bg-green-500 hover:bg-green-600 transition"
-              >
-                Log In
-              </Button>
-              <Button
-                onClick={signInWithGoogle}
-                className="px-4 py-2 rounded-xl text-white m-0 bg-green-500 hover:bg-green-600 transition"
-              >
-                Log In with google
-              </Button>
+      {/*
+        This example requires updating your template:
 
+        ```
+        <html class="h-full bg-white">
+        <body class="h-full">
+        ```
+      */}
+      <div className="flex min-h-[100vh] flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-[#221C63] ">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <img
+            className="mx-auto h-10 w-auto"
+            src="/assets/images/logo.png"
+            alt="Universal Motors"
+          />
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
+            Sign in to your account
+          </h2>
+        </div>
+
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form className="space-y-6" onSubmit={() => {
+            setIsLogin(true)
+          }} >
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
+                Email address
+              </label>
+              <div className="mt-2">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center justify-between">
+                <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
+                  Password
+                </label>
+                {/* <div className="text-sm">
+                  <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                    Forgot password?
+                  </a>
+                </div> */}
+              </div>
+              <div className="mt-2">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
               <button
-                onClick={handleSignUp}
-                className="px-4 py-2 rounded-xl bg-neutral-50 hover:bg-blue-100  transition"
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                New Customer? Sign Up
+                Sign in
               </button>
             </div>
           </form>
         </div>
       </div>
     </>
-  );
+  )
 }
-
-export default SignInForm;

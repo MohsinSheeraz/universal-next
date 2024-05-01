@@ -15,11 +15,14 @@ interface Props {
 
 export default function HomePageCarListings({ stockcars, trucks }: Props) {
   const [fav, setFav] = useState<any>([]);
+  const [countries, setCountries] = useState<any>()
   const { user } = useUserStore();
   useEffect(() => {
     const getData = async () => {
       const favorite = await agent.LoadData.favouriteList(user.customerId);
       setFav(favorite.data);
+      const Countries = await agent.LoadData.countryList();
+      setCountries(Countries)
     };
     getData();
   }, []);
@@ -48,13 +51,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                       key={i}
                       fav={fav}
                       car={car}
-                      href={`/global/results/${
-                        car.makeName.replaceAll(" ", "-") +
+                      countries={countries}
+                      href={`/global/results/${car.makeName.replaceAll(" ", "-") +
                         "-" +
                         car.modelName.replaceAll(" ", "-") +
                         "-" +
                         car.year
-                      }/cars/${car.stockId}`}
+                        }/cars/${car.stockId}`}
                     />
                   ))}
               </div>
@@ -78,13 +81,13 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                     key={i}
                     fav={fav}
                     car={car}
-                    href={`/global/results/${
-                      car.makeName.replaceAll(" ", "-") +
+                    countries={countries}
+                    href={`/global/results/${car.makeName.replaceAll(" ", "-") +
                       "-" +
                       car.modelName.replaceAll(" ", "-") +
                       "-" +
                       car.year
-                    }/trucks/${car.stockId}`}
+                      }/trucks/${car.stockId}`}
                   />
                 ))}
               </div>
@@ -111,16 +114,16 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                       .map((car, i) => (
                         // <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
                         <CarCard
+                          countries={countries}
                           fav={fav}
                           car={car}
                           key={i}
-                          href={`/global/results/${
-                            car.makeName.replace(" ", "-") +
+                          href={`/global/results/${car.makeName.replace(" ", "-") +
                             "-" +
                             car.modelName.replaceAll(" ", "-") +
                             "-" +
                             car.year
-                          }/cars/${car.stockId}`}
+                            }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>
@@ -153,16 +156,16 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                       // .slice(0,10)
                       .map((car, i) => (
                         <CarCard
+                          countries={countries}
                           key={i}
                           fav={fav}
                           car={car}
-                          href={`/global/results/${
-                            car.makeName.replace(" ", "-") +
+                          href={`/global/results/${car.makeName.replace(" ", "-") +
                             "-" +
                             car.modelName.replaceAll(" ", "-") +
                             "-" +
                             car.year
-                          }/cars/${car.stockId}`}
+                            }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>

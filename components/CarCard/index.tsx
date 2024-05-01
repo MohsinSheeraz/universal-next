@@ -1,6 +1,6 @@
 "use client";
-import agent, { addFavourite, removeFavourite } from "@/api/agent";
-import { countries } from "@/lib/utils";
+import { addFavourite, removeFavourite } from "@/api/agent";
+//import { countries } from "@/lib/utils";
 import { useUserStore } from "@/store/store";
 import PriceFormat from "@/utils/PriceFormat";
 import Image from "next/image";
@@ -12,18 +12,12 @@ type Prop = {
   car: any;
   href: string;
   fav?: any;
+  countries?: any;
 };
-export default function CarCard({ car, href, fav }: Prop) {
+export default function CarCard({ car, href, fav, countries }: Prop) {
   const [isfav, setFav] = useState(false);
-  const [countries, setCountries] = useState<any>()
   const router = useRouter();
-  useEffect(() => {
-    const getData = async () => {
-      const Countries = await agent.LoadData.countryList();
-      setCountries(Countries)
-    }
-    getData()
-  })
+
   const InventoryLocation = countries?.data?.find(
     (x: any) => x.countryId == car.locationId
   );
@@ -129,7 +123,8 @@ export default function CarCard({ car, href, fav }: Prop) {
               src={`/assets/images/flags/${InventoryLocation?.slug}.svg`}
               className="img-fluid h-[15px] mr-3"
               height="15px"
-              alt="Bahamas flag"
+              alt={InventoryLocation?.slug}
+
             />
             {car.stockCode}
           </span> */}
