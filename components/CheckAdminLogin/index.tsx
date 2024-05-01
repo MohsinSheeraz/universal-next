@@ -1,6 +1,6 @@
 "use client";
 import { useUserStore } from "@/store/store";
-import { redirect, usePathname } from "next/navigation";
+import { redirect } from "next/navigation";
 import { useEffect } from "react";
 
 type Prop = {
@@ -9,7 +9,6 @@ type Prop = {
 
 export default function CheckAdminLogin({ children }: Prop) {
   const { user, isUpdate } = useUserStore();
-  const route = usePathname();
   // useEffect(() => {
   //   if (user?.email && !isUpdate && route !== "/dashboard") {
   //     toast.info("Create Profile First");
@@ -17,7 +16,7 @@ export default function CheckAdminLogin({ children }: Prop) {
   //   }
   // }, [user, isUpdate]);
   useEffect(() => {
-    if (!user.isAdmin) {
+    if (user && !user.isAdmin) {
       redirect("/");
     }
   }, [user]);
