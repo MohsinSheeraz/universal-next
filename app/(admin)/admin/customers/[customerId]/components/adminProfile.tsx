@@ -35,7 +35,6 @@ export default function AdminProfile({ id }: Props) {
         const { data } = await agent.LoadData.customerByID(id)
         // if (isUpdate) {
         setCustomer(data)
-        console.log(data)
         setValue("name", String(data.name));
         setValue("companyName", String(data.companyName));
         setValue("lastname", String(data.lastName));
