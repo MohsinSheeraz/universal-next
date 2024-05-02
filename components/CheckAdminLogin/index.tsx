@@ -11,7 +11,7 @@ export default function CheckAdminLogin({ children }: Prop) {
   const { user } = useUserStore();
 
   useEffect(() => {
-    if (user.email && !user.isAdmin) {
+    if (!user.isAdmin) {
       redirect("/");
     }
   }, [user]);
