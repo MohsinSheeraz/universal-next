@@ -53,15 +53,15 @@ export default async function RootLayout({
 
   return (
     <>
-      <CheckAdminLogin>
-        <>
-          <Header
-            ports={portList}
-            portMapping={portMapping}
-            stockCount={stockCount.data}
-            locations={locations}
-          />
 
+      <>
+        <Header
+          ports={portList}
+          portMapping={portMapping}
+          stockCount={stockCount.data}
+          locations={locations}
+        />
+        <CheckAdminLogin>
           {/* <FrontSlider /> */}
           <section>
             <div className="w-[99%]">
@@ -74,13 +74,13 @@ export default async function RootLayout({
               </div>
             </div>
           </section>
-          <Footer
-            bodyTypes={bodyTypes.data}
-            locations={inventoryLocation}
-            makes={makes.data}
-          />
-        </>
-      </CheckAdminLogin>
+        </CheckAdminLogin>
+        <Footer
+          bodyTypes={bodyTypes.data}
+          locations={inventoryLocation}
+          makes={makes.data}
+        />
+      </>
     </>
   );
 }

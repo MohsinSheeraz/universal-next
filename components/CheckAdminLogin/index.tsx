@@ -8,21 +8,15 @@ type Prop = {
 };
 
 export default function CheckAdminLogin({ children }: Prop) {
-  const { user, isUpdate } = useUserStore();
-  // useEffect(() => {
-  //   if (user?.email && !isUpdate && route !== "/dashboard") {
-  //     toast.info("Create Profile First");
-  //     redirect("/dashboard");
-  //   }
-  // }, [user, isUpdate]);
+  const { user } = useUserStore();
+
   useEffect(() => {
-    if (user && !user.isAdmin) {
+    console.log("out", user)
+    if (!user.isAdmin) {
+      console.log("in", user)
       redirect("/");
     }
-  }, [user]);
+  }, []);
 
-  // if (!user.email) {
-  //     return null;
-  // }
   return <>{children}</>;
 }
