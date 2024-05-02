@@ -4,8 +4,8 @@ import { redirect } from "next/navigation";
 import { useEffect } from "react";
 
 
-export default async function Dashboard() {
-  //const session = await getServerSession(options)
+export default function Dashboard() {
+  //const sessio = await getServerSession(options)
   // const { userStore } = useStore();
   // console.log(userStore.isLoggedIn);
   useEffect(() => {
