@@ -12,7 +12,9 @@ export default function CheckAdminLogin({ children }: Prop) {
 
   useEffect(() => {
     console.log("test out")
+    console.log(user)
     if (user && !user.isAdmin) {
+
       console.log("test in")
       redirect("/");
     }
