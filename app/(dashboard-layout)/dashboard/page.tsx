@@ -1,4 +1,4 @@
-"use client";
+
 
 import Forms from "./components/Forms";
 
