@@ -16,7 +16,7 @@ export default function CheckAdminLogin({ children }: Prop) {
       console.log("in", user)
       redirect("/");
     }
-  }, [user]);
+  }, []);
 
   return <>{children}</>;
 }
