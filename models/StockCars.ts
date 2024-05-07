@@ -68,4 +68,5 @@ export interface StockCars {
   transmission: Transmission;
   colorHex: string;
   operationHours: number;
+  purchasedById: number;
 }

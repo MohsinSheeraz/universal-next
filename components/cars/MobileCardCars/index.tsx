@@ -1,6 +1,7 @@
 import LikeComponent from "@/components/ui/LikeComponent";
 import { StockCars } from "@/models/StockCars";
 import reserved from "@/public/assets/images/reserved.png";
+import purchased from "@/public/assets/images/sold.webp";
 import PriceFormat from "@/utils/PriceFormat";
 import Image from "next/image";
 import Link from "next/link";
@@ -64,9 +65,14 @@ export default function MobileCardCars({
               />
             </Link>
             {/* </div> */}
-            {car?.isReserved && (
+            {car?.isReserved && car?.purchasedById !== 0 && (
               <div className="absolute">
                 <Image className="w-[180px]" src={reserved} alt="" />
+              </div>
+            )}
+            {car?.purchasedById !== 0 && (
+              <div className="absolute">
+                <Image className="w-[180px]" src={purchased} alt="" />
               </div>
             )}
             <div className="w-full h-full  xl:relative flex flex-col xl:items-center justify-center xl:justify-between ">
@@ -89,18 +95,17 @@ export default function MobileCardCars({
                 <div className="flex">
                   <p className="font-bold text-[#221C63] text-[10px] ">
 
-                     <Link
-                    href={`/global/results/${
-                      car.makeName.replaceAll(" ", "-") +
-                      "-" +
-                      car.modelName.replaceAll(" ", "-") +
-                      "-" +
-                      car.year
-                    }/${type?.type}/${car.stockId}`}
-                  >
-                    {" "}
-                    {car.listingTitle}
-                     </Link>
+                    <Link
+                      href={`/global/results/${car.makeName.replaceAll(" ", "-") +
+                        "-" +
+                        car.modelName.replaceAll(" ", "-") +
+                        "-" +
+                        car.year
+                        }/${type?.type}/${car.stockId}`}
+                    >
+                      {" "}
+                      {car.listingTitle}
+                    </Link>
                   </p>
                   <div className="bg-[#221C63] mx-auto w-[40%] h-[20px] text-white px-1 flex items-center justify-center py-1 font-semibold rounded-lg text-[8px]">
                     {" "}

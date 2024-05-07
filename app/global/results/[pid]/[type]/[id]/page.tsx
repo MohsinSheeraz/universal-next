@@ -84,7 +84,8 @@ export default async function CarDetailed({ params }: Props) {
                         >
                           <div className="row overflow-hidden">
                             <CarDetailedSlideshow
-                              isReserved={Stock.data.isReserved}
+                              isPurchased={Stock.data?.purchasedById !== 0}
+                              isReserved={Stock.data.isReserved && Stock.data?.purchasedById !== 0}
                               mainPic={Stock.data.imageUrl}
                               stockID={Stock.data.stockId}
                             />
