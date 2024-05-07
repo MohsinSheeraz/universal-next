@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useState } from "react";
 // import Carousel from "react-gallery-carousel";
 import "react-gallery-carousel/dist/index.css";
 import ImageGallery from "react-image-gallery";
@@ -11,18 +10,17 @@ interface Props {
   isPurchased?: Boolean;
 }
 export default function CarouselStock({ imageURLs, isReserved, isPurchased }: Props) {
-  const [hasSizeButton, setHasSizeButton] = useState<boolean>(true);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setHasSizeButton(window?.innerWidth >= 768);
-    };
-    handleResize();
-    window?.addEventListener("resize", handleResize);
-    return () => {
-      window?.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setHasSizeButton(window?.innerWidth >= 768);
+  //   };
+  //   handleResize();
+  //   window?.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window?.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
   return (
     <div className="relative">
       {/* <div className="w-full"> */}
