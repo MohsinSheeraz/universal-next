@@ -133,7 +133,8 @@ const LoadData = {
   homepageStockList: () =>
     requestNoCache.get<StockCars[]>("carstock/homepage_cars"),
   //test: () => await fetch(baseURL+"carstock/homepage_cars", {cache: 'no-store'});
-  stock: (stockID: number) => request.get<StockCars>(`carstock/${stockID}`),
+  // stock: (stockID: number) => request.get<StockCars>(`carstock/${stockID}`),
+  stock: (stockID: number) => requestNoCache.get<StockCars>(`carstock/${stockID}`),
   truck: (stockID: number) => request.get<Trucks>(`trucks/${stockID}`),
   machinery: (stockID: number) => request.get<Trucks>(`machinery/${stockID}`),
 

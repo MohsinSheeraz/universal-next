@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useState } from "react";
 // import Carousel from "react-gallery-carousel";
 import "react-gallery-carousel/dist/index.css";
 import ImageGallery from "react-image-gallery";
@@ -10,18 +9,17 @@ interface Props {
   isReserved: Boolean;
 }
 export default function CarouselStock({ imageURLs, isReserved }: Props) {
-  const [hasSizeButton, setHasSizeButton] = useState<boolean>(true);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setHasSizeButton(window?.innerWidth >= 768);
-    };
-    handleResize();
-    window?.addEventListener("resize", handleResize);
-    return () => {
-      window?.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setHasSizeButton(window?.innerWidth >= 768);
+  //   };
+  //   handleResize();
+  //   window?.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window?.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
   return (
     <div className="relative">
       {/* <div className="w-full"> */}
@@ -35,16 +33,16 @@ export default function CarouselStock({ imageURLs, isReserved }: Props) {
         playIcon={false}
       /> */}
       {/* <div className="!h-auto md:!h-[500px]"> */}
-     
-          <ImageGallery  autoPlay={false}  showPlayButton={false} items={imageURLs.map((itm: any) => {
+
+      <ImageGallery autoPlay={false} showPlayButton={false} items={imageURLs.map((itm: any) => {
         return {
           original: itm?.src,
           thumbnail: itm?.src,
-          
+
         }
       })} />
       {/* </div> */}
-    
+
       {/* </div> */}
 
       {/* <Carousel.Components.Thumbnail className="object-none" /> */}
