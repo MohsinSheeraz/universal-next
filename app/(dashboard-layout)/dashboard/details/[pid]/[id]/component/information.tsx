@@ -9,6 +9,9 @@ export default function Information({ stock }: Prop) {
   const download = () => {
     toast.info("Sorry, this feature is currently unavailable.");
   };
+  const etd = new Date(stock?.etd || 0)
+  const eta = new Date(stock?.eta || 0)
+  const created = new Date(stock?.createdOn || 0)
   return (
     <div className="row w-[95%] mt-5 m-auto">
       <div className="w-full py-2  bg-[#221C63] mt-3">
@@ -53,24 +56,26 @@ export default function Information({ stock }: Prop) {
             <tr>
               <td className="!text-[12px] sm:!text-[16px]">ETA</td>
               <td className="!text-[12px] sm:!text-[16px]">
-                {!stock?.etd.includes("1900-01-01") ? (
-                  getFormatedDate(stock?.etd)
-                ) : (
+                {etd < created ? (
                   <span className="text-red-800 text-[14px]">
-                    not Available
+                    NOT AVALAIBLE
                   </span>
+                ) : (
+
+                  getFormatedDate(stock?.etd)
                 )}
               </td>
             </tr>
             <tr>
               <td className="!text-[12px] sm:!text-[16px]">ETD</td>
               <td className="!text-[12px] sm:!text-[16px]">
-                {!stock?.eta.includes("1900-01-01") ? (
-                  getFormatedDate(stock?.eta)
-                ) : (
+                {eta < created ? (
+
                   <span className="text-red-800 text-[14px]">
-                    not Available
+                    NOT AVALAIBLE
                   </span>
+                ) : (
+                  getFormatedDate(stock?.eta)
                 )}
               </td>
             </tr>
@@ -91,43 +96,60 @@ export default function Information({ stock }: Prop) {
           <tbody>
             <tr>
               <td className="!text-[12px] sm:!text-[16px]">B/L</td>
-              <td
-                className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
-                onClick={download}
-              >
-                {" "}
-                Download{" "}
-              </td>
-            </tr>
+              {stock?.billLadingURL === "Unavailable" ?
+                <td className="text-red-800  !text-[12px] sm:!text-[14px]  ">
+                  NOT AVALAIBLE
+                </td>
+                : <td
+                  className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
+                  onClick={download}
+                >
+                  {" "}
+                  Download{" "}
+                </td>
+              }</tr>
             <tr>
               <td className="!text-[12px] sm:!text-[16px]">Inspection</td>
-              <td
-                className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
-                onClick={download}
-              >
-                {" "}
-                Download
-              </td>
+              {stock?.inspectionCertURL === "Unavailable" ?
+                <td className="text-red-800  !text-[12px] sm:!text-[14px]  ">
+                  NOT AVALAIBLE
+                </td>
+                : <td
+                  className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
+                  onClick={download}
+                >
+                  {" "}
+                  Download
+                </td>}
             </tr>
             <tr>
               <td className="!text-[12px] sm:!text-[16px]">
                 Export Certificate
               </td>
-              <td
-                className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
-                onClick={download}
-              >
-                Download
-              </td>
+              {stock?.exportCertURL === "Unavailable" ?
+
+                <td className="text-red-800  !text-[12px] sm:!text-[14px]  ">
+                  NOT AVALAIBLE
+                </td>
+                : <td
+                  className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
+                  onClick={download}
+                >
+                  Download
+                </td>}
             </tr>
             <tr>
               <td className="!text-[12px] sm:!text-[16px]">Invoice</td>
-              <td
-                className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
-                onClick={download}
-              >
-                Download
-              </td>
+              {stock?.auctionSheetURL === "Unavailable" ?
+                <td className="text-red-800  !text-[12px] sm:!text-[14px]  ">
+                  NOT AVALAIBLE
+                </td>
+                : <td
+                  className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
+                  onClick={download}
+                >
+                  Download
+                </td>}
             </tr>
           </tbody>
         </table>

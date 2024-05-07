@@ -31,6 +31,9 @@ export default function AdminCarTableItem({ item, id, page }: Prop) {
     };
     getData();
   }, []);
+  const etd = new Date(stock?.etd || 0)
+  const eta = new Date(stock?.eta || 0)
+  const created = new Date(stock?.createdOn || 0)
   return (
     <div className="mt-3 min-w-[1200px] flex gap-3 odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
       <div className="!min-w-60">
@@ -47,8 +50,8 @@ export default function AdminCarTableItem({ item, id, page }: Prop) {
               <td className="w-36 font-semibold text-center bg-slate-100 p-1 mr-1">
                 Ok to Book
               </td>
-              <td className="w-36 bg-slate-50 py-1 px-3 text-center">
-                {!stock?.shipOkDate.includes("1900-01-01") ? (
+              <td className="w-36 text-sm bg-slate-50 py-1 px-3 text-center">
+                {stock?.shipOk ? (
                   getFormatedDate(stock?.shipOkDate)
                 ) : (
                   <span className="text-red-800 text-center text-[14px]">
@@ -60,12 +63,13 @@ export default function AdminCarTableItem({ item, id, page }: Prop) {
                 ETA
               </td>
               <td className="w-36 text-sm bg-slate-50 p-1 text-center">
-                {!stock?.eta.includes("1900-01-01") ? (
-                  getFormatedDate(stock?.eta)
-                ) : (
+                {eta < created ? (
+
                   <span className="text-red-800 text-[14px]">
                     not Available
                   </span>
+                ) : (
+                  getFormatedDate(stock?.eta)
                 )}
               </td>
             </tr>
@@ -80,12 +84,13 @@ export default function AdminCarTableItem({ item, id, page }: Prop) {
                 ETD
               </td>
               <td className="w-36 text-sm bg-slate-50 p-1 text-center">
-                {!stock?.etd.includes("1900-01-01") ? (
-                  getFormatedDate(stock?.etd)
-                ) : (
+                {etd < created ? (
                   <span className="text-red-800 text-[14px]">
                     not Available
                   </span>
+
+                ) : (
+                  getFormatedDate(stock?.etd)
                 )}
               </td>
             </tr>
@@ -94,11 +99,10 @@ export default function AdminCarTableItem({ item, id, page }: Prop) {
       </div>
       <div className="w-72 ">
         <p className="font-semibold text-xl mb-14">
-          Vehicle Price: <PriceFormat carPrice={item.price} />
+          Vehicle Price: <PriceFormat carPrice={stock?.totalCnf ?? 0} />
         </p>
         <Link
           className="w-full !no-underline"
-          // TODO continue this (add condition in this and back button alsoand remove consignee and courier  )
           href={`/admin/customers/${id}/details/${page}/${item.stockId}`
             // param?.get("tabs") == "Reserved-Vehicles"
             //   ? `/dashboard/details/reserve/${item.stockId}`

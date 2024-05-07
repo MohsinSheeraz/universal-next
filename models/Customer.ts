@@ -110,6 +110,11 @@ export interface SalesOrderDetail {
   shipOkDate: string;
   createdOn: string;
 
+  billLadingURL: string;
+  inspectionCertURL: string;
+  exportCertURL: string;
+  auctionSheetURL: string;
+
   courierCode: string;
   courierPersonName: string;
   courierPersonCity: string;
