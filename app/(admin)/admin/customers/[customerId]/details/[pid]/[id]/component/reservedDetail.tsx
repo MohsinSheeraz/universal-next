@@ -87,6 +87,7 @@ export default async function AdminReservedDetail({ params }: Props) {
                             mainPic={Stock.data.imageUrl}
                             stockID={Stock.data.stockId}
                             isReserved={false}
+                            isPurchased={false}
                           />
                         </div>
                       </div>

@@ -62,10 +62,17 @@ export default function CarCard({ car, href, fav, countries }: Prop) {
           height={400}
           src={car.imageUrl}
         />
-        {car?.isReserved && (
+        {car?.isReserved && car.purchasedById === 0 && (
           <div className="absolute top-0 w-full h-full">
             <div className="bg-[#221C63] mt-3 relative opacity-75 top-10 right-14 w-full h-7 -rotate-[50deg]">
               <p className="text-white text-center">Reserved</p>
+            </div>
+          </div>
+        )}
+        {car?.purchasedById !== 0 && (
+          <div className="absolute top-0 w-full h-full">
+            <div className="bg-red-700 mt-3 relative opacity-75 top-10 right-14 w-full h-7 -rotate-[50deg]">
+              <p className="text-white text-center">Purchased</p>
             </div>
           </div>
         )}

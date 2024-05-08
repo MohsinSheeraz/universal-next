@@ -7,8 +7,9 @@ import "react-image-gallery/styles/css/image-gallery.css";
 interface Props {
   imageURLs: { src: string }[];
   isReserved: Boolean;
+  isPurchased?: Boolean;
 }
-export default function CarouselStock({ imageURLs, isReserved }: Props) {
+export default function CarouselStock({ imageURLs, isReserved, isPurchased }: Props) {
 
   // useEffect(() => {
   //   const handleResize = () => {
@@ -53,6 +54,14 @@ export default function CarouselStock({ imageURLs, isReserved }: Props) {
         <div className="absolute !top-[20%] sm:!top-[25%] !right-[70px] sm:!right-[163px] -rotate-45 flex items-center m-auto  w-full ">
           <div className="bg-[#221C63]  opacity-75   flex items-center justify-center w-full h-7 ">
             <p className="text-white text-center">Reserved</p>
+          </div>
+        </div>
+      )}
+
+      {isPurchased && (
+        <div className="absolute !top-[20%] sm:!top-[25%] !right-[70px] sm:!right-[163px] -rotate-45 flex items-center m-auto  w-full ">
+          <div className="bg-red-600  opacity-75   flex items-center justify-center w-full h-7 ">
+            <p className="text-white text-center">Purchased</p>
           </div>
         </div>
       )}
