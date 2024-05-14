@@ -31,11 +31,9 @@ export default function CustomerList({ countries }: Prop) {
 
     const getCurrentCountry = (id: number) => {
         const country = countries.find((itm: any) => itm.countryId == id)
-        // return country.countryName
         return country
     }
     const CustomCountryComponent = (params: any) => {
-        console.log(countries)
         return <p> <span className=" inline-flex items-center rounded-md px-2 py-1 text-xs font-medium  ring-1 ring-inset ">
             <img
                 src={`/assets/images/flags/${getCurrentCountry(params.data.countryId).slug}.svg`}
