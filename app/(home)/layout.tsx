@@ -73,7 +73,7 @@ export default async function RootLayout({
               />
             </div>
           </Link>
-          <div className="row">
+          <div className="row bg-[#F5FCFF]">
             <Sidebar locations={inventoryLocation} makes={makes.data} />
             {children}
           </div>

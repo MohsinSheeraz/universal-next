@@ -28,7 +28,7 @@ export default function HomeDesktop({ drivetrain, color, makes, locations, trans
 
   return (
     <>
-      <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 !hidden sm:!inline-block">
+      <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 !hidden sm:!inline-block ">
         <HomeUI
           drivetrain={drivetrain}
           color={color}
