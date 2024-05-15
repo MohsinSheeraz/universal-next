@@ -58,7 +58,7 @@ export default function HomeDesktop({ drivetrain, color, makes, locations, trans
             </Link>
           </div>
         </div>
-        <div className="bg-[#F1F5F9] p-4 rounded-[10px]">
+        <div className="bg-white shadow-md p-4 rounded-[10px]">
           <h1 className="font-bold text-[14px] text-gray-900 pt-3 text-center justify-items-center">
             Find your Dream Used Cars in One Search Now!
           </h1>
@@ -78,11 +78,11 @@ export default function HomeDesktop({ drivetrain, color, makes, locations, trans
             like Japan, Canada, the USA, the UK, UAE, Thailand etc.
           </p>
         </div>
-        <div className="showcase-Make rightsidebar">
+        <div className="showcase-Make  rightsidebar">
           <h5 className="pt-3 text-center justify-items-center">
             <b>UM in Your Country</b>
           </h5>
-          <ul className="countdrop">
+          <ul className="countdrop ">
             <Link
               className="transition duration-300 ease-in-out hover:scale-110"
               href="/global/information/import-protocols?page=bahamas"
