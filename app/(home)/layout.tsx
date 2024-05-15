@@ -60,8 +60,8 @@ export default async function RootLayout({
         locations={locations}
       />
       <FrontSlider />
-      <section className="sidebar-menu">
-        <div className="container-fluid">
+      <section className="sidebar-menu pt-0 bg-[#F5FCFF]">
+        <div className="container-fluid !pl-0 ">
           <Link href="https://wa.link/5g81p6">
             <div className="fixed right-4 sm:right-6 cursor-pointer bottom-20 sm:bottom-24 z-[9999]">
               <Image
@@ -73,7 +73,7 @@ export default async function RootLayout({
               />
             </div>
           </Link>
-          <div className="row">
+          <div className="row ">
             <Sidebar locations={inventoryLocation} makes={makes.data} />
             {children}
           </div>

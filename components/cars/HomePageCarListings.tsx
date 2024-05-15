@@ -32,24 +32,28 @@ export default function HomePageCarListings({ stockcars, trucks, locations }: Pr
         <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-32">
           <div>
             {/*<h2 className="text-blue-800">Most Popular in <span>your Country</span></h2>*/}
+            <br />
+            <br />
             <div className="flex inline">
               <h2 className="text-[#221C63]">
                 Most Popular <span> Cars from Japan </span>
               </h2>
             </div>
+            <br />
 
             <div className="w-[95%] lg:w-full m-auto overflow-x-auto ">
-              <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-3 w-full ">
+              <div className="grid !grid-cols-10 2xl:!grid-cols-4  gap-72  2xl:gap-3 w-full ">
                 {stockcars
                   // .filter(car => (car.price  <= 15000 && car.price >=5000) && car.bodyTypeId==1)
                   .filter((car) => car.locationId == 84)
                   .sort((a, b) => b.stockId - a.stockId)
                   // .slice(0,10)
-                  .map((car, i) => (
+                  .slice(0, 8).map((car, i) => (
                     <CarCard
                       key={i}
                       fav={fav}
                       car={car}
+                      type="cars"
                       countries={locations}
                       href={`/global/results/${car.makeName.replaceAll(" ", "-") +
                         "-" +
@@ -60,6 +64,7 @@ export default function HomePageCarListings({ stockcars, trucks, locations }: Pr
                     />
                   ))}
               </div>
+              <br />
             </div>
           </div>
           <br />
@@ -72,14 +77,15 @@ export default function HomePageCarListings({ stockcars, trucks, locations }: Pr
               </h2>
               {/*<img src="/assets/images/flags/JP.svg" className="img-fluid ml-2 h-5" alt="Japan" />*/}
             </div>
-
+            <br />
             <div className="w-[95%] lg:w-full m-auto overflow-x-auto ">
-              <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-3 w-full ">
-                {trucks.slice(0, 10).map((car, i) => (
+              <div className="grid !grid-cols-10 2xl:!grid-cols-4  gap-72  2xl:gap-3 w-full ">
+                {trucks.slice(0, 8).map((car, i) => (
                   <CarCard
                     key={i}
                     fav={fav}
                     car={car}
+                    type="trucks"
                     countries={locations}
                     href={`/global/results/${car.makeName.replaceAll(" ", "-") +
                       "-" +
@@ -96,27 +102,29 @@ export default function HomePageCarListings({ stockcars, trucks, locations }: Pr
             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div className="showcase-Recheading">
                 {/*<h2>New Arrival in <span>Japan</span></h2>*/}
-
+                <br />
+                <br />
                 <div className="flex inline">
-                  <h2 className="text-[#221C63]">
+                  <h2 className="text-[#221C63] ">
                     Most Popular <span> Cars from UAE</span>
                   </h2>
                   {/*<img src="/assets/images/flags/AE.svg" className="img-fluid ml-2  h-5" alt="UAE" />*/}
                 </div>
-
+                <br />
                 <div className="w-[95%] lg:w-full m-auto overflow-x-auto ">
-                  <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-3 w-full ">
+                  <div className="grid !grid-cols-10 2xl:!grid-cols-4  gap-72  2xl:gap-3 w-full ">
                     {stockcars
                       .filter((car) => car.locationId == 185)
                       .sort((a, b) => b.stockId - a.stockId)
                       // .slice(0,10)
-                      .map((car, i) => (
+                      .slice(0, 8).map((car, i) => (
                         // <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
                         <CarCard
                           countries={locations}
                           fav={fav}
                           car={car}
                           key={i}
+                          type="cars"
                           href={`/global/results/${car.makeName.replace(" ", "-") +
                             "-" +
                             car.modelName.replaceAll(" ", "-") +
@@ -133,7 +141,8 @@ export default function HomePageCarListings({ stockcars, trucks, locations }: Pr
           <div className="row">
             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               {/*<h2>Most <span>Affordable Cars </span></h2>*/}
-
+              <br />
+              <br />
               <div className="flex inline">
                 <h2 className="text-[#221C63]">
                   Most Popular Cars from Singapore and Thailand
@@ -142,10 +151,10 @@ export default function HomePageCarListings({ stockcars, trucks, locations }: Pr
                 {/*<img src="/assets/images/flags/TH.svg" className="img-fluid ml-3 h-5" alt="Thailand" />*/}
                 {/*<img src="/assets/images/flags/SG.svg" className="img-fluid ml-2 mr-2 h-5" alt="Singapore" />*/}
               </div>
-
+              <br />
               <div className="showcase-Recheading">
                 <div className="w-[95%] lg:w-full m-auto overflow-x-auto ">
-                  <div className="grid !grid-cols-10 2xl:!grid-cols-5  gap-60  2xl:gap-3 w-full ">
+                  <div className="grid !grid-cols-10 2xl:!grid-cols-4  gap-72   2xl:gap-3 w-full ">
                     {stockcars
                       // .filter(car => car.price  <= 5000)
                       .filter(
@@ -153,12 +162,13 @@ export default function HomePageCarListings({ stockcars, trucks, locations }: Pr
                       )
                       .sort((a, b) => b.stockId - a.stockId)
                       // .slice(0,10)
-                      .map((car, i) => (
+                      .slice(0, 8).map((car, i) => (
                         <CarCard
                           countries={locations}
                           key={i}
                           fav={fav}
                           car={car}
+                          type="cars"
                           href={`/global/results/${car.makeName.replace(" ", "-") +
                             "-" +
                             car.modelName.replaceAll(" ", "-") +
