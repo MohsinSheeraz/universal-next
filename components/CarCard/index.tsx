@@ -18,7 +18,7 @@ export default function CarCard({ car, href, fav, countries }: Prop) {
   const [isfav, setFav] = useState(false);
   const router = useRouter();
 
-  const InventoryLocation = countries?.data?.find(
+  const InventoryLocation = countries?.find(
     (x: any) => x.countryId == car.locationId
   );
   const isfa = fav?.find((itm: any) => itm.stockID === car.stockId);

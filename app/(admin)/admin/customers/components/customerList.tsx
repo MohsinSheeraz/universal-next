@@ -92,7 +92,6 @@ export default function CustomerList({ countries }: Prop) {
                             rowData={consignee}
                             columnDefs={colDefs}
                             rowHeight={60}
-
                             rowSelection="multiple"
                             suppressRowClickSelection={true}
                             pagination={true}

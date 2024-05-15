@@ -1,56 +1,31 @@
-import agent from "@/api/agent";
 import SidebarSlider from "@/components/SidebarSlider";
 import HomePageCarListings from "@/components/cars/HomePageCarListings";
 import HomeUI from "@/components/ui/HomeUI";
+import { BodyType } from "@/models/Master/BodyType";
+import { Colors } from "@/models/Master/Colors";
+import { Country } from "@/models/Master/Country";
+import { DrivetrainType } from "@/models/Master/DrivetrainType";
+import { FuelType } from "@/models/Master/FuelType";
+import { Make } from "@/models/Master/Make";
+import { Transmission } from "@/models/Master/Transmission";
+import { StockCars } from "@/models/StockCars";
+import { Trucks } from "@/models/Trucks";
 import Link from "next/link";
-const GetStock = async () => {
-  const result = await agent.LoadData.homepageStockList(); //db.tblCars.findMany({where: {IsActive:true}});
-  return result.data;
-};
 
-const GetTrucks = async () => {
-  const result = await agent.LoadData.truckList(
-    "pageNumber=1&orderby=stockid%20desc&PAGESIZE=10",
-    1
-  ); //db.tblCars.findMany({where: {IsActive:true}});
-  return result.data;
-};
 
-const GetBodyTypes = async () => {
-  const result = await agent.LoadData.bodyTypeList(); // db.tblBodyTypes.findMany({where: {isActive:true}});
-  return result.data;
-};
+type Props = {
+  bodyTypes: BodyType[];
+  makes: Make[];
+  color: Colors[];
+  transmission: Transmission[];
+  drivetrain: DrivetrainType[];
+  fuel: FuelType[];
+  stockcars: StockCars[];
+  trucks: Trucks[];
+  locations: Country[];
+}
+export default function HomeDesktop({ drivetrain, color, makes, locations, transmission, fuel, bodyTypes, stockcars, trucks }: Props) {
 
-const GetCarMakes = async () => {
-  const result = await agent.LoadData.carMakeList(); //db.tblMakes.findMany({where: {isActive:true}} );
-  return result.data;
-};
-
-const GetDrivetrain = async () => {
-  const result = await agent.LoadData.drtivetrainList(); //db.tblMakes.findMany({where: {isActive:true}} );
-  return result.data;
-};
-const GetColors = async () => {
-  const result = await agent.LoadData.colorsList(); //db.tblMakes.findMany({where: {isActive:true}} );
-  return result.data;
-};
-const GetTransmission = async () => {
-  const result = await agent.LoadData.transmissionsList(); //db.tblMakes.findMany({where: {isActive:true}} );
-  return result.data;
-};
-const GetFuel = async () => {
-  const result = await agent.LoadData.fuelTypeList(); //db.tblMakes.findMany({where: {isActive:true}} );
-  return result.data;
-};
-export default async function HomeDesktop() {
-  const stocks = await GetStock();
-  const topTrucks = await GetTrucks();
-  const bodyTypes = await GetBodyTypes();
-  const makes = await GetCarMakes();
-  const drivetrain = await GetDrivetrain();
-  const color = await GetColors();
-  const transmission = await GetTransmission();
-  const fuel = await GetFuel();
   return (
     <>
       <div className="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 !hidden sm:!inline-block">
@@ -63,7 +38,7 @@ export default async function HomeDesktop() {
           makeList={makes}
         />
         <div className="carboxes mt-3 ">
-          <HomePageCarListings stockcars={stocks} trucks={topTrucks} />
+          <HomePageCarListings locations={locations} stockcars={stockcars} trucks={trucks} />
         </div>
       </div>
       <div className="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 !hidden sm:!inline-block">

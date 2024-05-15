@@ -1,39 +1,23 @@
-import agent from "@/api/agent";
-import { GetBodyTypes } from "@/app/global/results/[pid]/[type]/list/[id]/components/loadData";
+import { BodyType } from "@/models/Master/BodyType";
+import { Colors } from "@/models/Master/Colors";
+import { Country } from "@/models/Master/Country";
+import { DrivetrainType } from "@/models/Master/DrivetrainType";
+import { FuelType } from "@/models/Master/FuelType";
+import { Make } from "@/models/Master/Make";
+import { Transmission } from "@/models/Master/Transmission";
 import TabButtons from "./buttons";
-const GetLocations = async () => {
-  const res = await agent.LoadData.countryList(); //return await prisma.tblMasterCountry.findMany({where: {IsActive:true}} );
-  return res.data;
-};
-const GetCarMakes = async () => {
-  const res = await agent.LoadData.carMakeList(); //return await prisma.tblMakes.findMany({where: {isActive:true}} );
-  return res.data;
-};
-const GetDrivetrain = async () => {
-  const result = await agent.LoadData.drtivetrainList(); //db.tblMakes.findMany({where: {isActive:true}} );
-  return result.data;
-};
-const GetColors = async () => {
-  const result = await agent.LoadData.colorsList(); //db.tblMakes.findMany({where: {isActive:true}} );
-  return result.data;
-};
-const GetTransmission = async () => {
-  const result = await agent.LoadData.transmissionsList(); //db.tblMakes.findMany({where: {isActive:true}} );
-  return result.data;
-};
-const GetFuel = async () => {
-  const result = await agent.LoadData.fuelTypeList(); //db.tblMakes.findMany({where: {isActive:true}} );
-  return result.data;
-};
-export default async function HomeMobile() {
-  const makes = await GetCarMakes();
-  const locations = await GetLocations();
-  const bodyTypes = await GetBodyTypes();
-  // console.log("makes", makes.data);
-  const drivetrain = await GetDrivetrain();
-  const color = await GetColors();
-  const transmission = await GetTransmission();
-  const fuel = await GetFuel();
+
+type Props = {
+  bodyTypes: BodyType[];
+  makes: Make[];
+  color: Colors[];
+  transmission: Transmission[];
+  drivetrain: DrivetrainType[];
+  fuel: FuelType[];
+  locations: Country[];
+}
+export default async function HomeMobile({ drivetrain, color, makes, transmission, fuel, bodyTypes, locations }: Props) {
+
   return (
     <div className="!block sm:!hidden">
       <TabButtons

@@ -1,6 +1,7 @@
 "use client";
 import agent from "@/api/agent";
 import FaqComponent from "@/components/layout/FaqComponent";
+import { Country } from "@/models/Master/Country";
 import { StockCars } from "@/models/StockCars";
 import { Trucks } from "@/models/Trucks";
 import { useUserStore } from "@/store/store";
@@ -11,18 +12,16 @@ import CarCard from "../CarCard";
 interface Props {
   stockcars: StockCars[];
   trucks: Trucks[];
+  locations: Country[];
 }
 
-export default function HomePageCarListings({ stockcars, trucks }: Props) {
+export default function HomePageCarListings({ stockcars, trucks, locations }: Props) {
   const [fav, setFav] = useState<any>([]);
-  const [countries, setCountries] = useState<any>()
   const { user } = useUserStore();
   useEffect(() => {
     const getData = async () => {
       const favorite = await agent.LoadData.favouriteList(user.customerId);
       setFav(favorite.data);
-      const Countries = await agent.LoadData.countryList();
-      setCountries(Countries)
     };
     getData();
   }, []);
@@ -51,7 +50,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                       key={i}
                       fav={fav}
                       car={car}
-                      countries={countries}
+                      countries={locations}
                       href={`/global/results/${car.makeName.replaceAll(" ", "-") +
                         "-" +
                         car.modelName.replaceAll(" ", "-") +
@@ -81,7 +80,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                     key={i}
                     fav={fav}
                     car={car}
-                    countries={countries}
+                    countries={locations}
                     href={`/global/results/${car.makeName.replaceAll(" ", "-") +
                       "-" +
                       car.modelName.replaceAll(" ", "-") +
@@ -114,7 +113,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                       .map((car, i) => (
                         // <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
                         <CarCard
-                          countries={countries}
+                          countries={locations}
                           fav={fav}
                           car={car}
                           key={i}
@@ -156,7 +155,7 @@ export default function HomePageCarListings({ stockcars, trucks }: Props) {
                       // .slice(0,10)
                       .map((car, i) => (
                         <CarCard
-                          countries={countries}
+                          countries={locations}
                           key={i}
                           fav={fav}
                           car={car}
