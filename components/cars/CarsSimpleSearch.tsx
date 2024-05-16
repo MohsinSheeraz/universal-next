@@ -7,6 +7,7 @@ import { DrivetrainType } from "@/models/Master/DrivetrainType";
 import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
 import { Transmission } from "@/models/Master/Transmission";
+import { VehicleCategory } from "@/models/Master/VehicleCategory";
 import { SearchSelect, SearchSelectItem } from "@tremor/react";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
@@ -20,6 +21,7 @@ interface Props {
   transmission: Transmission[];
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
+  vehicleCategory: VehicleCategory[]
 }
 
 const GetModelWiseMakeList = async (modelID: string) => {
@@ -34,11 +36,13 @@ export default function CarsSimpleSearch({
   transmission,
   drivetrain,
   fuel,
+  vehicleCategory
 }: Props) {
   const router = useRouter();
   const [modelCode, setModelCode] = useState("0");
   const [isMore, setIsMore] = useState(false);
   const [isLoading, setLoading] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
   const [makeId, setMakeId] = useState("0");
   const [mappedModels, setMappedModels] = useState<CarModel[]>([]);
   const [modelId, setModelId] = useState("0");
@@ -121,12 +125,18 @@ export default function CarsSimpleSearch({
     router.push(`/global/results/search/cars?${params.toString()}`);
     setLoading(false);
   }
-
+  const handleCheckboxChange = (category: number) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(selectedCategories.filter((item) => item !== category));
+    } else {
+      setSelectedCategories([...selectedCategories, category]);
+    }
+  };
   return (
     // <div className='showcase-Box carform mb-5'>
     <form onSubmit={handleSubmit} autoComplete="off">
       <div
-        className="row mt-4 gap-y-2 !overflow-scroll sm:!overflow-visible  h-[350px] sm:h-auto  border border-gray-200 mx-2   bg-white rounded-2xl py-3 shadow-md"
+        className="row mt-4 gap-y-2  !overflow-scroll sm:!overflow-visible  h-[350px] sm:h-auto  border border-gray-200 mx-2   bg-white rounded-2xl py-3 shadow-md"
         style={{ overflowY: "hidden" }}
       >
         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
@@ -396,6 +406,12 @@ export default function CarsSimpleSearch({
                   </SearchSelectItem>
                 ))}
               </SearchSelect>
+            </div>
+            <div className="col-12 row space-y-2 mt-4 align-content-center">
+              {vehicleCategory.map((itm) => {
+                return <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 text-[12px]"><input type="checkbox" className="mr-1" checked={selectedCategories.includes(itm.categoryId)}
+                  onChange={() => handleCheckboxChange(itm.categoryId)} /> {itm.categoryName}</div>
+              })}
             </div>
             {/* <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">

@@ -5,6 +5,7 @@ import { DrivetrainType } from "@/models/Master/DrivetrainType";
 import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
 import { Transmission } from "@/models/Master/Transmission";
+import { VehicleCategory } from "@/models/Master/VehicleCategory";
 // import { SearchSelect, SearchSelectItem } from '@tremor/react'
 // import { Form } from 'react-hook-form'
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
   yearList: string[];
+  vehicleCategory: VehicleCategory[]
 }
 export default function BySearch({
   bodyTlist,
@@ -24,10 +26,12 @@ export default function BySearch({
   fuel,
   drivetrain,
   yearList,
+  vehicleCategory
 }: Props) {
   return (
     <div className="mb-3">
       <CarsSimpleSearch
+        vehicleCategory={vehicleCategory}
         yearList={yearList}
         drivetrain={drivetrain}
         color={color}

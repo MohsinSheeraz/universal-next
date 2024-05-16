@@ -11,8 +11,8 @@ interface Props {
     bodyTypeID: number;
     minPrice: number;
     maxPrice: number;
-    minMileage: number;
-    maxMileage: number;
+    MinMileage: number;
+    MaxMileage: number;
     fromYear: number;
     toYear: number;
     searchTerm: string;
@@ -63,6 +63,10 @@ const GetFuel = async () => {
   const result = await agent.LoadData.fuelTypeList(); //db.tblMakes.findMany({where: {isActive:true}} );
   return result.data;
 };
+const GetVehicleCategory = async () => {
+  const result = await agent.LoadData.vehicleCategoryList(); //db.tblMakes.findMany({where: {isActive:true}} );
+  return result.data;
+};
 export default async function ResultPage({ searchParams }: Props) {
   const params = new URLSearchParams();
   if (searchParams.bodyTypeID)
@@ -83,10 +87,10 @@ export default async function ResultPage({ searchParams }: Props) {
   if (searchParams.fromYear)
     params.set("FromYear", searchParams.fromYear.toString());
   if (searchParams.toYear) params.set("ToYear", searchParams.toYear.toString());
-  if (searchParams.minMileage)
-    params.set("MinMileage", searchParams.minMileage.toString());
-  if (searchParams.maxMileage)
-    params.set("MaxMileage", searchParams.maxMileage.toString());
+  if (searchParams.MinMileage)
+    params.set("MinMileage", searchParams.MinMileage.toString());
+  if (searchParams.MaxMileage)
+    params.set("MaxMileage", searchParams.MaxMileage.toString());
   if (searchParams.DrivetrainId)
     params.set("DrivetrainId", searchParams.DrivetrainId.toString());
   if (searchParams.FuelId) params.set("FuelId", searchParams.FuelId.toString());
@@ -111,6 +115,7 @@ export default async function ResultPage({ searchParams }: Props) {
   const color = await GetColors();
   const transmission = await GetTransmission();
   const fuel = await GetFuel();
+  const vehicleCategory = await GetVehicleCategory();
   //console.log(filter)
   return (
     <div className="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12 p-0 second-searchform">
@@ -122,6 +127,7 @@ export default async function ResultPage({ searchParams }: Props) {
         fuel={fuel}
         bodyTlist={bodyTypes}
         makeList={makes}
+        vehicleCategory={vehicleCategory}
       />
       {/*<SearchingCriteria resultCount={cars.length} locations={locations} />*/}
       <CarSearchResult params={params} locations={locations} />

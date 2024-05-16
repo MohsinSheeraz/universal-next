@@ -22,6 +22,7 @@ interface Props {
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
   // stockcars : StockCars[]
+  vehicleCategory: VehicleCategory[]
 }
 const getCategory = async () => {
   const result = await agent.LoadData.vehicleCategoryList(); //db.tblMakes.findMany({where: {isActive:true}} );
@@ -39,8 +40,10 @@ export default function MachinerySimpleSearch({
   transmission,
   drivetrain,
   fuel,
+  vehicleCategory
 }: Props) {
   const router = useRouter();
+  const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
   const [isLoading, setLoading] = useState(false);
   const [makeId, setMakeId] = useState("0");
   const [category, setCategory] = useState<any>("0");
@@ -61,6 +64,13 @@ export default function MachinerySimpleSearch({
 
     getData()
   }, [])
+  const handleCheckboxChange = (category: number) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(selectedCategories.filter((item) => item !== category));
+    } else {
+      setSelectedCategories([...selectedCategories, category]);
+    }
+  };
   const getData = async () => {
     const category = await getCategory()
     setCategories(category)
@@ -279,6 +289,12 @@ export default function MachinerySimpleSearch({
                   </SearchSelectItem>
                 ))}
               </SearchSelect>
+            </div>
+            <div className="col-12 row space-y-2 mt-4 align-content-center">
+              {vehicleCategory.map((itm) => {
+                return <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 text-[12px]"><input type="checkbox" className="mr-1" checked={selectedCategories.includes(itm.categoryId)}
+                  onChange={() => handleCheckboxChange(itm.categoryId)} /> {itm.categoryName}</div>
+              })}
             </div>
           </>
         )}

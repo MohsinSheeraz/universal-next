@@ -5,6 +5,7 @@ import { DrivetrainType } from "@/models/Master/DrivetrainType";
 import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
 import { Transmission } from "@/models/Master/Transmission";
+import { VehicleCategory } from "@/models/Master/VehicleCategory";
 import TabButtons from "./buttons";
 
 type Props = {
@@ -15,12 +16,14 @@ type Props = {
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
   locations: Country[];
+  vehicleCategory: VehicleCategory[]
 }
-export default async function HomeMobile({ drivetrain, color, makes, transmission, fuel, bodyTypes, locations }: Props) {
+export default async function HomeMobile({ drivetrain, color, makes, transmission, fuel, bodyTypes, locations, vehicleCategory }: Props) {
 
   return (
     <div className="!block sm:!hidden">
       <TabButtons
+        vehicleCategory={vehicleCategory}
         locations={locations}
         drivetrain={drivetrain}
         color={color}

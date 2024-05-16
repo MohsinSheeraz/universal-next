@@ -6,6 +6,7 @@ import { DrivetrainType } from "@/models/Master/DrivetrainType";
 import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
 import { Transmission } from "@/models/Master/Transmission";
+import { VehicleCategory } from "@/models/Master/VehicleCategory";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
   transmission: Transmission[];
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
+  vehicleCategory: VehicleCategory[]
 }
 
 const initialState = {
@@ -33,6 +35,7 @@ export default function HomeUI({
   transmission,
   drivetrain,
   fuel,
+  vehicleCategory
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   function closeMobileSearchModal() {
@@ -53,6 +56,7 @@ export default function HomeUI({
             fuel={fuel}
             makes={makeList}
             bodyTypes={bodyTlist}
+            vehicleCategory={vehicleCategory}
           />
         </div>
         <div className="block sm:hidden w-full ">
@@ -99,6 +103,7 @@ export default function HomeUI({
                         fuel={fuel}
                         makes={makeList}
                         bodyTypes={bodyTlist}
+                        vehicleCategory={vehicleCategory}
                       />
                       {/* <Dialog.Title
                         as="h3"
