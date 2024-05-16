@@ -114,6 +114,7 @@ export interface SalesOrderDetail {
   inspectionCertURL: string;
   exportCertURL: string;
   auctionSheetURL: string;
+  invoiceURL: string;
 
   courierCode: string;
   courierPersonName: string;

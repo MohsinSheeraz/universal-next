@@ -1,5 +1,6 @@
 import { SalesOrderDetail } from "@/models/Customer";
 import { getFormatedDate } from "@/utils/dateFormat";
+import Link from "next/link";
 import { toast } from "react-toastify";
 
 type Prop = {
@@ -102,10 +103,11 @@ export default function Information({ stock }: Prop) {
                 </td>
                 : <td
                   className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
-                  onClick={download}
                 >
                   {" "}
-                  Download{" "}
+                  <Link href={stock?.billLadingURL ?? ""} target="_blank">
+                    Download{" "}
+                  </Link>
                 </td>
               }</tr>
             <tr>
@@ -116,10 +118,10 @@ export default function Information({ stock }: Prop) {
                 </td>
                 : <td
                   className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
-                  onClick={download}
                 >
-                  {" "}
-                  Download
+                  <Link href={stock?.inspectionCertURL ?? ""} target="_blank">
+                    Download
+                  </Link>
                 </td>}
             </tr>
             <tr>
@@ -133,22 +135,26 @@ export default function Information({ stock }: Prop) {
                 </td>
                 : <td
                   className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
-                  onClick={download}
+
                 >
-                  Download
+                  <Link href={stock?.exportCertURL ?? ""} target="_blank">
+                    Download
+                  </Link>
                 </td>}
             </tr>
             <tr>
               <td className="!text-[12px] sm:!text-[16px]">Invoice</td>
-              {stock?.auctionSheetURL === "Unavailable" ?
+              {stock?.invoiceURL === "Unavailable" ?
                 <td className="text-red-800  !text-[12px] sm:!text-[14px]  ">
                   NOT AVALAIBLE
                 </td>
                 : <td
                   className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
-                  onClick={download}
+
                 >
-                  Download
+                  <Link href={stock?.invoiceURL ?? ""} target="_blank">
+                    Download
+                  </Link>
                 </td>}
             </tr>
           </tbody>

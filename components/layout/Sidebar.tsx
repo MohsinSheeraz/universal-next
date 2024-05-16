@@ -13,8 +13,8 @@ function Sidebar({ locations, makes }: Props) {
 
   return (
     <>
-      <div className="col-xl-2 col-lg-2 col-md-2 d-md-block d-none">
-        <div className="showcase-Make">
+      <div className="col-xl-2 col-lg-2 col-md-2 d-md-block d-none   bg-white shadow-xl">
+        <div className="showcase-Make ml-2 ">
           <h5 style={{ fontSize: 18, color: "black" }}>Search Cars By Make</h5>
           <ul className="countdrop mt-3 mb-3">
             {makes
