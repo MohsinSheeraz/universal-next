@@ -85,8 +85,6 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
           className="rounded-3xl w-[100%] "
           style={{
             objectFit: "cover",
-            // position: "absolute",
-            // width: "261px",
             height: "176px",
           }}
           alt={car.listingTitle}
