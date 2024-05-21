@@ -9,6 +9,7 @@ import { DrivetrainType } from "@/models/Master/DrivetrainType";
 import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
 import { Transmission } from "@/models/Master/Transmission";
+import { VehicleCategory } from "@/models/Master/VehicleCategory";
 import { Tab } from "@headlessui/react";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -27,6 +28,7 @@ interface Props {
   transmission: Transmission[];
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
+  vehicleCategory: VehicleCategory[]
 }
 
 function classNames(...classes: any[]) {
@@ -46,6 +48,7 @@ export default function HomeUITabGroup({
   transmission,
   drivetrain,
   fuel,
+  vehicleCategory
 }: Props) {
   const [currentForm, setCurrentForm] = useState("Cars");
   const type = useParams();
@@ -82,6 +85,7 @@ export default function HomeUITabGroup({
             color={color}
             transmission={transmission}
             drivetrain={drivetrain}
+            vehicleCategory={vehicleCategory}
             fuel={fuel}
           />
         );
@@ -94,6 +98,7 @@ export default function HomeUITabGroup({
             color={color}
             transmission={transmission}
             drivetrain={drivetrain}
+            vehicleCategory={vehicleCategory}
             fuel={fuel}
           />
         );
@@ -106,6 +111,7 @@ export default function HomeUITabGroup({
             color={color}
             transmission={transmission}
             drivetrain={drivetrain}
+            vehicleCategory={vehicleCategory}
             fuel={fuel}
           />
         );

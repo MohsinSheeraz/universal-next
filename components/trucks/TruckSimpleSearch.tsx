@@ -21,6 +21,7 @@ interface Props {
   transmission: Transmission[];
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
+  vehicleCategory: VehicleCategory[]
   // stockcars : StockCars[]
 }
 
@@ -33,6 +34,7 @@ const getCategory = async () => {
 };
 export default function TruckSimpleSearch({
   bodyTypes,
+  vehicleCategory,
   makes,
   yearList,
   color,
@@ -50,7 +52,7 @@ export default function TruckSimpleSearch({
     setCategories(category)
   }
   const router = useRouter();
-
+  const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
   const [isLoading, setLoading] = useState(false);
   const [isMore, setIsMore] = useState(false);
   const [makeId, setMakeId] = useState("0");
@@ -71,7 +73,13 @@ export default function TruckSimpleSearch({
     const modelbymake = await GetModelWiseMakeList(selectedMakeID); // models.filter(x=>x.makeId == parseInt(selectedValue));
     setMappedModels(modelbymake.data);
   };
-
+  const handleCheckboxChange = (category: number) => {
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(selectedCategories.filter((item) => item !== category));
+    } else {
+      setSelectedCategories([...selectedCategories, category]);
+    }
+  };
   const renderMappedModels = () => {
     if (mappedModels.length > 0) {
       return (
@@ -94,6 +102,7 @@ export default function TruckSimpleSearch({
       </SearchSelect>
     );
   };
+
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -278,6 +287,12 @@ export default function TruckSimpleSearch({
                   </SearchSelectItem>
                 ))}
               </SearchSelect>
+            </div>
+            <div className="col-12 row space-y-2 mt-4 align-content-center">
+              {vehicleCategory.map((itm) => {
+                return <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 text-[12px]"><input type="checkbox" className="mr-1" checked={selectedCategories.includes(itm.categoryId)}
+                  onChange={() => handleCheckboxChange(itm.categoryId)} /> {itm.categoryName}</div>
+              })}
             </div>
           </>
         )}

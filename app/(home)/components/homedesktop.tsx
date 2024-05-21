@@ -8,6 +8,7 @@ import { DrivetrainType } from "@/models/Master/DrivetrainType";
 import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
 import { Transmission } from "@/models/Master/Transmission";
+import { VehicleCategory } from "@/models/Master/VehicleCategory";
 import { StockCars } from "@/models/StockCars";
 import { Trucks } from "@/models/Trucks";
 import Link from "next/link";
@@ -23,8 +24,9 @@ type Props = {
   stockcars: StockCars[];
   trucks: Trucks[];
   locations: Country[];
+  vehicleCategory: VehicleCategory[]
 }
-export default function HomeDesktop({ drivetrain, color, makes, locations, transmission, fuel, bodyTypes, stockcars, trucks }: Props) {
+export default function HomeDesktop({ drivetrain, vehicleCategory, color, makes, locations, transmission, fuel, bodyTypes, stockcars, trucks }: Props) {
 
   return (
     <>
@@ -36,6 +38,7 @@ export default function HomeDesktop({ drivetrain, color, makes, locations, trans
           fuel={fuel}
           bodyTlist={bodyTypes}
           makeList={makes}
+          vehicleCategory={vehicleCategory}
         />
         <div className="carboxes mt-3 ">
           <HomePageCarListings locations={locations} stockcars={stockcars} trucks={trucks} />

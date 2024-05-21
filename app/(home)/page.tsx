@@ -45,6 +45,10 @@ const GetLocations = async () => {
   const res = await agent.LoadData.countryList(); //return await prisma.tblMasterCountry.findMany({where: {IsActive:true}} );
   return res.data;
 };
+const GetVehicleCategory = async () => {
+  const res = await agent.LoadData.vehicleCategoryList(); //return await prisma.tblMasterCountry.findMany({where: {IsActive:true}} );
+  return res.data;
+};
 export default async function Home() {
   const stocks = await GetStock();
   const topTrucks = await GetTrucks();
@@ -55,10 +59,12 @@ export default async function Home() {
   const transmission = await GetTransmission();
   const fuel = await GetFuel();
   const locations = await GetLocations();
+  const vehicleCategory = await GetVehicleCategory();
+
   return (
     <>
-      <HomeDesktop locations={locations} bodyTypes={bodyTypes} makes={makes} color={color} transmission={transmission} drivetrain={drivetrain} fuel={fuel} stockcars={stocks} trucks={topTrucks} />
-      <HomeMobile bodyTypes={bodyTypes} makes={makes} color={color} transmission={transmission} drivetrain={drivetrain} fuel={fuel} locations={locations} />
+      <HomeDesktop vehicleCategory={vehicleCategory} locations={locations} bodyTypes={bodyTypes} makes={makes} color={color} transmission={transmission} drivetrain={drivetrain} fuel={fuel} stockcars={stocks} trucks={topTrucks} />
+      <HomeMobile vehicleCategory={vehicleCategory} bodyTypes={bodyTypes} makes={makes} color={color} transmission={transmission} drivetrain={drivetrain} fuel={fuel} locations={locations} />
     </>
   );
 }

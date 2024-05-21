@@ -6,6 +6,7 @@ import { DrivetrainType } from "@/models/Master/DrivetrainType";
 import { FuelType } from "@/models/Master/FuelType";
 import { Make } from "@/models/Master/Make";
 import { Transmission } from "@/models/Master/Transmission";
+import { VehicleCategory } from "@/models/Master/VehicleCategory";
 import { useUserStore } from "@/store/store";
 import { useUser } from "@clerk/nextjs";
 import Link from "next/link";
@@ -24,6 +25,7 @@ interface Props {
   transmission: Transmission[];
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
+  vehicleCategory: VehicleCategory[]
 }
 export default function TabButtons({
   makeList,
@@ -33,6 +35,7 @@ export default function TabButtons({
   drivetrain,
   fuel,
   locations,
+  vehicleCategory
 }: Props) {
   const [current, setCurrent] = useState("By Make");
   const [type, setType] = useState(false);
@@ -55,6 +58,7 @@ export default function TabButtons({
       case "Quick Search":
         return (
           <BySearch
+            vehicleCategory={vehicleCategory}
             drivetrain={drivetrain}
             color={color}
             transmission={transmission}
