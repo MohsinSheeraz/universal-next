@@ -5,7 +5,7 @@ import AdminCarTableItem from "./adminCarTableItem";
 
 type Prop = {
   data: StockCars[] | Trucks[] | Machinery[];
-  id: number
+  id: number;
 };
 export default function AdminCarPurchasedTable({ data, id }: Prop) {
   return (

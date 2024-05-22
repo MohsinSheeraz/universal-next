@@ -20,7 +20,6 @@ type Prop = {
   fav?: any;
   countries?: any;
   type: string;
-
 };
 export default function CarCard({ car, href, fav, countries, type }: Prop) {
   const [isfav, setFav] = useState(false);
@@ -59,24 +58,27 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
       key={car.stockId}
       onClick={() => {
         router.push(
-          `/global/results/${car.makeName.replaceAll(" ", "-") +
-          "-" +
-          car.modelName.replaceAll(" ", "-") +
-          "-" +
-          car.year
+          `/global/results/${
+            car.makeName.replaceAll(" ", "-") +
+            "-" +
+            car.modelName.replaceAll(" ", "-") +
+            "-" +
+            car.year
           }/${type}/${car.stockId}`
         );
       }}
       className={`w-[90%] max-w-[400px] sm:w-[280px] relative   bg-white  !pt-2  px-[10px]  items-center gap-3 shadow-md m-auto flex flex-col  h-[420px] border border-gray-100 rounded-3xl `}
     >
       {/* <div className="relative !pb-0 xl:!pb-10"> */}
-      <Link className="!max-w-full"
-        href={`/global/results/${car.makeName.replaceAll(" ", "-") +
+      <Link
+        className="!max-w-full"
+        href={`/global/results/${
+          car.makeName.replaceAll(" ", "-") +
           "-" +
           car.modelName.replaceAll(" ", "-") +
           "-" +
           car.year
-          }/${type}/${car.stockId}`}
+        }/${type}/${car.stockId}`}
       >
         <Image
           src={car.imageUrl}
@@ -116,7 +118,6 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
 
         <div className="absolute top-4 right-6 ">
           <FaHeart
-
             onClick={(e) => {
               e.stopPropagation();
               e.preventDefault();
@@ -142,7 +143,6 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
               }
               // login();
               router.push("/sign-in");
-
             }}
             size={"24px"}
             style={{
@@ -157,14 +157,15 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
         <div className="w-[95%] flex flex-col gap-2 ">
           <div className="flex">
             <p className="font-bold text-[#221C63] text-[10px] ">
-
-              <Link className="!max-w-full"
-                href={`/global/results/${car.makeName.replaceAll(" ", "-") +
+              <Link
+                className="!max-w-full"
+                href={`/global/results/${
+                  car.makeName.replaceAll(" ", "-") +
                   "-" +
                   car.modelName.replaceAll(" ", "-") +
                   "-" +
                   car.year
-                  }/${type}/${car.stockId}`}
+                }/${type}/${car.stockId}`}
               >
                 {" "}
                 {car.listingTitle}
@@ -195,9 +196,7 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
             )}
 
             <div className="flex items-center flex-col ">
-              <p className="text-[6px] text-[#221C63] font-semibold ">
-                YEAR
-              </p>
+              <p className="text-[6px] text-[#221C63] font-semibold ">YEAR</p>
               <p className=" p-1  flex items-center rounded-md text-[8px]">
                 <img
                   decoding="async"
@@ -247,9 +246,7 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
             )}
 
             <div className="flex items-center flex-col ">
-              <p className="text-[6px] text-[#221C63] font-semibold ">
-                Fuel
-              </p>
+              <p className="text-[6px] text-[#221C63] font-semibold ">Fuel</p>
               <p className=" p-1  flex items-center rounded-md text-[8px] ml-3">
                 <FaGasPump style={{ marginRight: "8px" }} />
                 {car.typeOfFuel}
@@ -290,9 +287,7 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
             )}
 
             <div className="flex items-center flex-col ">
-              <p className="text-[6px] text-[#221C63] font-semibold ">
-                Color
-              </p>
+              <p className="text-[6px] text-[#221C63] font-semibold ">Color</p>
               <div
                 style={{ backgroundColor: car.colorHex }}
                 className={`border-[2px] border-black w-[30px] rounded-lg h-[10px] bg-[${car.colorHex}] mt-1`}
@@ -353,11 +348,11 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
           <div className="flex items-center justify-between">
             <div className=" flex items-center  font-semibold text-[14px]">
               <Image
-                src={`/assets/images/flags/${countries.find(
-                  (x: { countryId: any }) =>
-                    x.countryId == car.locationId
-                )?.slug
-                  }.svg`}
+                src={`/assets/images/flags/${
+                  countries.find(
+                    (x: { countryId: any }) => x.countryId == car.locationId
+                  )?.slug
+                }.svg`}
                 className="img-fluid mr-2"
                 height={20}
                 width={20}
@@ -365,9 +360,7 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
               />
               {car.locationName}
             </div>
-            <Link className="!max-w-full"
-              href={href}
-            >
+            <Link className="!max-w-full" href={href}>
               <button className="text-[12px]   px-4 mb-2 py-1 rounded-full text-[#221C63] font-semibold border-[1px] border-[#221C63] ml-4 ">
                 Send Offer
               </button>

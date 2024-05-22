@@ -1,7 +1,7 @@
-import { useAdminStore } from "@/store/store"
+import { useAdminStore } from "@/store/store";
 
 export default function SignInForm() {
-  const { setIsLogin } = useAdminStore()
+  const { setIsLogin } = useAdminStore();
   return (
     <>
       {/*
@@ -25,11 +25,17 @@ export default function SignInForm() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={() => {
-            setIsLogin(true)
-          }} >
+          <form
+            className="space-y-6"
+            onSubmit={() => {
+              setIsLogin(true);
+            }}
+          >
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium leading-6 text-white"
+              >
                 Email address
               </label>
               <div className="mt-2">
@@ -46,7 +52,10 @@ export default function SignInForm() {
 
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium leading-6 text-white"
+                >
                   Password
                 </label>
                 {/* <div className="text-sm">
@@ -79,5 +88,5 @@ export default function SignInForm() {
         </div>
       </div>
     </>
-  )
+  );
 }

@@ -134,7 +134,8 @@ const LoadData = {
     requestNoCache.get<StockCars[]>("carstock/homepage_cars"),
   //test: () => await fetch(baseURL+"carstock/homepage_cars", {cache: 'no-store'});
   // stock: (stockID: number) => request.get<StockCars>(`carstock/${stockID}`),
-  stock: (stockID: number) => requestNoCache.get<StockCars>(`carstock/${stockID}`),
+  stock: (stockID: number) =>
+    requestNoCache.get<StockCars>(`carstock/${stockID}`),
   truck: (stockID: number) => request.get<Trucks>(`trucks/${stockID}`),
   machinery: (stockID: number) => request.get<Trucks>(`machinery/${stockID}`),
 
@@ -192,12 +193,13 @@ const LoadData = {
   customerCheck: (email: string) =>
     request.get<boolean>(`customers/Exists/${email}`),
   getAllCustomer: (currentPage: number, pageSize: number) =>
-    request.get<boolean>(`customers?PageSize=${pageSize}&pageNumber=${currentPage}`),
+    request.get<boolean>(
+      `customers?PageSize=${pageSize}&pageNumber=${currentPage}`
+    ),
   register: (user: CustomerSignUp) => registerUser(user), //request.post<CustomerSignUp>('authentication', user),
   customerProfile: (email: string) =>
     request.get<Customer[]>(`customers/ByEmail/${email}/`),
-  customerByID: (id: number) =>
-    request.get<Customer[]>(`customers/${id}/`),
+  customerByID: (id: number) => request.get<Customer[]>(`customers/${id}/`),
   consigneeCourierByCustomer: (customerID: number) =>
     request.get<ConsigneeCourier[]>(`customers/Consignee/${customerID}`),
   consigneeCourierByID: (id: number) =>

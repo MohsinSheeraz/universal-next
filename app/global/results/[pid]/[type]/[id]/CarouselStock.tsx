@@ -9,8 +9,11 @@ interface Props {
   isReserved: Boolean;
   isPurchased?: Boolean;
 }
-export default function CarouselStock({ imageURLs, isReserved, isPurchased }: Props) {
-
+export default function CarouselStock({
+  imageURLs,
+  isReserved,
+  isPurchased,
+}: Props) {
   // useEffect(() => {
   //   const handleResize = () => {
   //     setHasSizeButton(window?.innerWidth >= 768);
@@ -35,13 +38,16 @@ export default function CarouselStock({ imageURLs, isReserved, isPurchased }: Pr
       /> */}
       {/* <div className="!h-auto md:!h-[500px]"> */}
 
-      <ImageGallery autoPlay={false} showPlayButton={false} items={imageURLs.map((itm: any) => {
-        return {
-          original: itm?.src,
-          thumbnail: itm?.src,
-
-        }
-      })} />
+      <ImageGallery
+        autoPlay={false}
+        showPlayButton={false}
+        items={imageURLs.map((itm: any) => {
+          return {
+            original: itm?.src,
+            thumbnail: itm?.src,
+          };
+        })}
+      />
       {/* </div> */}
 
       {/* </div> */}

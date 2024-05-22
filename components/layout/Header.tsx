@@ -270,8 +270,8 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   countryList={[]}
                   portList={[]}
                   portMapping={undefined} // countryList={locations}
-                // portList={ports}
-                // portMapping={portMapping}
+                  // portList={ports}
+                  // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}
@@ -427,14 +427,14 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                               user?.email && !isUpdate
                                 ? ""
                                 : {
-                                  pathname: `/global/results/${location.countryName.replaceAll(
-                                    " ",
-                                    "-"
-                                  )}/cars`,
-                                  query: {
-                                    countryID: location.countryId,
-                                  },
-                                }
+                                    pathname: `/global/results/${location.countryName.replaceAll(
+                                      " ",
+                                      "-"
+                                    )}/cars`,
+                                    query: {
+                                      countryID: location.countryId,
+                                    },
+                                  }
                             }
                           >
                             <span className=" inline-flex items-center rounded-md">

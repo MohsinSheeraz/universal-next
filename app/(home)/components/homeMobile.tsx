@@ -16,10 +16,18 @@ type Props = {
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
   locations: Country[];
-  vehicleCategory: VehicleCategory[]
-}
-export default async function HomeMobile({ drivetrain, color, makes, transmission, fuel, bodyTypes, locations, vehicleCategory }: Props) {
-
+  vehicleCategory: VehicleCategory[];
+};
+export default async function HomeMobile({
+  drivetrain,
+  color,
+  makes,
+  transmission,
+  fuel,
+  bodyTypes,
+  locations,
+  vehicleCategory,
+}: Props) {
   return (
     <div className="!block sm:!hidden">
       <TabButtons

@@ -28,7 +28,7 @@ interface Props {
   transmission: Transmission[];
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
-  vehicleCategory: VehicleCategory[]
+  vehicleCategory: VehicleCategory[];
 }
 
 function classNames(...classes: any[]) {
@@ -48,7 +48,7 @@ export default function HomeUITabGroup({
   transmission,
   drivetrain,
   fuel,
-  vehicleCategory
+  vehicleCategory,
 }: Props) {
   const [currentForm, setCurrentForm] = useState("Cars");
   const type = useParams();
@@ -61,19 +61,19 @@ export default function HomeUITabGroup({
   useEffect(() => {
     switch (type?.type) {
       case "cars":
-        setCurrentForm("Cars")
-        return
+        setCurrentForm("Cars");
+        return;
       case "trucks":
-        setCurrentForm("Truck")
-        return
+        setCurrentForm("Truck");
+        return;
       case "machinery":
-        setCurrentForm("Heavy Machinery")
-        return
+        setCurrentForm("Heavy Machinery");
+        return;
 
       default:
         break;
     }
-  }, [])
+  }, []);
   const getForm = () => {
     switch (currentForm) {
       case "Cars":

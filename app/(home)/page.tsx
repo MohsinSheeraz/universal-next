@@ -63,8 +63,28 @@ export default async function Home() {
 
   return (
     <>
-      <HomeDesktop vehicleCategory={vehicleCategory} locations={locations} bodyTypes={bodyTypes} makes={makes} color={color} transmission={transmission} drivetrain={drivetrain} fuel={fuel} stockcars={stocks} trucks={topTrucks} />
-      <HomeMobile vehicleCategory={vehicleCategory} bodyTypes={bodyTypes} makes={makes} color={color} transmission={transmission} drivetrain={drivetrain} fuel={fuel} locations={locations} />
+      <HomeDesktop
+        vehicleCategory={vehicleCategory}
+        locations={locations}
+        bodyTypes={bodyTypes}
+        makes={makes}
+        color={color}
+        transmission={transmission}
+        drivetrain={drivetrain}
+        fuel={fuel}
+        stockcars={stocks}
+        trucks={topTrucks}
+      />
+      <HomeMobile
+        vehicleCategory={vehicleCategory}
+        bodyTypes={bodyTypes}
+        makes={makes}
+        color={color}
+        transmission={transmission}
+        drivetrain={drivetrain}
+        fuel={fuel}
+        locations={locations}
+      />
     </>
   );
 }

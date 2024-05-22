@@ -16,7 +16,7 @@ interface Props {
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
   yearList: string[];
-  vehicleCategory: VehicleCategory[]
+  vehicleCategory: VehicleCategory[];
 }
 export default function BySearch({
   bodyTlist,
@@ -26,7 +26,7 @@ export default function BySearch({
   fuel,
   drivetrain,
   yearList,
-  vehicleCategory
+  vehicleCategory,
 }: Props) {
   return (
     <div className="mb-3">

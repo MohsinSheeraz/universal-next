@@ -93,7 +93,7 @@ export default function CarSearchResult({ locations, params }: Props) {
   useEffect(() => {
     const GetStock = async (paramURL: string) => {
       try {
-        console.log(paramURL)
+        console.log(paramURL);
         const { data, paginationHeader } = await getData(paramURL);
         if (paginationHeader) {
           setPaginationData(paginationHeader);
@@ -113,7 +113,7 @@ export default function CarSearchResult({ locations, params }: Props) {
 
     const filterString = queryStringParts.join("&");
 
-    GetStock(filterString).then((r) => { })
+    GetStock(filterString).then((r) => {});
   }, [searchParams, currentPage]);
   const router = useRouter();
   return (

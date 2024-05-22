@@ -9,7 +9,7 @@ import Detailed from "./detailed";
 interface Props {
   params: {
     id: number;
-    customerId: number
+    customerId: number;
   };
 }
 
@@ -34,8 +34,8 @@ export default async function AdminReservedDetail({ params }: Props) {
         <div className="mt-24 w-full"></div>
         <div className="col-xl-10 col-lg-10 col-md-12 col-sm-12 col-12 detailedsection pt-[65px!important] lg:!pt-0 ">
           <div className="ml-7 mt-2">
-            <Link href={'/admin/customers/' + params?.customerId}>
-              < div className="flex items-center gap-2">
+            <Link href={"/admin/customers/" + params?.customerId}>
+              <div className="flex items-center gap-2">
                 <svg
                   width="8"
                   height="13"
@@ -52,8 +52,11 @@ export default async function AdminReservedDetail({ params }: Props) {
                 <p className="text-[#A3AED0]"> Back</p>
               </div>
             </Link>
-          </div >
-          <Detailed stockID={Stock.data?.stockId} customerId={params?.customerId} />
+          </div>
+          <Detailed
+            stockID={Stock.data?.stockId}
+            customerId={params?.customerId}
+          />
 
           <div className="px-2 py-2  w-[95%] m-auto bg-[#221C63] mt-5">
             <p className="text-white font-semibold"> PRODUCT</p>
@@ -109,7 +112,7 @@ export default async function AdminReservedDetail({ params }: Props) {
               </div>
             </div>
           </section>
-        </div >
+        </div>
       </>
     );
 }

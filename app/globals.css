@@ -157,7 +157,28 @@ div#carousel-thumbs .carousel-item {
   padding: 5px 10px;
   border-radius: 5px;
 }
-
+.youtube-svg {
+  stroke: none;
+  stroke-width: 0;
+  stroke-dasharray: none;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+  stroke-miterlimit: 10;
+  fill: none;
+  fill-rule: nonzero;
+  opacity: 1;
+}
+.youtube-path-svg {
+  stroke: none;
+  stroke-width: 1;
+  stroke-dasharray: none;
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+  stroke-miterlimit: 10;
+  fill: white;
+  fill-rule: nonzero;
+  opacity: 1;
+}
 button.currencydropbtn {
   font-size: 14px;
 }

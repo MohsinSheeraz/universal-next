@@ -31,11 +31,12 @@ export default function MobileCardCars({
             key={car.stockId}
             onClick={() => {
               router.push(
-                `/global/results/${car.makeName.replaceAll(" ", "-") +
-                "-" +
-                car.modelName.replaceAll(" ", "-") +
-                "-" +
-                car.year
+                `/global/results/${
+                  car.makeName.replaceAll(" ", "-") +
+                  "-" +
+                  car.modelName.replaceAll(" ", "-") +
+                  "-" +
+                  car.year
                 }/${type?.type}/${car.stockId}`
               );
             }}
@@ -43,12 +44,13 @@ export default function MobileCardCars({
           >
             {/* <div className="relative !pb-0 xl:!pb-10"> */}
             <Link
-              href={`/global/results/${car.makeName.replaceAll(" ", "-") +
+              href={`/global/results/${
+                car.makeName.replaceAll(" ", "-") +
                 "-" +
                 car.modelName.replaceAll(" ", "-") +
                 "-" +
                 car.year
-                }/${type?.type}/${car.stockId}`}
+              }/${type?.type}/${car.stockId}`}
             >
               <Image
                 src={car.imageUrl}
@@ -94,14 +96,14 @@ export default function MobileCardCars({
               <div className="w-[95%] flex flex-col gap-2 ">
                 <div className="flex">
                   <p className="font-bold text-[#221C63] text-[10px] ">
-
                     <Link
-                      href={`/global/results/${car.makeName.replaceAll(" ", "-") +
+                      href={`/global/results/${
+                        car.makeName.replaceAll(" ", "-") +
                         "-" +
                         car.modelName.replaceAll(" ", "-") +
                         "-" +
                         car.year
-                        }/${type?.type}/${car.stockId}`}
+                      }/${type?.type}/${car.stockId}`}
                     >
                       {" "}
                       {car.listingTitle}
@@ -290,11 +292,12 @@ export default function MobileCardCars({
                 <div className="flex items-center justify-between">
                   <div className=" flex items-center  font-semibold text-[14px]">
                     <Image
-                      src={`/assets/images/flags/${locations.find(
-                        (x: { countryId: any }) =>
-                          x.countryId == car.locationId
-                      )?.slug
-                        }.svg`}
+                      src={`/assets/images/flags/${
+                        locations.find(
+                          (x: { countryId: any }) =>
+                            x.countryId == car.locationId
+                        )?.slug
+                      }.svg`}
                       className="img-fluid mr-2"
                       height={20}
                       width={20}
@@ -303,12 +306,13 @@ export default function MobileCardCars({
                     {car.locationName}
                   </div>
                   <Link
-                    href={`/global/results/${car.makeName.replaceAll(" ", "-") +
+                    href={`/global/results/${
+                      car.makeName.replaceAll(" ", "-") +
                       "-" +
                       car.modelName.replaceAll(" ", "-") +
                       "-" +
                       car.year
-                      }/${type?.type}/${car.stockId}`}
+                    }/${type?.type}/${car.stockId}`}
                   >
                     <button className="text-[12px]  xl:mt-0 px-4 mb-2 py-1 rounded-full text-[#221C63] font-semibold border-[1px] border-[#221C63] ml-4 ">
                       Send Offer

@@ -63,22 +63,22 @@ interface adminData {
 const persistedUserData =
   JSON.parse(
     typeof window !== "undefined" &&
-    window.localStorage &&
-    (localStorage?.getItem("user_data") as any)
+      window.localStorage &&
+      (localStorage?.getItem("user_data") as any)
   ) || initialUserData;
 
 const isUpdate =
   JSON.parse(
     typeof window !== "undefined" &&
-    window.localStorage &&
-    (localStorage?.getItem("isUpdate") as any)
+      window.localStorage &&
+      (localStorage?.getItem("isUpdate") as any)
   ) || false;
 
 const isLogin =
   JSON.parse(
     typeof window !== "undefined" &&
-    window.localStorage &&
-    (localStorage?.getItem("isLogin") as any)
+      window.localStorage &&
+      (localStorage?.getItem("isLogin") as any)
   ) || false;
 
 // interface userData {
