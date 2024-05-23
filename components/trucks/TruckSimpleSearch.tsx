@@ -21,7 +21,7 @@ interface Props {
   transmission: Transmission[];
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
-  vehicleCategory: VehicleCategory[]
+  vehicleCategory: VehicleCategory[];
   // stockcars : StockCars[]
 }
 
@@ -42,15 +42,14 @@ export default function TruckSimpleSearch({
   drivetrain,
   fuel,
 }: Props) {
-  const [categories, setCategories] = useState<VehicleCategory[]>([])
+  const [categories, setCategories] = useState<VehicleCategory[]>([]);
   useEffect(() => {
-
-    getData()
-  }, [])
+    getData();
+  }, []);
   const getData = async () => {
-    const category = await getCategory()
-    setCategories(category)
-  }
+    const category = await getCategory();
+    setCategories(category);
+  };
   const router = useRouter();
   const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
   const [isLoading, setLoading] = useState(false);
@@ -75,7 +74,9 @@ export default function TruckSimpleSearch({
   };
   const handleCheckboxChange = (category: number) => {
     if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((item) => item !== category));
+      setSelectedCategories(
+        selectedCategories.filter((item) => item !== category)
+      );
     } else {
       setSelectedCategories([...selectedCategories, category]);
     }
@@ -102,7 +103,6 @@ export default function TruckSimpleSearch({
       </SearchSelect>
     );
   };
-
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
@@ -157,7 +157,7 @@ export default function TruckSimpleSearch({
                   key={make.makeId}
                   value={make.makeId.toString()}
                 >
-                  {make.makeName} { }
+                  {make.makeName} {}
                 </SearchSelectItem>
               ))}
           </SearchSelect>
@@ -290,8 +290,17 @@ export default function TruckSimpleSearch({
             </div>
             <div className="col-12 row space-y-2 mt-4 align-content-center">
               {vehicleCategory.map((itm) => {
-                return <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 text-[12px]"><input type="checkbox" className="mr-1" checked={selectedCategories.includes(itm.categoryId)}
-                  onChange={() => handleCheckboxChange(itm.categoryId)} /> {itm.categoryName}</div>
+                return (
+                  <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 text-[12px]">
+                    <input
+                      type="checkbox"
+                      className="mr-1"
+                      checked={selectedCategories.includes(itm.categoryId)}
+                      onChange={() => handleCheckboxChange(itm.categoryId)}
+                    />{" "}
+                    {itm.categoryName}
+                  </div>
+                );
               })}
             </div>
           </>

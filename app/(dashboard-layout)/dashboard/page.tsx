@@ -1,5 +1,3 @@
-
-
 import Forms from "./components/Forms";
 
 export default async function Dashboard() {

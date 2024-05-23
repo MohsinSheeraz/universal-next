@@ -16,7 +16,7 @@ interface Props {
   transmission: Transmission[];
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
-  vehicleCategory: VehicleCategory[]
+  vehicleCategory: VehicleCategory[];
 }
 
 const initialState = {
@@ -35,7 +35,7 @@ export default function HomeUI({
   transmission,
   drivetrain,
   fuel,
-  vehicleCategory
+  vehicleCategory,
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   function closeMobileSearchModal() {

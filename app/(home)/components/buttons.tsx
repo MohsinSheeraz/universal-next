@@ -25,7 +25,7 @@ interface Props {
   transmission: Transmission[];
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
-  vehicleCategory: VehicleCategory[]
+  vehicleCategory: VehicleCategory[];
 }
 export default function TabButtons({
   makeList,
@@ -35,7 +35,7 @@ export default function TabButtons({
   drivetrain,
   fuel,
   locations,
-  vehicleCategory
+  vehicleCategory,
 }: Props) {
   const [current, setCurrent] = useState("By Make");
   const [type, setType] = useState(false);

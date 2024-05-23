@@ -31,9 +31,9 @@ export default function AdminCarTableItem({ item, id, page }: Prop) {
     };
     getData();
   }, []);
-  const etd = new Date(stock?.etd || 0)
-  const eta = new Date(stock?.eta || 0)
-  const created = new Date(stock?.createdOn || 0)
+  const etd = new Date(stock?.etd || 0);
+  const eta = new Date(stock?.eta || 0);
+  const created = new Date(stock?.createdOn || 0);
   return (
     <div className="mt-3 min-w-[1200px] flex gap-3 odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
       <div className="!min-w-60">
@@ -64,7 +64,6 @@ export default function AdminCarTableItem({ item, id, page }: Prop) {
               </td>
               <td className="w-36 text-sm bg-slate-50 p-1 text-center">
                 {eta < created ? (
-
                   <span className="text-red-800 text-[14px]">
                     not Available
                   </span>
@@ -88,7 +87,6 @@ export default function AdminCarTableItem({ item, id, page }: Prop) {
                   <span className="text-red-800 text-[14px]">
                     not Available
                   </span>
-
                 ) : (
                   getFormatedDate(stock?.etd)
                 )}
@@ -103,7 +101,8 @@ export default function AdminCarTableItem({ item, id, page }: Prop) {
         </p>
         <Link
           className="w-full !no-underline"
-          href={`/admin/customers/${id}/details/${page}/${item.stockId}`
+          href={
+            `/admin/customers/${id}/details/${page}/${item.stockId}`
             // param?.get("tabs") == "Reserved-Vehicles"
             //   ? `/dashboard/details/reserve/${item.stockId}`
             //   : `/dashboard/details/purchase/${item.stockId}`
@@ -116,6 +115,6 @@ export default function AdminCarTableItem({ item, id, page }: Prop) {
           </div>
         </Link>
       </div>
-    </div >
+    </div>
   );
 }

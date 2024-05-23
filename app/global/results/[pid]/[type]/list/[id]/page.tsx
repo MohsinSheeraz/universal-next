@@ -39,7 +39,7 @@ interface Props {
     ColorId: Number;
     MaxEngineSize: number;
     MinEngineSize: number;
-    categoryID: number
+    categoryID: number;
     //searchFromBox:string
   };
 }
@@ -135,7 +135,7 @@ export default function ResultPage({ searchParams }: Props) {
       const transmission = await GetTransmission();
       const fuel = await GetFuel();
       const vehicleCategory = await GetVehicleCategory();
-      setVehicleCategory(vehicleCategory)
+      setVehicleCategory(vehicleCategory);
       setdrivetrain(drivetrain);
       setcolor(color);
       settransmission(transmission);

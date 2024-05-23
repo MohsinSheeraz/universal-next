@@ -31,9 +31,9 @@ export default function CarTableItem({ item }: Prop) {
     };
     getData();
   }, []);
-  const etd = new Date(stock?.etd || 0)
-  const eta = new Date(stock?.eta || 0)
-  const created = new Date(stock?.createdOn || 0)
+  const etd = new Date(stock?.etd || 0);
+  const eta = new Date(stock?.eta || 0);
+  const created = new Date(stock?.createdOn || 0);
   return (
     <div className="mt-3 min-w-[1200px] flex gap-3 odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
       <div className="!min-w-60">

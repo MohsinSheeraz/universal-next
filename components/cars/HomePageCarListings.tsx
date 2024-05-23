@@ -15,7 +15,11 @@ interface Props {
   locations: Country[];
 }
 
-export default function HomePageCarListings({ stockcars, trucks, locations }: Props) {
+export default function HomePageCarListings({
+  stockcars,
+  trucks,
+  locations,
+}: Props) {
   const [fav, setFav] = useState<any>([]);
   const { user } = useUserStore();
   useEffect(() => {
@@ -48,19 +52,21 @@ export default function HomePageCarListings({ stockcars, trucks, locations }: Pr
                   .filter((car) => car.locationId == 84)
                   .sort((a, b) => b.stockId - a.stockId)
                   // .slice(0,10)
-                  .slice(0, 8).map((car, i) => (
+                  .slice(0, 8)
+                  .map((car, i) => (
                     <CarCard
                       key={i}
                       fav={fav}
                       car={car}
                       type="cars"
                       countries={locations}
-                      href={`/global/results/${car.makeName.replaceAll(" ", "-") +
+                      href={`/global/results/${
+                        car.makeName.replaceAll(" ", "-") +
                         "-" +
                         car.modelName.replaceAll(" ", "-") +
                         "-" +
                         car.year
-                        }/cars/${car.stockId}`}
+                      }/cars/${car.stockId}`}
                     />
                   ))}
               </div>
@@ -87,12 +93,13 @@ export default function HomePageCarListings({ stockcars, trucks, locations }: Pr
                     car={car}
                     type="trucks"
                     countries={locations}
-                    href={`/global/results/${car.makeName.replaceAll(" ", "-") +
+                    href={`/global/results/${
+                      car.makeName.replaceAll(" ", "-") +
                       "-" +
                       car.modelName.replaceAll(" ", "-") +
                       "-" +
                       car.year
-                      }/trucks/${car.stockId}`}
+                    }/trucks/${car.stockId}`}
                   />
                 ))}
               </div>
@@ -117,7 +124,8 @@ export default function HomePageCarListings({ stockcars, trucks, locations }: Pr
                       .filter((car) => car.locationId == 185)
                       .sort((a, b) => b.stockId - a.stockId)
                       // .slice(0,10)
-                      .slice(0, 8).map((car, i) => (
+                      .slice(0, 8)
+                      .map((car, i) => (
                         // <Link key={car.stockId} href={`/global/results/${encodeURIComponent(car.stockId)}`}>
                         <CarCard
                           countries={locations}
@@ -125,12 +133,13 @@ export default function HomePageCarListings({ stockcars, trucks, locations }: Pr
                           car={car}
                           key={i}
                           type="cars"
-                          href={`/global/results/${car.makeName.replace(" ", "-") +
+                          href={`/global/results/${
+                            car.makeName.replace(" ", "-") +
                             "-" +
                             car.modelName.replaceAll(" ", "-") +
                             "-" +
                             car.year
-                            }/cars/${car.stockId}`}
+                          }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>
@@ -162,19 +171,21 @@ export default function HomePageCarListings({ stockcars, trucks, locations }: Pr
                       )
                       .sort((a, b) => b.stockId - a.stockId)
                       // .slice(0,10)
-                      .slice(0, 8).map((car, i) => (
+                      .slice(0, 8)
+                      .map((car, i) => (
                         <CarCard
                           countries={locations}
                           key={i}
                           fav={fav}
                           car={car}
                           type="cars"
-                          href={`/global/results/${car.makeName.replace(" ", "-") +
+                          href={`/global/results/${
+                            car.makeName.replace(" ", "-") +
                             "-" +
                             car.modelName.replaceAll(" ", "-") +
                             "-" +
                             car.year
-                            }/cars/${car.stockId}`}
+                          }/cars/${car.stockId}`}
                         />
                       ))}
                   </div>

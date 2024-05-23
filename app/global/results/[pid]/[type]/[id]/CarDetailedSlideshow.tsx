@@ -8,14 +8,14 @@ interface Props {
   stockID: number;
   mainPic: string;
   isReserved: Boolean;
-  isPurchased: Boolean
+  isPurchased: Boolean;
 }
 
 export default async function CarDetailedSlideshow({
   stockID,
   mainPic,
   isReserved,
-  isPurchased
+  isPurchased,
 }: Props) {
   const stockPicture = await agent.LoadData.stockSliderList(stockID);
   const images = stockPicture.data?.map((pic: any) => ({
@@ -25,7 +25,11 @@ export default async function CarDetailedSlideshow({
 
   return (
     <>
-      <CarouselStock isReserved={isReserved} isPurchased={isPurchased} imageURLs={images} />
+      <CarouselStock
+        isReserved={isReserved}
+        isPurchased={isPurchased}
+        imageURLs={images}
+      />
       <ShareDownloadComponent imageList={stockPicture?.data} />
     </>
   );

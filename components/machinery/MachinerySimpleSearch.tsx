@@ -22,7 +22,7 @@ interface Props {
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
   // stockcars : StockCars[]
-  vehicleCategory: VehicleCategory[]
+  vehicleCategory: VehicleCategory[];
 }
 const getCategory = async () => {
   const result = await agent.LoadData.vehicleCategoryList(); //db.tblMakes.findMany({where: {isActive:true}} );
@@ -40,7 +40,7 @@ export default function MachinerySimpleSearch({
   transmission,
   drivetrain,
   fuel,
-  vehicleCategory
+  vehicleCategory,
 }: Props) {
   const router = useRouter();
   const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
@@ -59,22 +59,23 @@ export default function MachinerySimpleSearch({
   const [toPrice, setToPrice] = useState("0");
   const [toYear, setToYear] = useState("0");
 
-  const [categories, setCategories] = useState<VehicleCategory[]>([])
+  const [categories, setCategories] = useState<VehicleCategory[]>([]);
   useEffect(() => {
-
-    getData()
-  }, [])
+    getData();
+  }, []);
   const handleCheckboxChange = (category: number) => {
     if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((item) => item !== category));
+      setSelectedCategories(
+        selectedCategories.filter((item) => item !== category)
+      );
     } else {
       setSelectedCategories([...selectedCategories, category]);
     }
   };
   const getData = async () => {
-    const category = await getCategory()
-    setCategories(category)
-  }
+    const category = await getCategory();
+    setCategories(category);
+  };
   const handleValueChange = async (selectedValue: string) => {
     const selectedMakeID = selectedValue;
     setMakeId(selectedMakeID);
@@ -158,7 +159,7 @@ export default function MachinerySimpleSearch({
                   key={make.makeId}
                   value={make.makeId.toString()}
                 >
-                  {make.makeName} { }
+                  {make.makeName} {}
                 </SearchSelectItem>
               ))}
           </SearchSelect>
@@ -292,8 +293,17 @@ export default function MachinerySimpleSearch({
             </div>
             <div className="col-12 row space-y-2 mt-4 align-content-center">
               {vehicleCategory.map((itm) => {
-                return <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 text-[12px]"><input type="checkbox" className="mr-1" checked={selectedCategories.includes(itm.categoryId)}
-                  onChange={() => handleCheckboxChange(itm.categoryId)} /> {itm.categoryName}</div>
+                return (
+                  <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 text-[12px]">
+                    <input
+                      type="checkbox"
+                      className="mr-1"
+                      checked={selectedCategories.includes(itm.categoryId)}
+                      onChange={() => handleCheckboxChange(itm.categoryId)}
+                    />{" "}
+                    {itm.categoryName}
+                  </div>
+                );
               })}
             </div>
           </>

@@ -21,7 +21,7 @@ interface Props {
   transmission: Transmission[];
   drivetrain: DrivetrainType[];
   fuel: FuelType[];
-  vehicleCategory: VehicleCategory[]
+  vehicleCategory: VehicleCategory[];
 }
 
 const GetModelWiseMakeList = async (modelID: string) => {
@@ -36,7 +36,7 @@ export default function CarsSimpleSearch({
   transmission,
   drivetrain,
   fuel,
-  vehicleCategory
+  vehicleCategory,
 }: Props) {
   const router = useRouter();
   const [modelCode, setModelCode] = useState("0");
@@ -127,7 +127,9 @@ export default function CarsSimpleSearch({
   }
   const handleCheckboxChange = (category: number) => {
     if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((item) => item !== category));
+      setSelectedCategories(
+        selectedCategories.filter((item) => item !== category)
+      );
     } else {
       setSelectedCategories([...selectedCategories, category]);
     }
@@ -409,8 +411,17 @@ export default function CarsSimpleSearch({
             </div>
             <div className="col-12 row space-y-2 mt-4 align-content-center">
               {vehicleCategory.map((itm) => {
-                return <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 text-[12px]"><input type="checkbox" className="mr-1" checked={selectedCategories.includes(itm.categoryId)}
-                  onChange={() => handleCheckboxChange(itm.categoryId)} /> {itm.categoryName}</div>
+                return (
+                  <div className="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6 text-[12px]">
+                    <input
+                      type="checkbox"
+                      className="mr-1"
+                      checked={selectedCategories.includes(itm.categoryId)}
+                      onChange={() => handleCheckboxChange(itm.categoryId)}
+                    />{" "}
+                    {itm.categoryName}
+                  </div>
+                );
               })}
             </div>
             {/* <div className="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12">

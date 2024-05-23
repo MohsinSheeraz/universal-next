@@ -10,9 +10,9 @@ export default function Information({ stock }: Prop) {
   const download = () => {
     toast.info("Sorry, this feature is currently unavailable.");
   };
-  const etd = new Date(stock?.etd || 0)
-  const eta = new Date(stock?.eta || 0)
-  const created = new Date(stock?.createdOn || 0)
+  const etd = new Date(stock?.etd || 0);
+  const eta = new Date(stock?.eta || 0);
+  const created = new Date(stock?.createdOn || 0);
   return (
     <div className="row w-[95%] mt-5 m-auto">
       <div className="w-full py-2  bg-[#221C63] mt-3">
@@ -62,7 +62,6 @@ export default function Information({ stock }: Prop) {
                     NOT AVALAIBLE
                   </span>
                 ) : (
-
                   getFormatedDate(stock?.etd)
                 )}
               </td>
@@ -71,7 +70,6 @@ export default function Information({ stock }: Prop) {
               <td className="!text-[12px] sm:!text-[16px]">ETD</td>
               <td className="!text-[12px] sm:!text-[16px]">
                 {eta < created ? (
-
                   <span className="text-red-800 text-[14px]">
                     NOT AVALAIBLE
                   </span>
@@ -97,65 +95,62 @@ export default function Information({ stock }: Prop) {
           <tbody>
             <tr>
               <td className="!text-[12px] sm:!text-[16px]">B/L</td>
-              {stock?.billLadingURL === "Unavailable" ?
+              {stock?.billLadingURL === "Unavailable" ? (
                 <td className="text-red-800  !text-[12px] sm:!text-[14px]  ">
                   NOT AVALAIBLE
                 </td>
-                : <td
-                  className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
-                >
+              ) : (
+                <td className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline">
                   {" "}
                   <Link href={stock?.billLadingURL ?? ""} target="_blank">
                     Download{" "}
                   </Link>
                 </td>
-              }</tr>
+              )}
+            </tr>
             <tr>
               <td className="!text-[12px] sm:!text-[16px]">Inspection</td>
-              {stock?.inspectionCertURL === "Unavailable" ?
+              {stock?.inspectionCertURL === "Unavailable" ? (
                 <td className="text-red-800  !text-[12px] sm:!text-[14px]  ">
                   NOT AVALAIBLE
                 </td>
-                : <td
-                  className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
-                >
+              ) : (
+                <td className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline">
                   <Link href={stock?.inspectionCertURL ?? ""} target="_blank">
                     Download
                   </Link>
-                </td>}
+                </td>
+              )}
             </tr>
             <tr>
               <td className="!text-[12px] sm:!text-[16px]">
                 Export Certificate
               </td>
-              {stock?.exportCertURL === "Unavailable" ?
-
+              {stock?.exportCertURL === "Unavailable" ? (
                 <td className="text-red-800  !text-[12px] sm:!text-[14px]  ">
                   NOT AVALAIBLE
                 </td>
-                : <td
-                  className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
-
-                >
+              ) : (
+                <td className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline">
                   <Link href={stock?.exportCertURL ?? ""} target="_blank">
                     Download
                   </Link>
-                </td>}
+                </td>
+              )}
             </tr>
             <tr>
               <td className="!text-[12px] sm:!text-[16px]">Invoice</td>
-              {stock?.invoiceURL === "Unavailable" ?
+              {stock?.invoiceURL === "Unavailable" ? (
                 <td className="text-red-800  !text-[12px] sm:!text-[14px]  ">
                   NOT AVALAIBLE
                 </td>
-                : <td
-                  className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline"
-
-                >
+              ) : (
+                <td className="!text-[12px] sm:!text-[16px] cursor-pointer text-blue-400 underline">
                   <Link href={stock?.invoiceURL ?? ""} target="_blank">
                     Download
                   </Link>
-                </td>}
+                </td>
+              )}
             </tr>
           </tbody>
         </table>

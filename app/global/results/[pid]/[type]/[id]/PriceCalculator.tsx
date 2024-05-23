@@ -34,7 +34,7 @@ export default function PriceCalculator({
   reservedBy,
   stockCode,
   isReserved,
-  isSold
+  isSold,
 }: Props) {
   const [countryID, setCountryID] = useState(0);
   const [portID, setPortID] = useState(0);
@@ -106,9 +106,9 @@ export default function PriceCalculator({
     //setTotalPrice(car.price+inspection+insurance+freightCharge)
     setTotalPrice(
       car.price +
-      parseFloat(String(inspection)) +
-      parseFloat(String(insurance)) +
-      parseFloat(String(freightCharge))
+        parseFloat(String(inspection)) +
+        parseFloat(String(insurance)) +
+        parseFloat(String(freightCharge))
     );
   };
   if (isReserved) {
@@ -172,7 +172,7 @@ export default function PriceCalculator({
                     aria-expanded="true"
                     aria-haspopup="true"
                   >
-                    <option value={0} >Select Destination</option>
+                    <option value={0}>Select Destination</option>
                     {countries.map((country) => (
                       // <SelectItem key={country.countryId} value={country.countryId.toString()}>{country.countryName}</SelectItem>
                       <option key={country.countryId} value={country.countryId}>
@@ -401,7 +401,7 @@ export default function PriceCalculator({
                     aria-expanded="true"
                     aria-haspopup="true"
                   >
-                    <option value={0} >Select Destination</option>
+                    <option value={0}>Select Destination</option>
                     {countries.map((country) => (
                       // <SelectItem key={country.countryId} value={country.countryId.toString()}>{country.countryName}</SelectItem>
                       <option key={country.countryId} value={country.countryId}>
