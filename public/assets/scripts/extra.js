@@ -10,11 +10,25 @@ window.CRISP_WEBSITE_ID = "18f32b59-b83b-4b08-8ca7-b0f491532437";
 })();
 
 
-window.dataLayer = window.dataLayer || [];
-function gtag() { dataLayer.push(arguments); }
-gtag('js', new Date());
+// window.dataLayer = window.dataLayer || [];
+// function gtag() { dataLayer.push(arguments); }
+// gtag('js', new Date());
 
-gtag('config', 'G-WSSV2PN2E1');
+// gtag('config', 'G-WSSV2PN2E1');
+
+(function () {
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-WSSV2PN2E1';
+    document.head.appendChild(gtagScript);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-WSSV2PN2E1');
+})();
 
 
 !function (f, b, e, v, n, t, s) {
