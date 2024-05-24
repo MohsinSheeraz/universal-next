@@ -183,6 +183,7 @@ export default async function CarDetailed({ params }: Props) {
                         reservedBy={Stock.data.reservedBy}
                         stockCode={Stock.data.stockCode}
                         isReserved={Stock.data.isReserved}
+                        stockId={Stock.data.stockId}
                       />
                     </div>
                   </div>

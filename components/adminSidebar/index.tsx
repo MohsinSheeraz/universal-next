@@ -27,6 +27,14 @@ export default function AdminSidebarItems() {
         >
           Customers
         </Link>
+        {/* <Link
+          className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] 
+         
+            `}
+          href={"/admin/queries"}
+        >
+          Customers
+        </Link> */}
 
         {/* <div
           onClick={() => {

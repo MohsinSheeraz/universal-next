@@ -26,6 +26,7 @@ import {
   CourierDispatch,
   Customer,
   CustomerSignUp,
+  InquiryDetails,
   SalesOrderDetail,
   TransactionInfo,
 } from "@/models/Customer";
@@ -208,6 +209,10 @@ const LoadData = {
     request.get<CourierDispatch[]>(`customers/CourierDispatch/${customerID}`),
   courierDispatchByID: (id: number) =>
     request.get<CourierDispatch>(`customers/CourierDispatch/id/${id}`),
+  getCustomerInquiries: () =>
+    request.get<InquiryDetails>(`customers/inquiries`),
+  customerInquiry: (body: InquiryDetails) =>
+    request.post(`customers/inquiries/add`, body),
 
   /*Added on 15th November -------------------------------Start ----------*/
   purchasedCarsByCustomerID: (customerId: number) =>
