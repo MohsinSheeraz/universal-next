@@ -115,7 +115,7 @@ export default function CustomerList({ countries }: Prop) {
               suppressRowClickSelection={true}
               pagination={true}
               paginationPageSize={4}
-              paginationPageSizeSelector={[25, 50]}
+              paginationPageSizeSelector={[4, 10, 20]}
             />
           </div>
         </div>
