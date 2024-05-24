@@ -44,6 +44,11 @@ export default function CustomerList({ countries }: Prop) {
     const country = countries.find((itm: any) => itm.countryId == id);
     return country;
   };
+  const getCodeCountry = (code: string) => {
+
+    const country = countries.find((itm: any) => itm.slug == code);
+    return country;
+  };
   const CustomCountryComponent = (params: any) => {
     return (
       <p>
@@ -60,6 +65,22 @@ export default function CustomerList({ countries }: Prop) {
       </p>
     );
   };
+  const CustomCountryQueryComponent = (params: any) => {
+    return (
+      <p>
+        {" "}
+        <span className=" inline-flex items-center rounded-md px-2 py-1 text-xs font-medium  ring-1 ring-inset ">
+          <img
+            src={`/assets/images/flags/${getCodeCountry(params.data.countryCode)?.slug}.svg`}
+            className="img-fluid mr-3 w-7"
+            height="15px"
+            alt="Guyana flag"
+          />{" "}
+          {getCodeCountry(params.data.countryCode)?.countryName}
+        </span>{" "}
+      </p>
+    );
+  };
   const [colDefs, setColDefs] = useState<any>([
     { field: "customerCode", width: 200, filter: true, floatingFilter: true },
     { field: "name", width: 200, filter: true, floatingFilter: true },
@@ -69,9 +90,10 @@ export default function CustomerList({ countries }: Prop) {
     { field: "Action", cellRenderer: CustomButtonComponent, flex: 1 },
   ]);
   const [colInquiry, setInquiry] = useState<any>([
-    { field: "stockId", width: 200, filter: true, floatingFilter: true },
+    { field: "stockId", width: 100, filter: true, floatingFilter: true },
     { field: "name", width: 200, filter: true, floatingFilter: true },
     { field: "email", width: 300, filter: true, floatingFilter: true },
+    { field: "country", width: 200, cellRenderer: CustomCountryQueryComponent },
     { field: "contactNo", width: 250 },
     { field: "message", width: 500 },
     // { field: "Action", cellRenderer: CustomButtonComponent, flex: 1 },

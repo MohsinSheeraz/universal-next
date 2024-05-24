@@ -56,7 +56,8 @@ export default function ContactUs({ stockcode, stockId }: Props) {
             name: String(formValues["first-name"] + " " + formValues["last-name"]),
             email: String(formValues.email),
             contactNo: String(formValues["phone-number"]),
-            message: String(formValues.message)
+            message: String(formValues.message),
+            countryCode: String(formValues["phone-numberCountry"])
           }
           await agent.LoadData.customerInquiry(data)
         },
