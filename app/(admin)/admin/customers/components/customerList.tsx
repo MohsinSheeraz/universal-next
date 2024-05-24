@@ -1,6 +1,6 @@
 "use client";
 import agent from "@/api/agent";
-import { Customer } from "@/models/Customer";
+import { Customer, InquiryDetails } from "@/models/Customer";
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
 import { AgGridReact } from "ag-grid-react"; // React Data Grid Component
@@ -11,11 +11,14 @@ type Prop = {
 };
 export default function CustomerList({ countries }: Prop) {
   const [consignee, setConsignee] = useState<Customer[]>([]);
+  const [inquiries, setInquiries] = useState<InquiryDetails[]>([])
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const totalPages = Math.ceil(consignee.length / itemsPerPage);
   useEffect(() => {
     const getData = async () => {
+      const inquiries = await agent.LoadData.getCustomerInquiries()
+      setInquiries(inquiries.data)
       const { data } = await agent.LoadData.getAllCustomer(
         currentPage,
         itemsPerPage
@@ -65,6 +68,14 @@ export default function CustomerList({ countries }: Prop) {
     { field: "address", width: 400 },
     { field: "Action", cellRenderer: CustomButtonComponent, flex: 1 },
   ]);
+  const [colInquiry, setInquiry] = useState<any>([
+    { field: "stockId", width: 200, filter: true, floatingFilter: true },
+    { field: "name", width: 200, filter: true, floatingFilter: true },
+    { field: "email", width: 300, filter: true, floatingFilter: true },
+    { field: "contactNo", width: 250 },
+    { field: "message", width: 500 },
+    // { field: "Action", cellRenderer: CustomButtonComponent, flex: 1 },
+  ]);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -80,6 +91,43 @@ export default function CustomerList({ countries }: Prop) {
 
   return (
     <div className="w-[95%] mx-auto flex flex-col gap-5 my-5">
+      <div>
+        <div className="flex justify-between">
+          <div></div>
+          <div className="flex  justify-between w-[800px]">
+            <div>
+              <h1 className="text-xl font-bold text-center pb-8">
+                All Inquiries
+              </h1>
+            </div>
+          </div>
+        </div>
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <div
+            className="ag-theme-quartz" // applying the grid theme
+            style={{ height: "42vh" }} // the grid will fill the size of the parent container
+          >
+            <AgGridReact
+              rowData={inquiries}
+              columnDefs={colInquiry}
+              rowHeight={60}
+              rowSelection="multiple"
+              suppressRowClickSelection={true}
+              pagination={true}
+              paginationPageSize={4}
+              paginationPageSizeSelector={[25, 50]}
+            />
+          </div>
+        </div>
+        {/* <div className="flex justify-between mt-4">
+                    {currentPage > 1 ? <button onClick={handlePrevPage} disabled={currentPage === 1} className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded">
+                        Previous
+                    </button> : <div></div>}
+                    {currentPage < totalPages ? <button onClick={handleNextPage} disabled={currentPage === totalPages} className="bg-gray-200 dark:bg-gray-800 px-3 py-1 rounded">
+                        Next
+                    </button> : <div></div>}
+                </div> */}
+      </div>
       <div>
         <div className="flex justify-between">
           <div></div>
@@ -117,6 +165,7 @@ export default function CustomerList({ countries }: Prop) {
                     </button> : <div></div>}
                 </div> */}
       </div>
+
     </div>
   );
 }

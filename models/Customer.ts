@@ -74,6 +74,17 @@ export interface CourierDispatch {
   createdOn: string;
 }
 
+export interface InquiryDetails {
+  id?: number;
+  stockId: number;
+  name: string;
+  email: string;
+  contactNo: string;
+  message: string;
+  sentOn?: Date
+}
+
+
 export interface TransactionInfo {
   voucherCode: string;
   stockCode: string;

@@ -1,48 +1,72 @@
 "use client";
-import emailjs from "@emailjs/browser";
+import { InquiryDetails } from "@/models/Customer";
 import { Dialog, Switch, Transition } from "@headlessui/react";
 import { FormEvent, Fragment, useRef, useState } from "react";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import "./phoneInput.css";
 
+import agent from "@/api/agent";
+import emailjs from "@emailjs/browser";
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 interface Props {
   stockcode: string;
+  stockId: number;
 }
-export default function ContactUs({ stockcode }: Props) {
+export default function ContactUs({ stockcode, stockId }: Props) {
   const [agreed, setAgreed] = useState(false);
+  const [phone, setPhone] = useState("");
   const form = useRef<HTMLFormElement>(null);
   let [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
     setIsOpen(false);
   }
+  const isValid = phone
+    ? phone && isValidPhoneNumber(phone) && phone.startsWith("+")
+      ? true
+      : false
+    : true
 
   const sendEmail = (e: FormEvent) => {
     e.preventDefault();
 
-    if (!agreed) {
-      console.log("no message sent");
-    } else {
-      emailjs
-        .sendForm(
-          "service_7e9top8",
-          "template_nfu924e",
-          form.current ?? "",
-          "sFnMuHjMgPi29ux01"
-        )
-        .then(
-          (result) => {
-            setIsOpen(true);
-          },
-          (error) => {
-            console.log(error.text);
-          }
-        );
-
-      setAgreed(false);
+    if (!agreed || !isValid) {
+      console.log("not valid")
+      return console.log("no message sent");
     }
+    // console.log(form.current)
+    const formData = new FormData(form.current!);
+    const formValues = Object.fromEntries(formData.entries());
+    emailjs
+      .sendForm(
+        "service_7e9top8",
+        "template_nfu924e",
+        form.current ?? "",
+        "sFnMuHjMgPi29ux01"
+      )
+      .then(
+        async (result) => {
+          setIsOpen(true);
+          const data: InquiryDetails = {
+            stockId: stockId,
+            name: String(formValues["first-name"] + " " + formValues["last-name"]),
+            email: String(formValues.email),
+            contactNo: String(formValues["phone-number"]),
+            message: String(formValues.message)
+          }
+          await agent.LoadData.customerInquiry(data)
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+
+    setAgreed(false);
+
   };
 
   return (
@@ -77,7 +101,7 @@ export default function ContactUs({ stockcode }: Props) {
                     type="text"
                     name="first-name"
                     id="first-name"
-                    autoComplete="first-name"
+                    autoComplete="given-name"
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -94,12 +118,12 @@ export default function ContactUs({ stockcode }: Props) {
                     type="text"
                     name="last-name"
                     id="last-name"
-                    autoComplete="last-name"
+                    autoComplete="family-name"
                     className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
-              <div>
+              <div className="">
                 <label
                   htmlFor="phone-number"
                   className="block text-sm font-semibold leading-6 text-gray-900"
@@ -107,13 +131,16 @@ export default function ContactUs({ stockcode }: Props) {
                   Phone number
                 </label>
                 <div className="mt-2.5">
-                  <input
-                    type="text"
+                  <PhoneInput
+                    defaultCountry="US"
+                    value={phone}
+                    onChange={(e: any) => { setPhone(e) }}
                     name="phone-number"
                     id="phone-number"
-                    autoComplete="phone-number"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    autoComplete="tel"
+                    className={`block w-full rounded-md border-0 px-3.5 py-2 ${isValid ? "text-gray-900" : "text-red-500"} shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
                   />
+                  <p className="text-[11px] mt-1">Note: Phone Number start with + <br /> eg: +(country code) 254 2554</p>
                 </div>
               </div>
               <div>
@@ -218,23 +245,22 @@ export default function ContactUs({ stockcode }: Props) {
                             as="h3"
                             className="text-lg font-medium leading-6 text-gray-900"
                           >
-                            Message Delivered successfully
+                            Thank you for your message
                           </Dialog.Title>
                           <div className="mt-2">
                             <p className="text-sm text-gray-500">
-                              We have recieved your message. Someone will get
-                              back to you. And answer your queries in the email
-                              you have provided.
+                              We have received your message and will get back
+                              to you shortly.
                             </p>
                           </div>
 
                           <div className="mt-4">
                             <button
                               type="button"
-                              className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                              className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
                               onClick={closeModal}
                             >
-                              Got it, thanks!
+                              Close
                             </button>
                           </div>
                         </Dialog.Panel>

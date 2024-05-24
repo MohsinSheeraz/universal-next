@@ -1,0 +1,13 @@
+.PhoneInputInput {
+    border: none !important;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  .PhoneInputInput:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+  

@@ -389,9 +389,9 @@ export default function ProfileForm() {
                     setValue={(e: any) => {
                       updatePhone(i, e);
                     }}
-                    //  setValue={(e: any) => {
-                    //   updatePhone(i, e.target.value);
-                    // }}
+                  //  setValue={(e: any) => {
+                  //   updatePhone(i, e.target.value);
+                  // }}
                   />
                   {i >= 1 && (
                     <AiFillDelete
