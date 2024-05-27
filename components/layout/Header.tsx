@@ -34,7 +34,7 @@ const currentYear = new Date().getFullYear();
 function Header({ locations, ports, portMapping, stockCount }: Props) {
   const pathname = usePathname();
   const router = useRouter();
-
+  const [scrolled, setScrolled] = useState(false);
   //  const { data: session } = useSession()
   let [isOpen, setIsOpen] = useState(false);
   const { user: clerkUser, isSignedIn } = useUser();
@@ -50,7 +50,20 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
   function closeMobileSearchModal() {
     setIsOpen(false);
   }
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
 
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   function openMobileSearchModal() {
     setIsOpen(true);
   }
@@ -144,7 +157,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                 <img
                   src="/assets/images/logo.png"
                   alt="logo"
-                  className="header-logo"
+                  className={`header-logo ${scrolled && "!w-[40px]"} `}
                   style={{
                     width: "100%",
                     position: "relative",
@@ -270,15 +283,15 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                   countryList={[]}
                   portList={[]}
                   portMapping={undefined} // countryList={locations}
-                  // portList={ports}
-                  // portMapping={portMapping}
+                // portList={ports}
+                // portMapping={portMapping}
                 />
 
                 {/*<SignInComponentUI/>*/}
               </div>
             </div>
           </div>
-          <Navigation />
+          {!scrolled && <Navigation />}
         </div>
 
         <div className="container-fluid"></div>
@@ -427,14 +440,14 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
                               user?.email && !isUpdate
                                 ? ""
                                 : {
-                                    pathname: `/global/results/${location.countryName.replaceAll(
-                                      " ",
-                                      "-"
-                                    )}/cars`,
-                                    query: {
-                                      countryID: location.countryId,
-                                    },
-                                  }
+                                  pathname: `/global/results/${location.countryName.replaceAll(
+                                    " ",
+                                    "-"
+                                  )}/cars`,
+                                  query: {
+                                    countryID: location.countryId,
+                                  },
+                                }
                             }
                           >
                             <span className=" inline-flex items-center rounded-md">

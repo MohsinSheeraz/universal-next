@@ -40,7 +40,8 @@ const parseResponse = async <T>(
   response: Response
 ): Promise<{ data: T; paginationHeader: PaginationHeader }> => {
   if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
+    // throw new Error(`HTTP error! Status: ${response.status}`);
+    console.log(`HTTP error! Status: ${response.status}`);
   }
 
   const data: T = await response.json();
