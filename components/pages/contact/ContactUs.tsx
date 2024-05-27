@@ -8,6 +8,7 @@ import "./phoneInput.css";
 
 import agent from "@/api/agent";
 import emailjs from "@emailjs/browser";
+import { usePathname } from "next/navigation";
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -18,6 +19,7 @@ interface Props {
 }
 export default function ContactUs({ stockcode, stockId }: Props) {
   const [agreed, setAgreed] = useState(false);
+  const pathname = usePathname()
   const [phone, setPhone] = useState("");
   const form = useRef<HTMLFormElement>(null);
   let [isOpen, setIsOpen] = useState(false);
@@ -30,7 +32,6 @@ export default function ContactUs({ stockcode, stockId }: Props) {
       ? true
       : false
     : true
-
   const sendEmail = (e: FormEvent) => {
     e.preventDefault();
 
@@ -57,7 +58,8 @@ export default function ContactUs({ stockcode, stockId }: Props) {
             email: String(formValues.email),
             contactNo: String(formValues["phone-number"]),
             message: String(formValues.message),
-            countryCode: String(formValues["phone-numberCountry"])
+            countryCode: String(formValues["phone-numberCountry"]),
+            stockUrl: pathname
           }
           await agent.LoadData.customerInquiry(data)
         },

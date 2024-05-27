@@ -81,8 +81,9 @@ export interface InquiryDetails {
   email: string;
   contactNo: string;
   message: string;
+  stockUrl: string;
   sentOn?: Date;
-  countryCode:string
+  countryCode: string
 }
 
 

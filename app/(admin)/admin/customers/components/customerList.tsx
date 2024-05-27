@@ -4,6 +4,7 @@ import { Customer, InquiryDetails } from "@/models/Customer";
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
 import { AgGridReact } from "ag-grid-react"; // React Data Grid Component
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 type Prop = {
@@ -81,6 +82,12 @@ export default function CustomerList({ countries }: Prop) {
       </p>
     );
   };
+  const CustomIDComponent = (params: any) => {
+    return (
+      <Link href={params?.data?.stockUrl ?? ""} target="_blank" className="underline text-dark-tremor-brand-subtle">{params.data.stockId}</Link>
+
+    );
+  };
   const [colDefs, setColDefs] = useState<any>([
     { field: "customerCode", width: 200, filter: true, floatingFilter: true },
     { field: "name", width: 200, filter: true, floatingFilter: true },
@@ -90,7 +97,7 @@ export default function CustomerList({ countries }: Prop) {
     { field: "Action", cellRenderer: CustomButtonComponent, flex: 1 },
   ]);
   const [colInquiry, setInquiry] = useState<any>([
-    { field: "stockId", width: 100, filter: true, floatingFilter: true },
+    { field: "stockId", width: 100, filter: true, floatingFilter: true, cellRenderer: CustomIDComponent },
     { field: "name", width: 200, filter: true, floatingFilter: true },
     { field: "email", width: 300, filter: true, floatingFilter: true },
     { field: "country", width: 200, cellRenderer: CustomCountryQueryComponent },
@@ -110,7 +117,6 @@ export default function CustomerList({ countries }: Prop) {
       setCurrentPage(currentPage - 1);
     }
   };
-
   return (
     <div className="w-[95%] mx-auto flex flex-col gap-5 my-5">
       <div>
