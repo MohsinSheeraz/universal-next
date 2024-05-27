@@ -31,12 +31,12 @@ export default function ContactUs({ stockcode, stockId }: Props) {
     ? phone && isValidPhoneNumber(phone) && phone.startsWith("+")
       ? true
       : false
-    : true
+    : false
+
   const sendEmail = (e: FormEvent) => {
     e.preventDefault();
 
     if (!agreed || !isValid) {
-      console.log("not valid")
       return console.log("no message sent");
     }
     // console.log(form.current)
