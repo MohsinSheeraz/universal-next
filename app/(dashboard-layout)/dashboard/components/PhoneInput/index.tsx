@@ -31,7 +31,7 @@ export default function PhoneNumberInput({
     setPhoneInputValue(value);
   }, [value]);
   useEffect(() => {
-    setValue(phoneInputValue);
+    setValue && setValue(phoneInputValue);
   }, [phoneInputValue]);
   return (
     <div className="w-full">

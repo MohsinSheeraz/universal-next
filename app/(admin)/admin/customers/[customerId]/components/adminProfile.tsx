@@ -167,7 +167,7 @@ export default function AdminProfile({ id }: Props) {
         <div></div>
       </div>
       <div className="w-[90%] mx-auto mt-2">
-        <form onSubmit={handleSubmit(async (data) => {})}>
+        <form onSubmit={handleSubmit(async (data) => { })}>
           {customer && customer?.customerCode ? (
             <div className="w-full flex ">
               <div
@@ -360,9 +360,9 @@ export default function AdminProfile({ id }: Props) {
                       setValue={(e: any) => {
                         updatePhone(i, e);
                       }}
-                      //  setValue={(e: any) => {
-                      //   updatePhone(i, e.target.value);
-                      // }}
+                    //  setValue={(e: any) => {
+                    //   updatePhone(i, e.target.value);
+                    // }}
                     />
                     {i >= 1 && (
                       <AiFillDelete
