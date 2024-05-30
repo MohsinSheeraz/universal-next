@@ -57,24 +57,24 @@ export default function Information({ stock }: Prop) {
             <tr>
               <td className="!text-[12px] sm:!text-[16px]">ETA</td>
               <td className="!text-[12px] sm:!text-[16px]">
-                {etd < created ? (
-                  <span className="text-red-800 text-[14px]">
-                    NOT AVALAIBLE
-                  </span>
-                ) : (
-                  getFormatedDate(stock?.etd)
-                )}
-              </td>
-            </tr>
-            <tr>
-              <td className="!text-[12px] sm:!text-[16px]">ETD</td>
-              <td className="!text-[12px] sm:!text-[16px]">
                 {eta < created ? (
                   <span className="text-red-800 text-[14px]">
                     NOT AVALAIBLE
                   </span>
                 ) : (
                   getFormatedDate(stock?.eta)
+                )}
+              </td>
+            </tr>
+            <tr>
+              <td className="!text-[12px] sm:!text-[16px]">ETD</td>
+              <td className="!text-[12px] sm:!text-[16px]">
+                {etd < created ? (
+                  <span className="text-red-800 text-[14px]">
+                    NOT AVALAIBLE
+                  </span>
+                ) : (
+                  getFormatedDate(stock?.etd)
                 )}
               </td>
             </tr>
