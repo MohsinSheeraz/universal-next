@@ -9,6 +9,7 @@ import "./phoneInput.css";
 import agent from "@/api/agent";
 import emailjs from "@emailjs/browser";
 import { usePathname } from "next/navigation";
+import { toast } from "react-toastify";
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -20,6 +21,7 @@ interface Props {
 export default function ContactUs({ stockcode, stockId }: Props) {
   const [agreed, setAgreed] = useState(false);
   const pathname = usePathname()
+  const [loader, setLoader] = useState(false)
   const [phone, setPhone] = useState("");
   const form = useRef<HTMLFormElement>(null);
   let [isOpen, setIsOpen] = useState(false);
@@ -33,16 +35,20 @@ export default function ContactUs({ stockcode, stockId }: Props) {
       : false
     : false
 
-  const sendEmail = (e: FormEvent) => {
+  const sendEmail = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!agreed || !isValid) {
+      if (!phone) {
+        toast.info("Please Enter Phone Number ")
+      }
       return console.log("no message sent");
     }
+    setLoader(true)
     // console.log(form.current)
     const formData = new FormData(form.current!);
     const formValues = Object.fromEntries(formData.entries());
-    emailjs
+    await emailjs
       .sendForm(
         "service_7e9top8",
         "template_nfu924e",
@@ -67,7 +73,7 @@ export default function ContactUs({ stockcode, stockId }: Props) {
           console.log(error.text);
         }
       );
-
+    setLoader(false)
     setAgreed(false);
 
   };
@@ -97,7 +103,7 @@ export default function ContactUs({ stockcode, stockId }: Props) {
                   htmlFor="first-name"
                   className="block text-sm font-semibold leading-6 text-gray-900"
                 >
-                  First name
+                  First name *
                 </label>
                 <div className="mt-2.5">
                   <input
@@ -114,7 +120,7 @@ export default function ContactUs({ stockcode, stockId }: Props) {
                   htmlFor="last-name"
                   className="block text-sm font-semibold leading-6 text-gray-900"
                 >
-                  Last name
+                  Last name *
                 </label>
                 <div className="mt-2.5">
                   <input
@@ -131,7 +137,7 @@ export default function ContactUs({ stockcode, stockId }: Props) {
                   htmlFor="phone-number"
                   className="block text-sm font-semibold leading-6 text-gray-900"
                 >
-                  Phone number
+                  Phone number *
                 </label>
                 <div className="mt-2.5">
                   <PhoneInput
@@ -141,7 +147,7 @@ export default function ContactUs({ stockcode, stockId }: Props) {
                     name="phone-number"
                     id="phone-number"
                     autoComplete="tel"
-                    className={`block w-full rounded-md border-0 px-3.5 py-2 ${isValid ? "text-gray-900" : "text-red-500"} shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
+                    className={`block w-full !bg-white rounded-md border-0 px-3.5 py-[2px] ${isValid ? "text-gray-900" : "text-red-500"} shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
                   />
                   <p className="text-[11px] mt-1">Note: Phone Number start with + <br /> eg: +(country code) 254 2554</p>
                 </div>
@@ -151,7 +157,7 @@ export default function ContactUs({ stockcode, stockId }: Props) {
                   htmlFor="email"
                   className="block text-sm font-semibold leading-6 text-gray-900"
                 >
-                  Email
+                  Email *
                 </label>
                 <div className="mt-2.5">
                   <input
@@ -170,7 +176,7 @@ export default function ContactUs({ stockcode, stockId }: Props) {
                   htmlFor="message"
                   className="block text-sm font-semibold leading-6 text-gray-900"
                 >
-                  Message
+                  Message *
                 </label>
                 <div className="mt-2.5">
                   <textarea
@@ -212,12 +218,13 @@ export default function ContactUs({ stockcode, stockId }: Props) {
               </Switch.Group>
             </div>
             <div className="mt-10">
-              <button
-                type="submit"
-                className="block w-full rounded-md bg-[#221C63] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
-              >
-                Lets talk
-              </button>
+              {loader ?
+                <div className="border-gray-300 mx-auto h-8 w-8 animate-spin rounded-full border-4 border-t-[#221C63]" /> : <button
+                  type="submit"
+                  className="block w-full rounded-md bg-[#221C63] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
+                >
+                  Lets talk
+                </button>}
               <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={closeModal}>
                   <Transition.Child
