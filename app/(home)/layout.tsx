@@ -6,6 +6,7 @@ import Sidebar from "@/components/layout/Sidebar";
 import whatsappimg from "@/public/assets/whatsapp.png";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Universal Motors - Japanese Used Cars For Sale. Shipping Globally! ",
@@ -52,7 +53,7 @@ export default async function RootLayout({
 
   return (
     // <CheckIsLogin>
-    <>
+    <Suspense fallback={<></>}>
       <Header
         ports={portList}
         portMapping={portMapping}
@@ -84,7 +85,7 @@ export default async function RootLayout({
         locations={inventoryLocation}
         makes={makes.data}
       />
-    </>
+    </Suspense>
     // </CheckIsLogin>
   );
 }

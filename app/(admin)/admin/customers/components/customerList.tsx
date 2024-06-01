@@ -12,14 +12,14 @@ type Prop = {
 };
 export default function CustomerList({ countries }: Prop) {
   const [consignee, setConsignee] = useState<Customer[]>([]);
-  const [inquiries, setInquiries] = useState<InquiryDetails[]>([])
+  const [inquiries, setInquiries] = useState<InquiryDetails[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const totalPages = Math.ceil(consignee.length / itemsPerPage);
   useEffect(() => {
     const getData = async () => {
-      const inquiries = await agent.LoadData.getCustomerInquiries()
-      setInquiries(inquiries.data)
+      const inquiries = await agent.LoadData.getCustomerInquiries();
+      setInquiries(inquiries.data);
       const { data } = await agent.LoadData.getAllCustomer(
         currentPage,
         itemsPerPage
@@ -46,7 +46,6 @@ export default function CustomerList({ countries }: Prop) {
     return country;
   };
   const getCodeCountry = (code: string) => {
-
     const country = countries.find((itm: any) => itm.slug == code);
     return country;
   };
@@ -84,8 +83,13 @@ export default function CustomerList({ countries }: Prop) {
   };
   const CustomIDComponent = (params: any) => {
     return (
-      <Link href={params?.data?.stockUrl ?? ""} target="_blank" className="underline text-dark-tremor-brand-subtle">{params.data.stockId}</Link>
-
+      <Link
+        href={params?.data?.stockUrl ?? ""}
+        target="_blank"
+        className="underline text-dark-tremor-brand-subtle"
+      >
+        {params.data.stockId}
+      </Link>
     );
   };
   const [colDefs, setColDefs] = useState<any>([
@@ -97,7 +101,13 @@ export default function CustomerList({ countries }: Prop) {
     { field: "Action", cellRenderer: CustomButtonComponent, flex: 1 },
   ]);
   const [colInquiry, setInquiry] = useState<any>([
-    { field: "stockId", width: 100, filter: true, floatingFilter: true, cellRenderer: CustomIDComponent },
+    {
+      field: "stockId",
+      width: 100,
+      filter: true,
+      floatingFilter: true,
+      cellRenderer: CustomIDComponent,
+    },
     { field: "name", width: 200, filter: true, floatingFilter: true },
     { field: "email", width: 300, filter: true, floatingFilter: true },
     { field: "country", width: 200, cellRenderer: CustomCountryQueryComponent },
@@ -193,7 +203,6 @@ export default function CustomerList({ countries }: Prop) {
                     </button> : <div></div>}
                 </div> */}
       </div>
-
     </div>
   );
 }
