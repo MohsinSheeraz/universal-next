@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Loading() {
   return (
     <>
@@ -8,9 +10,12 @@ export default function Loading() {
               <div id="productslider" className="carousel slide">
                 <div className="row">
                   <div className="fixed inset-0 flex items-center justify-center">
-                    <img
+                    <Image
+                      loading="lazy"
                       src="/assets/images/animatedcarloading.gif"
-                      width="200px"
+                      width={200}
+                      height={200}
+                      alt="loader"
                     />
 
                     <hr />

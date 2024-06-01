@@ -1,6 +1,6 @@
-"use client";
 import { Country } from "@/models/Master/Country";
 import { Make } from "@/models/Master/Make";
+import Image from "next/image";
 import Link from "next/link";
 
 interface Props {
@@ -9,8 +9,6 @@ interface Props {
 }
 
 function Sidebar({ locations, makes }: Props) {
-  const params = new URLSearchParams();
-
   return (
     <>
       <div className="col-xl-2 col-lg-2 col-md-2 d-md-block d-none   bg-white shadow-xl">
@@ -32,7 +30,10 @@ function Sidebar({ locations, makes }: Props) {
                     }}
                   >
                     <span className=" inline-flex items-center rounded-md">
-                      <img
+                      <Image
+                        loading="lazy"
+                        width={15}
+                        height={10}
                         src={make.imageURL ?? ""}
                         className="img-fluid mr-3"
                         alt={make.slug}
@@ -74,9 +75,12 @@ function Sidebar({ locations, makes }: Props) {
                     }}
                   >
                     <span className=" inline-flex items-center rounded-md">
-                      <img
+                      <Image
+                        loading="lazy"
                         src={make.imageURL ?? ""}
                         className="img-fluid mr-3"
+                        height={10}
+                        width={10}
                         alt={make.slug}
                       />
 
@@ -109,8 +113,11 @@ function Sidebar({ locations, makes }: Props) {
               }}
             >
               <span className=" inline-flex items-center rounded-md">
-                <img
+                <Image
+                  loading="lazy"
                   src="/assets/images/default/Right.png"
+                  width={15}
+                  height={10}
                   className="img-fluid mr-3"
                   alt="Right Hand"
                 />
@@ -127,9 +134,12 @@ function Sidebar({ locations, makes }: Props) {
               }}
             >
               <span className=" inline-flex items-center rounded-md">
-                <img
+                <Image
                   src="/assets/images/default/Left.png"
+                  loading="lazy"
                   className="img-fluid mr-3"
+                  width={15}
+                  height={10}
                   alt="Left Hand"
                 />
                 Left Hand
@@ -158,9 +168,12 @@ function Sidebar({ locations, makes }: Props) {
                     }}
                   >
                     <span className=" inline-flex items-center rounded-md">
-                      <img
+                      <Image
+                        loading="lazy"
                         src={"/assets/images/flags/" + location.slug + ".svg"}
                         className="flag img-fluid mr-3"
+                        width={15}
+                        height={10}
                         alt={location.slug ?? ""}
                       />
                       {location.countryName}

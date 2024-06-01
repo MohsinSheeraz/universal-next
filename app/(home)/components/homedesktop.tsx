@@ -11,6 +11,7 @@ import { Transmission } from "@/models/Master/Transmission";
 import { VehicleCategory } from "@/models/Master/VehicleCategory";
 import { StockCars } from "@/models/StockCars";
 import { Trucks } from "@/models/Trucks";
+import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
@@ -104,10 +105,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=bahamas"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/BS.svg"
+                  loading="lazy"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
                   alt="Bahamas flag"
                 />
                 Bahamas
@@ -118,10 +121,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=chile"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/CL.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Chile flag"
                 />
                 Chile
@@ -132,10 +137,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=congo"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/CD.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Congo flag"
                 />
                 Dr Congo
@@ -146,10 +153,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=guyana"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/GY.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Guyana flag"
                 />{" "}
                 Guyana
@@ -160,10 +169,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=jamaica"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/JM.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Jamaica flag"
                 />{" "}
                 Jamaica
@@ -174,10 +185,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=kenya"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/KE.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Kenya flag"
                 />{" "}
                 Kenya
@@ -188,10 +201,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=malawi"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/MW.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Malawi flag"
                 />{" "}
                 Malawi
@@ -202,10 +217,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=pakistan"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/PK.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Pakistan flag"
                 />{" "}
                 Pakistan
@@ -216,10 +233,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=paraguay"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/PY.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Paraguay flag"
                 />{" "}
                 Paraguay
@@ -230,10 +249,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=russia"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/RU.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Russia flag"
                 />{" "}
                 Russia
@@ -244,10 +265,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=sudan"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/SS.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Sudan flag"
                 />{" "}
                 South Sudan
@@ -258,10 +281,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=tanzania"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/TZ.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Tanzania flag"
                 />{" "}
                 Tanzania
@@ -272,10 +297,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=uganda"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/UG.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Uganda flag"
                 />{" "}
                 Uganda
@@ -286,10 +313,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=zambia"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/ZM.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Zambia flag"
                 />{" "}
                 Zambia
@@ -300,10 +329,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=zimbabwe"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/ZW.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Zimbabwe flag"
                 />{" "}
                 Zimbabwe
@@ -314,10 +345,12 @@ export default function HomeDesktop({
               href="/global/information/import-protocols?page=ghana"
             >
               <span className=" inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-700/10">
-                <img
+                <Image
                   src="/assets/images/flags/GH.svg"
                   className="img-fluid mr-3"
-                  height="15px"
+                  height={15}
+                  width={15}
+                  loading="lazy"
                   alt="Ghana flag"
                 />{" "}
                 Ghana

@@ -22,7 +22,7 @@ interface Props {
   reservedBy: Number;
   isReserved: Boolean;
   isSold: Boolean;
-  stockId: number
+  stockId: number;
 }
 
 export default function PriceCalculator({
@@ -108,9 +108,9 @@ export default function PriceCalculator({
     //setTotalPrice(car.price+inspection+insurance+freightCharge)
     setTotalPrice(
       car.price +
-      parseFloat(String(inspection)) +
-      parseFloat(String(insurance)) +
-      parseFloat(String(freightCharge))
+        parseFloat(String(inspection)) +
+        parseFloat(String(insurance)) +
+        parseFloat(String(freightCharge))
     );
   };
   if (isReserved) {

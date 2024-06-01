@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  experimental: {
-    // serverActions:true
-    missingSuspenseWithCSRBailout: false,
-  },
+  // experimental: {
+  //   // serverActions:true
+  //   missingSuspenseWithCSRBailout: false,
+  // },
   images: {
     remotePatterns: [
       {

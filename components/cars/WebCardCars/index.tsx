@@ -106,10 +106,13 @@ export default function WebCardCars({
                         Milage
                       </p>
                       <p className=" p-1  flex items-center rounded-md ">
-                        <img
+                        <Image
+                          alt="kms"
                           decoding="async"
                           src="/assets/images/kmsDriven.svg"
-                          loading="eager"
+                          loading="lazy"
+                          width={10}
+                          height={10}
                           className="h-4 mr-2"
                         />
                         {car.mileage}
@@ -121,10 +124,13 @@ export default function WebCardCars({
                       YEAR
                     </p>
                     <p className=" p-1  flex items-center rounded-md ">
-                      <img
+                      <Image
                         decoding="async"
                         src="/assets/images/registrationYear.svg"
-                        loading="eager"
+                        loading="lazy"
+                        alt="year"
+                        width={10}
+                        height={10}
                         className="h-4 mr-2"
                       />
                       {car.year}
@@ -158,11 +164,14 @@ export default function WebCardCars({
                         Transmission
                       </p>
                       <p className=" p-1  flex items-center rounded-md ">
-                        <img
+                        <Image
+                          alt="transmission"
                           decoding="async"
                           src="/assets/images/transmission.svg"
-                          loading="eager"
+                          loading="lazy"
                           className="h-4 mr-2"
+                          width={10}
+                          height={10}
                         />
                         {car.transmissionName}
                       </p>

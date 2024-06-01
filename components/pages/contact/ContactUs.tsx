@@ -20,8 +20,8 @@ interface Props {
 }
 export default function ContactUs({ stockcode, stockId }: Props) {
   const [agreed, setAgreed] = useState(false);
-  const pathname = usePathname()
-  const [loader, setLoader] = useState(false)
+  const pathname = usePathname();
+  const [loader, setLoader] = useState(false);
   const [phone, setPhone] = useState("");
   const form = useRef<HTMLFormElement>(null);
   let [isOpen, setIsOpen] = useState(false);
@@ -33,18 +33,18 @@ export default function ContactUs({ stockcode, stockId }: Props) {
     ? phone && isValidPhoneNumber(phone) && phone.startsWith("+")
       ? true
       : false
-    : false
+    : false;
 
   const sendEmail = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!agreed || !isValid) {
       if (!phone) {
-        toast.info("Please Enter Phone Number ")
+        toast.info("Please Enter Phone Number ");
       }
       return console.log("no message sent");
     }
-    setLoader(true)
+    setLoader(true);
     // console.log(form.current)
     const formData = new FormData(form.current!);
     const formValues = Object.fromEntries(formData.entries());
@@ -60,22 +60,23 @@ export default function ContactUs({ stockcode, stockId }: Props) {
           setIsOpen(true);
           const data: InquiryDetails = {
             stockId: stockId,
-            name: String(formValues["first-name"] + " " + formValues["last-name"]),
+            name: String(
+              formValues["first-name"] + " " + formValues["last-name"]
+            ),
             email: String(formValues.email),
             contactNo: String(formValues["phone-number"]),
             message: String(formValues.message),
             countryCode: String(formValues["phone-numberCountry"]),
-            stockUrl: pathname
-          }
-          await agent.LoadData.customerInquiry(data)
+            stockUrl: pathname,
+          };
+          await agent.LoadData.customerInquiry(data);
         },
         (error) => {
           console.log(error.text);
         }
       );
-    setLoader(false)
+    setLoader(false);
     setAgreed(false);
-
   };
 
   return (
@@ -143,13 +144,18 @@ export default function ContactUs({ stockcode, stockId }: Props) {
                   <PhoneInput
                     defaultCountry="US"
                     value={phone}
-                    onChange={(e: any) => { setPhone(e) }}
+                    onChange={(e: any) => {
+                      setPhone(e);
+                    }}
                     name="phone-number"
                     id="phone-number"
                     autoComplete="tel"
                     className={`block w-full !bg-white rounded-md border-0 px-3.5 py-[2px] ${isValid ? "text-gray-900" : "text-red-500"} shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
                   />
-                  <p className="text-[11px] mt-1">Note: Phone Number start with + <br /> eg: +(country code) 254 2554</p>
+                  <p className="text-[11px] mt-1">
+                    Note: Phone Number start with + <br /> eg: +(country code)
+                    254 2554
+                  </p>
                 </div>
               </div>
               <div>
@@ -218,13 +224,16 @@ export default function ContactUs({ stockcode, stockId }: Props) {
               </Switch.Group>
             </div>
             <div className="mt-10">
-              {loader ?
-                <div className="border-gray-300 mx-auto h-8 w-8 animate-spin rounded-full border-4 border-t-[#221C63]" /> : <button
+              {loader ? (
+                <div className="border-gray-300 mx-auto h-8 w-8 animate-spin rounded-full border-4 border-t-[#221C63]" />
+              ) : (
+                <button
                   type="submit"
                   className="block w-full rounded-md bg-[#221C63] px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
                 >
                   Lets talk
-                </button>}
+                </button>
+              )}
               <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={closeModal}>
                   <Transition.Child
@@ -259,8 +268,8 @@ export default function ContactUs({ stockcode, stockId }: Props) {
                           </Dialog.Title>
                           <div className="mt-2">
                             <p className="text-sm text-gray-500">
-                              We have received your message and will get back
-                              to you shortly.
+                              We have received your message and will get back to
+                              you shortly.
                             </p>
                           </div>
 

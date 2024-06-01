@@ -83,9 +83,8 @@ export interface InquiryDetails {
   message: string;
   stockUrl: string;
   sentOn?: Date;
-  countryCode: string
+  countryCode: string;
 }
-
 
 export interface TransactionInfo {
   voucherCode: string;

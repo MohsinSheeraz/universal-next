@@ -82,6 +82,7 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
       >
         <Image
           src={car.imageUrl}
+          loading="lazy"
           width={261}
           height={176}
           className="rounded-3xl w-[100%] "
@@ -184,10 +185,13 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
                   Milage
                 </p>
                 <p className=" p-1  flex items-center rounded-md text-[8px]">
-                  <img
+                  <Image
+                    alt="kms"
                     decoding="async"
                     src="/assets/images/kmsDriven.svg"
-                    loading="eager"
+                    loading="lazy"
+                    width={10}
+                    height={10}
                     className="h-3 mr-2 "
                   />
                   {car.mileage}
@@ -198,10 +202,13 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
             <div className="flex items-center flex-col ">
               <p className="text-[6px] text-[#221C63] font-semibold ">YEAR</p>
               <p className=" p-1  flex items-center rounded-md text-[8px]">
-                <img
+                <Image
                   decoding="async"
+                  alt="year"
                   src="/assets/images/registrationYear.svg"
-                  loading="eager"
+                  loading="lazy"
+                  width={10}
+                  height={10}
                   className="h-3 mr-2"
                 />
                 {car.year}
@@ -234,10 +241,13 @@ export default function CarCard({ car, href, fav, countries, type }: Prop) {
                   Transmission
                 </p>
                 <p className=" p-1  flex items-center rounded-md text-[8px]">
-                  <img
+                  <Image
+                    alt="transmission"
                     decoding="async"
                     src="/assets/images/transmission.svg"
-                    loading="eager"
+                    loading="lazy"
+                    width={10}
+                    height={10}
                     className="h-3 mr-2"
                   />
                   {car.transmissionName}

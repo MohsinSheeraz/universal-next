@@ -1,6 +1,11 @@
 import agent from "@/api/agent";
-import HomeMobile from "./components/homeMobile";
-import HomeDesktop from "./components/homedesktop";
+import { Suspense } from "react";
+// import HomeMobile from "./components/homeMobile";
+// import HomeDesktop from "./components/homedesktop";
+import dynamic from "next/dynamic";
+
+const HomeDesktop = dynamic(() => import("./components/homedesktop"));
+const HomeMobile = dynamic(() => import("./components/homeMobile"));
 
 const GetStock = async () => {
   const result = await agent.LoadData.homepageStockList(); //db.tblCars.findMany({where: {IsActive:true}});
@@ -62,7 +67,7 @@ export default async function Home() {
   const vehicleCategory = await GetVehicleCategory();
 
   return (
-    <>
+    <Suspense fallback={<></>}>
       <HomeDesktop
         vehicleCategory={vehicleCategory}
         locations={locations}
@@ -85,6 +90,6 @@ export default async function Home() {
         fuel={fuel}
         locations={locations}
       />
-    </>
+    </Suspense>
   );
 }
