@@ -13,23 +13,21 @@ export default function SidebarItems() {
     <div className=" col-lg-2 bg-[#221C63] hidden lg:flex flex-none flex-col justify-between p-6 text-white border-y-[1px] border-[#ffff14]">
       <nav className="space-y-2">
         <Link
-          className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
-            pathname === "/dashboard" ||
+          className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/dashboard" ||
             pathname.includes("/reserve") ||
             pathname.includes("/purchase") ||
             pathname.includes("cosignee") ||
             pathname.includes("courier")
-              ? "bg-[#006aff]"
-              : "hover:bg-[#006aff]"
-          }`}
+            ? "bg-[#006aff]"
+            : "hover:bg-[#006aff]"
+            }`}
           href={"/dashboard"}
         >
           Account Information
         </Link>
         <Link
-          className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
-            pathname === "/favorite" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
-          }`}
+          className={`block px-6 py-2 hover:/dashboard transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/favorite" ? "bg-[#006aff]" : "hover:bg-[#006aff]"
+            }`}
           onClick={() => {
             if (user?.email && !isUpdate) {
               toast.info("Create Profile First");
@@ -76,11 +74,10 @@ export default function SidebarItems() {
               toast.info("Create Profile First");
             }
           }}
-          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${
-            pathname === "/payment-history"
-              ? "bg-[#006aff]"
-              : "hover:bg-[#006aff]"
-          }`}
+          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14] ${pathname === "/payment-history"
+            ? "bg-[#006aff]"
+            : "hover:bg-[#006aff]"
+            }`}
           href={user?.email && !isUpdate ? "" : "/payment-history"}
         >
           Payment History
@@ -92,14 +89,27 @@ export default function SidebarItems() {
               toast.info("Create Profile First");
             }
           }}
-          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14]  ${
-            pathname === "/account-activity"
-              ? "bg-[#006aff]"
-              : "hover:bg-[#006aff]"
-          }`}
+          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14]  ${pathname === "/account-activity"
+            ? "bg-[#006aff]"
+            : "hover:bg-[#006aff]"
+            }`}
           href={user?.email && !isUpdate ? "" : "/account-activity"}
         >
           Account Activity
+        </Link>
+        <Link
+          onClick={() => {
+            if (user?.email && !isUpdate) {
+              toast.info("Create Profile First");
+            }
+          }}
+          className={`block px-6 py-2 hover:bg-[#006aff] transition duration-200 text-decoration-none text-white border-b-[1px] border-[#ffff14]  ${pathname === "/upload-vehicle"
+            ? "bg-[#006aff]"
+            : "hover:bg-[#006aff]"
+            }`}
+          href={user?.email && !isUpdate ? "" : "/upload-vehicle"}
+        >
+          Upload Vehicle
         </Link>
       </nav>
       {/* <div className="w-full h-12 px-[46px] py-2 bg-[#474747] bg-opacity-20 rounded-lg justify-start items-center gap-3 inline-flex">
