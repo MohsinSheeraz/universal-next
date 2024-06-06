@@ -1,98 +1,27 @@
 import SearchInput from "@/components/dropdown";
+import FormInput from "./input";
 
 export default function DropdownForm() {
-    return (
-        <div className="grid lg:!grid-cols-4 md:!grid-cols-2 !grid-cols-1 gap-y-5 sm:gap-y-3 gap-x-4">
-
-            <div className="Make w-full">
-                <label htmlFor="" className="font-medium text-sm">
-                    Make:
-                </label>
-                <div className="w-full">
-                    <SearchInput placeholder={"Select..."} />
-                </div>
-            </div>
-            <div className=" w-auto">
-                <label htmlFor="" className="font-medium text-sm">
-                    Model:
-                </label>
-                <div className="w-full">
-                    <SearchInput placeholder={"Select..."} />
-                </div>
-            </div>
-            <div className=" w-auto">
-                <label htmlFor="" className="font-medium text-sm">
-                    Condition:
-                </label>
-                <div className="w-full">
-                    <SearchInput placeholder={"Select..."} />
-                </div>
-            </div>
-            <div className=" w-auto">
-                <label htmlFor="" className="font-medium text-sm">
-                    Inventory Location:
-                </label>
-                <div className="w-full">
-                    <SearchInput placeholder={"Select..."} />
-                </div>
-            </div>
-            <div className=" w-auto">
-                <label htmlFor="" className="font-medium text-sm">
-                    Transmission:
-                </label>
-                <div className="w-full">
-                    <SearchInput placeholder={"Select..."} />
-                </div>
-            </div>
-            <div className=" w-auto">
-                <label htmlFor="" className="font-medium text-sm">
-                    Fuel Type:
-                </label>
-                <div className="w-full">
-                    <SearchInput placeholder={"Select..."} />
-                </div>
-            </div>
-            <div className=" w-auto">
-                <label className="font-medium text-sm" htmlFor="">
-                    Drivetrain:
-                </label>
-                <div className="w-full">
-                    <SearchInput placeholder={"Select..."} />
-                </div>
-            </div>
-            <div className=" w-auto">
-                <label className="font-medium text-sm" htmlFor="">
-                    Hot Location:
-                </label>
-                <div className="w-full">
-                    <SearchInput placeholder={"Select..."} />
-                </div>
-            </div>
-            <div className=" w-auto">
-                <label htmlFor="" className="font-medium text-sm">
-                    Steering:
-                </label>
-                <div className="w-full">
-                    <SearchInput placeholder={"Select..."} />
-                </div>
-            </div>
-            <div className=" w-auto">
-                <label htmlFor="" className="font-medium text-sm">
-                    Select Color:
-                </label>
-                <div className="w-full">
-                    <SearchInput placeholder={"Select..."} />
-                </div>
-            </div>
-
-            <div className=" w-auto">
-                <label htmlFor="" className="font-medium text-sm">
-                    BodyType:
-                </label>
-                <div className="w-full">
-                    <SearchInput placeholder={"Select..."} />
-                </div>
-            </div>
+  return (
+    <div className="w-full xl:w-3/4 mx-auto py-4 px-1 xl:px-14">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 items-center">
+        <FormInput labelTXT="Make:" />
+        <FormInput labelTXT="Model:" />
+        <FormInput labelTXT="Condition:" />
+        <FormInput labelTXT="Inventory Location:" />
+        <FormInput labelTXT="Transmission:" />
+        <FormInput labelTXT="Fuel Type:" />
+        <FormInput labelTXT="Drivetrain:" />
+        <FormInput labelTXT="Hot Location:" />
+        <FormInput labelTXT="Steering:" />
+        <div>
+          <label className="font-medium text-sm" htmlFor="">
+            Select Color:
+          </label>
+          <SearchInput />
         </div>
-    )
+        <FormInput labelTXT="BodyType:" />
+      </div>
+    </div>
+  );
 }

@@ -625,7 +625,7 @@ function Header({ locations, ports, portMapping, stockCount }: Props) {
               </Link>
             </div>
             <div className="col-7">
-              <div className="featuresection flex inline-flex">
+              <div className="featuresection flex">
                 <Link href="" onClick={openMobileSearchModal}>
                   <img
                     src="https://img.icons8.com/ios-glyphs/2x/search.png"
